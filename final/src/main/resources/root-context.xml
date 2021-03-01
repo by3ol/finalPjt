@@ -1,8 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
+		
+			<!-- IOC 컨테이너로 어플리케이션 전역에 대한 설정  -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="realDataSource"/>
+		<property name="logFormatter">
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE"/>
+				<property name="sqlPrefix" value="[SQL] "/>
+			</bean>
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="realDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> <!-- 자동으로 pool을 닫을수 있도록 설정 -->
+			<property name="driverClassName" value="${jdbc.driverClassName}"/>
+			<property name="url" value="${jdbc.url}"/>
+			<property name="username" value="${jdbc.username}"/>
+			<property name="password" value="${jdbc.password}"/>
+			<property name="defaultAutoCommit" value="false"/>
+	
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+		<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="select*" read-only="true" rollback-for="Exception"/>
+			<tx:method name="insert*" rollback-for="Exception"/>
+			<tx:method name="update*" rollback-for="Exception"/>
+			<tx:method name="delete*"  rollback-for="Exception"/>
+			
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config proxy-target-class="true"> 
+	<!-- expression : 어느위치에 트랜잭션을 적용시킬것인지 -> spring 안에 있는 모든 serviceImpl 안의 모든 메소드  -->
+		<aop:pointcut expression="execution(* com.kh.drommetur..*ServiceImpl.*(..))" id="serviceMethod"/>
+		<aop:advisor id="transactionAdvisor" pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
+	</aop:config>
+	
+	
 </beans>
