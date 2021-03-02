@@ -8,12 +8,10 @@ public class MemberController {
 
 
 	//한별
-	
-	
-	
-	
 
 	
+	
+//정훈
 	
 	
 	
@@ -25,6 +23,5 @@ public class MemberController {
 	
 
 	//종찬
-
 
 }
