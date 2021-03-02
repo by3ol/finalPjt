@@ -13,7 +13,9 @@
 		
 
 
+
 		<context:property-placeholder location="classpath:/jdbc.properties"/>
+
 		
 
 			<!-- IOC 컨테이너로 어플리케이션 전역에 대한 설정  -->
