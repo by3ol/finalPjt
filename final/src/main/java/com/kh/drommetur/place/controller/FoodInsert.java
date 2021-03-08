@@ -12,34 +12,29 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.kh.drommetur.place.model.service.PlaceService;
 import com.kh.drommetur.place.model.service.PlaceServiceImpl;
 import com.kh.drommetur.place.model.vo.Place;
 
+public class FoodInsert {
 
-
-public class HotelInsert {
-
-		
-	
 	  public static void main(String[] args) throws IOException {
 		  
 		  
 		  String key="BGyVKcbfbNUJD9xPeChK16HtZdze8iJmLeo3VwSEnmS%2BoCkHPyBmNB8sUKxzwHaagddZ4XxHOU5%2Baoaf%2BXh7JA%3D%3D";
-		  String contentTypeId="32";
+		  String contentTypeId="39";
 		  
 		  String addr="http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList";
 		 
 		  ArrayList<Place> list=new ArrayList<Place>();
 		  
 		  
-		  
-		  	//페이지 1~4 
+		  //1~7페이지
+
 		  
 			  addr+="?"+URLEncoder.encode("ServiceKey","UTF-8")+"="+key;
 			  addr+="&"+URLEncoder.encode("contentTypeId","UTF-8")+"="+contentTypeId;
-			  addr+="&"+URLEncoder.encode("numOfRows","UTF-8")+"="+1000;
-			  addr+="&"+URLEncoder.encode("pageNo","UTF-8")+"="+4;
+			  addr+="&"+URLEncoder.encode("numOfRows","UTF-8")+"="+10;
+			  addr+="&"+URLEncoder.encode("pageNo","UTF-8")+"="+1;
 			  addr+="&"+URLEncoder.encode("MobileOS","UTF-8")+"=ETC";
 			  addr+="&"+URLEncoder.encode("MobileApp","UTF-8")+"=drommetur";
 			  addr+="&"+URLEncoder.encode("_type","UTF-8")+"=json";
@@ -69,7 +64,7 @@ public class HotelInsert {
 				 e.printStackTrace();
 			}
 			  
-			// System.out.println(result);
+			 System.out.println(result);
 			 
 			  JSONParser parser=new JSONParser();
 			  
@@ -99,7 +94,7 @@ public class HotelInsert {
 					}
 					
 					p.setPlaceAddr((String)place.get("addr1"));
-					p.setPlaceGroup("숙박");
+					p.setPlaceGroup("음식점");
 				
 					if(place.get("mapx") instanceof Double) {
 						p.setPlaceLon((Double)place.get("mapx"));
@@ -126,67 +121,48 @@ public class HotelInsert {
 					
 					switch((String)place.get("cat3")) {
 					
-					case "B02010100" :
-						p.setPlaceCategory("관광호텔");
+					case "A05020100" :
+						p.setPlaceCategory("한식");
 						break;
 						
-					case "B02010200" :
-						p.setPlaceCategory("수상관광호텔");
+					case "A05020200" :
+						p.setPlaceCategory("서양식");
 						break;
 	
-					case "B02010300" :
-						p.setPlaceCategory("전통호텔");
+					case "A05020300" :
+						p.setPlaceCategory("일식");
 						break;
 						
-					case "B02010400" :
-						p.setPlaceCategory("가족호텔");
+					case "A05020400" :
+						p.setPlaceCategory("중식");
 						break;
 						
-					case "B02010500" :
-						p.setPlaceCategory("콘도미니엄");
+					case "A05020500" :
+						p.setPlaceCategory("아시아식");
 						break;
 						
-					case "B02010600" :
-						p.setPlaceCategory("유스호스텔");
+					case "A05020600" :
+						p.setPlaceCategory("패밀리레스토랑");
 						break;
 						
-					case "B02010700" :
-						p.setPlaceCategory("펜션");
-						break;
-					
-					case "B02010800" :
-						p.setPlaceCategory("여관");
-						break;	
-					case "B02010900" :
-						p.setPlaceCategory("모텔");
-						break;	
-					case "B02011000" :
-						p.setPlaceCategory("민박");
-						break;
-						
-					case "B02011100" :
-						p.setPlaceCategory("게스트하우스");
-						break;
-						
-					case "B02011200" :
-						p.setPlaceCategory("홈스테이");
+					case "A05020700" :
+						p.setPlaceCategory("이색음식점");
 						break;
 					
-					case "B02011300" :
-						p.setPlaceCategory("서비스드레지던스");
+					case "A05020800" :
+						p.setPlaceCategory("채식전문점");
 						break;	
-					case "B02011400" :
-						p.setPlaceCategory("의료관광호텔");
+					case "A05020900" :
+						p.setPlaceCategory("바/카페");
+						break;	
+					case "A05021000" :
+						p.setPlaceCategory("클럽");
 						break;
 						
-					case "B02011500" :
-						p.setPlaceCategory("소형호텔");
-						break;		
-					case "B02011600" :
-						p.setPlaceCategory("한옥스테이");
-						break;							
+					
 						
-						
+					default : 
+						p.setPlaceCategory("음식점");
 					
 					}
 					
