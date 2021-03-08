@@ -6,9 +6,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <!-- bootstrap -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
+   
+   <!-- css -->
+   <link rel="stylesheet" href="resources/byeol.css">
+   
+   
+   <!--지도 api  -->
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=171ba9799c4dc95de3884a540e75210c"></script>
 <style>
 @import
    url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap')
@@ -138,7 +150,7 @@ font-family: 'Sunflower', sans-serif;
       <ul class="menu">
          <li id="h"><a href="<%=request.getContextPath()%>" id="logo">Drommetur</a>
            
-         <li id="s"><a href="<%=request.getContextPath()%>/self1.di" color="red">여행</a></li>
+         <li id="s"><a href="<%=request.getContextPath()%>/view.tr" color="red">여행</a></li>
         
          <li id="s"><a href="<%=request.getContextPath()%>/self2.di">여행</a></li>
          <%
