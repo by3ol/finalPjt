@@ -156,6 +156,7 @@ font-family: 'Sunflower', sans-serif;
         
          <li id="l"> <input id="searchImg" type="image" src="<%=request.getContextPath()%>/resources/image/돋보기.png"  width="30px" height="30px"></a></li>
          
+         
          <%
         
          %>
