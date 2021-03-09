@@ -17,7 +17,7 @@ public class PlaceDao {
 		
 		PreparedStatement pstmt=null;
 		
-		String sql="INSERT INTO PLACE VALUES(SEQ_PLACE.NEXTVAL,?,?,?,?,?,?,?,SYSDATE,DEFAULT,?)";
+		String sql="INSERT INTO PLACE VALUES(SEQ_PLACE.NEXTVAL,?,?,?,?,?,?,?,SYSDATE,DEFAULT,?,?,DEFAULT,DEFAULT)";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -30,6 +30,7 @@ public class PlaceDao {
 			pstmt.setDouble(6, p.getPlaceLat());
 			pstmt.setString(7, p.getPlaceCategory());
 			pstmt.setInt(8, p.getRegionNo());
+			pstmt.setString(9, p.getPlaceUrl());
 			
 			result=pstmt.executeUpdate();
 			

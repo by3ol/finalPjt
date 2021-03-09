@@ -69,7 +69,7 @@ public class HotelInsert {
 				 e.printStackTrace();
 			}
 			  
-			// System.out.println(result);
+			 //System.out.println(result);
 			 
 			  JSONParser parser=new JSONParser();
 			  
@@ -186,9 +186,11 @@ public class HotelInsert {
 						p.setPlaceCategory("한옥스테이");
 						break;							
 						
-						
+					
 					
 					}
+					
+					p.setPlaceUrl((String)place.get("firstimage"));
 					
 					list.add(p);
 					
@@ -202,7 +204,7 @@ public class HotelInsert {
 				e.printStackTrace();
 			}
 	 	  
-		  
+//		  
 //		  for(Place p : list) {
 //			  System.out.println(p);		  
 //			  

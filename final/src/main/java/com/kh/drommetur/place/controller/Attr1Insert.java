@@ -375,7 +375,7 @@ public class Attr1Insert {
 						p.setPlaceCategory("관광지");
 					
 					}
-					
+					p.setPlaceUrl((String)place.get("firstimage"));
 					list.add(p);
 					
 				}

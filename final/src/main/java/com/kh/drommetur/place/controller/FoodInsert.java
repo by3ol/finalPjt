@@ -33,8 +33,8 @@ public class FoodInsert {
 		  
 			  addr+="?"+URLEncoder.encode("ServiceKey","UTF-8")+"="+key;
 			  addr+="&"+URLEncoder.encode("contentTypeId","UTF-8")+"="+contentTypeId;
-			  addr+="&"+URLEncoder.encode("numOfRows","UTF-8")+"="+10;
-			  addr+="&"+URLEncoder.encode("pageNo","UTF-8")+"="+1;
+			  addr+="&"+URLEncoder.encode("numOfRows","UTF-8")+"="+1000;
+			  addr+="&"+URLEncoder.encode("pageNo","UTF-8")+"="+7;
 			  addr+="&"+URLEncoder.encode("MobileOS","UTF-8")+"=ETC";
 			  addr+="&"+URLEncoder.encode("MobileApp","UTF-8")+"=drommetur";
 			  addr+="&"+URLEncoder.encode("_type","UTF-8")+"=json";
@@ -64,7 +64,7 @@ public class FoodInsert {
 				 e.printStackTrace();
 			}
 			  
-			 System.out.println(result);
+			 //System.out.println(result);
 			 
 			  JSONParser parser=new JSONParser();
 			  
@@ -166,6 +166,7 @@ public class FoodInsert {
 					
 					}
 					
+					p.setPlaceUrl((String)place.get("firstimage"));
 					list.add(p);
 					
 				}

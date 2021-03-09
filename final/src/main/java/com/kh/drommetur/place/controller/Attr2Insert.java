@@ -312,7 +312,7 @@ public class Attr2Insert {
 						p.setPlaceCategory("레포츠");
 					
 					}
-					
+					p.setPlaceUrl((String)place.get("firstimage"));
 					list.add(p);
 					
 				}
