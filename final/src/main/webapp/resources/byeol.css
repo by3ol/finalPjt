@@ -13,7 +13,11 @@
 }
 #travelContainer{
 	
-	background-color:rgb(212,181,226,0.3);
+	background-color:rgb(146,144,144,0.3);
 	
 	
 }
+.mapMenuElement{
+	margin-top:20px;
+}
+

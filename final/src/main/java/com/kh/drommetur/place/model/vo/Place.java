@@ -17,6 +17,10 @@ public class Place {
 	private String placeCategory;
 	private Date placeDate;
 	private String placeStatus;
+	private String placeUrl;
+	private int placeCount;
+	private double placeScore;
+	
 	
 	private int regionNo; //지역번호 
 
