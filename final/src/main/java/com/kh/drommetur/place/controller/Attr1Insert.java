@@ -17,7 +17,15 @@ import com.kh.drommetur.place.model.vo.Place;
 
 public class Attr1Insert {
 
-	  public static void main(String[] args) throws IOException {
+	  /**
+	 * @param args
+	 * @throws IOException
+	 */
+	/**
+	 * @param args
+	 * @throws IOException
+	 */
+	public static void main(String[] args) throws IOException {
 		  
 		  
 		  String key="BGyVKcbfbNUJD9xPeChK16HtZdze8iJmLeo3VwSEnmS%2BoCkHPyBmNB8sUKxzwHaagddZ4XxHOU5%2Baoaf%2BXh7JA%3D%3D";
