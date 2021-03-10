@@ -37,5 +37,13 @@
 		      infowindow.open(map, marker);  
 		});
 		
+		$(".btn-group").find("button").on("click",function(){
+			
+			console.log("1");
+			
+			
+			
+		});
+		
 		
 		
