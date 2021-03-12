@@ -15,10 +15,10 @@
 					
 						
 						<div class="btn-group" >
-							<button type="button" class="btn btn-outline-danger" data-group="음식점"><i class="fas fa-utensils"></i> 음식점</button>
-						    <button type="button" class="btn btn-outline-warning" data-group="숙박"><i class="fas fa-bed"></i> 숙박업소</button>
-						    <button type="button" class="btn btn-outline-success" data-group="관광지"><i class="fas fa-camera-retro"></i>관광지</button>
-						    <button type="button" class="btn btn-outline-info" data-group="레포츠"><i class="fas fa-skiing"></i> 레포츠</button>
+							<button type="button" class="btn btn-outline-danger place-group" data-group="음식점"><i class="fas fa-utensils"></i> 음식점</button>
+						    <button type="button" class="btn btn-outline-warning place-group" data-group="숙박"><i class="fas fa-bed"></i> 숙박업소</button>
+						    <button type="button" class="btn btn-outline-success place-group" data-group="관광지"><i class="fas fa-camera-retro"></i>관광지</button>
+						    <button type="button" class="btn btn-outline-info place-group" data-group="레포츠"><i class="fas fa-skiing"></i> 레포츠</button>
 						    <button type="button" class="btn btn-outline-primary" data-group="food"><i class="fas fa-bus"></i> 이동수단</button>
 						</div>
 					
@@ -26,12 +26,8 @@
 					
 					<div class="col-lg-4 " > <!-- 검색창부분  -->
 						
-						<div class="input-group mb-3 ">  
-						  <input type="text" class="form-control" id="searchInput">
-						  
-						  <div class="input-group-append">
-						    <button class="btn btn-primary" ><i class="fas fa-search"></i></button>
-						  </div>
+						<div class="form-group ">  
+						 
 												  
 						  
 						 </div>
@@ -41,25 +37,36 @@
 			</div>
 		</div>
 		<div class="row" >
-			<div class="col-xl-8" id="map"  >
+			<div class="col-xl-8" id="map" style="width:100% ;height:800px"  >
 				
 				
 			
 			
 			
 			</div>
+			
 			<div class="col-xl-4">
-			
-			
-			
-			
-			
-			
-			
+				<div class="card">
+					<div class="card-body">
+						<h3 style="text-align:center">여행 계획</h3>
+						<div class="form-group">
+						  <label for="travel-name">여행 이름</label>
+						  <input type="text" class="form-control" id="travelName" name="travelName">
+						</div>
+						<div style="width:100%;height:300px">
+							<label >여행 일정</label>
+						
+						</div>
+						<div class="form-group">
+							 <label for="travelMemo">여행 메모</label>
+		  					<textarea class="form-control" rows="5" id="travelMemo" name="travelMemo"></textarea>
+						</div>
+							<button class="btn btn-primary ">여행 등록</button>
+					</div>
+				</div>
+		
+		
 			</div>
-		
-		
-		</div>
 	
 	</div> 
 	
