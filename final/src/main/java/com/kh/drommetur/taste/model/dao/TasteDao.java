@@ -1,5 +1,8 @@
 package com.kh.drommetur.taste.model.dao;
 
-public class TasteDao {
+import org.springframework.stereotype.Repository;
 
+@Repository
+public class TasteDao {
+	
 }
