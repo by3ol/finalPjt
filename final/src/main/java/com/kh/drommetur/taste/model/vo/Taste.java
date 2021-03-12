@@ -32,8 +32,5 @@ public class Taste {
 	private double placeScore;
 	
 	private int regionNo; //지역번호 
-
-	
-
 	
 }

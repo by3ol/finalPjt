@@ -1,5 +1,6 @@
 package com.kh.drommetur.taste.model.service;
 
+
 import com.kh.drommetur.taste.model.vo.Taste;
 
 public interface TasteService {
@@ -8,5 +9,4 @@ public interface TasteService {
 
 	Taste selectBoard(int placeNo);
 	
-
 }
