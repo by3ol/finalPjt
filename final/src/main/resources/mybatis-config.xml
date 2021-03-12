@@ -15,8 +15,11 @@
 	
 
 	<typeAliases>
-		<typeAlias type="com.kh.drommetur.place.model.vo.Place" alias="Place"></typeAlias>
-	
+		<typeAlias type="com.kh.drommetur.place.model.vo.Place" alias="Place"></typeAlias>	
+		<typeAlias type="com.kh.drommetur.place.model.vo.Answer" alias="Answer"></typeAlias>
+		<typeAlias type="com.kh.drommetur.place.model.vo.Question" alias="Question"></typeAlias>
+		<typeAlias type="com.kh.drommetur.place.model.vo.Notice" alias="Notice"></typeAlias>
+		
 	</typeAliases>
 	
 	<mappers>
