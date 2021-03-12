@@ -5,11 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
     <style>
       /*메뉴*/
       .searchbar {
         text-align: center;
-        padding-top: 20px;
+        
       }
       .body .navbarDiv{
         text-align: center;
@@ -22,7 +29,7 @@
         height: 48px;
         margin: 0%;
         padding: 0%;
-        padding-top: 8px;
+        padding-top: 3px;
         margin: auto;
 
 
@@ -77,6 +84,7 @@
         padding-bottom: 15px;
         overflow: hidden;
       }
+      
       .foodInfoDiv{
         margin: 0 auto;
         width: 922px;
@@ -102,33 +110,23 @@
         float: left;
       }
       .foodReview{
-        width: 22.5%;
-        margin-right: 32px;
+        
+        
         float: right;
-        background-color: lightgray;
+        background-color: rgb(240, 240, 233);
         height: 250px;
         
       }
-     .like{
-        width: 100px; 
-        margin: 0%;
-        padding: 0%;
-        border: 0;
-        background-color: lightgray;
+   
+     
+     .foodReview{
+       width: 222px;
+       
      }
-     .share{
-       width: 100px;
-       margin: 0%;
-        padding: 0%;
-        border: 0;
-        background-color: lightgray;
-     }
-     .reviewWrite{
-       width: 206px;
-       margin: 0%;
-        padding: 0%;
-        border: 0;
-        background-color: aqua
+     .foodReview .btn{
+       width: 222px;
+       margin: 0;
+       padding: 0;
      }
      .foodReview h4{
       margin-left: 3px;
@@ -136,16 +134,54 @@
      .foodReview p{
       margin-left: 4px;
      }
-    </style>
-</head>
+     .foodReview .btn ul{
+       margin: 0 auto;
+       overflow: hidden;
+       padding: 0;
+      padding-bottom: 10px;
+      padding-top: 10px;
+     }
+     .foodReview .btn ul li{
+       list-style: none;
+       float: left;
+       text-align: center;
+       width: 50%;
+      
+     }
+     .reviewWrite_btn{
+      display: block;
+      width: 222px;
+      font-size: 32px;
+      font-weight: 700;
+      height: 54px;
+      background: #ff7400;
+     
+      
+    }
+    .btn3 a{
+      text-decoration: none;
+      color: white;
+      
+    }
+    .btn3{
+      padding-bottom: 20px;
+    }
+    
+    
+</style>
 <body>
+<jsp:include page="../common/menubar1.jsp"/>
+<div class="container-fluid" style="margin-top:70px">
+
 <div class="wrab">
       <div class="header">
         <div class="searchbar">
-        <sapn class="info">검색 : <input type="text" name="searchloc"></sapn>  
+        <span class="info">검색 : <input type="text" name="searchloc">
+        </span>  
         </div>
       </div>
       <div class="body">
+        <hr>
         <div class="navbarDiv">
         <ul class="navbar1" >
             <li class="a">전체</li>
@@ -160,19 +196,19 @@
       <div class="foodDetailViewDiv">
         <div class="foodDetailViewForm">
           <div class="foodDetailViewTitle">
-            <h3>가게 이름<strong>점수</strong></h3>
-            <p>가게 설명</p>
+            <h3>${t.placeName }<strong>${t.placeScore}</strong></h3>
+            <p>${t.placeCategory }</p>
             <ul class="score">
-              <li><span>♥좋아요</span></li>
-              <li><span>눈 조회수</span></li>
+              <li><span><img src="" width="25px" height="25px">좋아요</span></li>
+              <li><span><img src="" width="25px" height="25px">${t.placeCount }</span></li>
             </ul>
            
           </div>
           <div class="foodImgList">
-            <div class="img">
-              <img width="300px" height="300px" src="images/flower1.PNG" alt="사진">
-              <img width="300px" height="300px" src="images/flower2.PNG" alt="사진">
-              <img width="300px" height="300px" src="images/flower3.PNG" alt="사진">
+            <div class="img" align = "center">
+              <img width="500px" height="300px" src="http://tong.visitkorea.or.kr/cms/resource/22/1744722_image2_1.jpg
+              " alt="사진" >
+             
             </div>
             </div>
             <div class="foodInfoDiv">
@@ -189,12 +225,28 @@
                   <h4>매장소개</h4>
                   <p>설명</p>
                 </div>
+                <div>
+                  <h4>전화번호</h4>
+                  <p>설명</p>
+                </div>
+                <div>
+                  <h4>주소</h4>
+                  <p>설명</p>
+                </div>
+                <div>
+                  <h4>매장소개</h4>
+                  <p>설명</p>
+                </div>
               </div>
               <div class="foodReview">
                 <div class="btn">
-                  <button class="like" width="150px" >좋아요</button>
-                  <button class="share"  width="150px" >공유하기</button><br>
-                  <button class="reviewWrite" width=150px;>리뷰쓰기</button>
+                  <div class="btn3">
+                  <ul>
+                    <li>좋아요</li>
+                    <li>공유하기</li>
+                  </ul>
+                  <a href="" class="reviewWrite_btn">리뷰쓰기</a>
+                </div>
                   <h4>매장 연관 태그</h4>
                   <a href="">태그</a>
                 </div>
@@ -206,12 +258,11 @@
             </div>
       </div>
 
-
             
       <div class="footer">
 
       </div>
   </div>  
-
+  </div>
 </body>
 </html>
