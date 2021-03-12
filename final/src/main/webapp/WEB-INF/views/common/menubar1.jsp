@@ -130,6 +130,10 @@
     </style>
     
     
+     <!--지도 api  -->
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=171ba9799c4dc95de3884a540e75210c"></script>
+    
+    
    <script   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <!-- bootstrap -->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
@@ -142,12 +146,11 @@
    <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
    
-   <!--지도 api  -->
-   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=171ba9799c4dc95de3884a540e75210c"></script>
-    
+  
     
 </head>
 <body>
+
 <!-- 
     <header id="header">
         <div class="headerContainer">

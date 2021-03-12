@@ -1,13 +1,19 @@
 package com.kh.drommetur.place.model.dao;
 
+import static com.kh.drommetur.common.JDBCTemplate.close;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import static com.kh.drommetur.common.JDBCTemplate.close;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.kh.drommetur.place.model.vo.Place;
 
-
+@Repository
 public class PlaceDao {
 
 	public int insertPlace(Place p, Connection conn) {
@@ -46,6 +52,14 @@ public class PlaceDao {
 		
 		return result;
 	}
+
+	public ArrayList<Place> selectPlaceList(SqlSessionTemplate sqlSession, String group) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("placeMapper.selectPlaceList", group);
+	}
+
+
+
 
 	
 	

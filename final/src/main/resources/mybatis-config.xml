@@ -19,7 +19,10 @@
 	
 	</typeAliases>
 	
+	<mappers>
+		<mapper resource="mappers/place-mapper.xml"></mapper>
 	
+	</mappers>
 
 
 

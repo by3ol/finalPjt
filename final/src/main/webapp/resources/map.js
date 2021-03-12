@@ -1,49 +1,107 @@
+	
+
 	var container=document.getElementById("map");
 
 		var options = { //지도를 생성할 때 필요한 기본 옵션
-				center: new kakao.maps.LatLng(37.5294047205, 127.073988376), //지도의 중심좌표.
-				level: 3 //지도의 레벨(확대, 축소 정도)
+				center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
 			};
 
+		
 		var map = new kakao.maps.Map(container, options); 
 		
+		var markers=[];
+		var infowindows=[];
+		var removewindow;
 		
-		
-		// 마커가 표시될 위치입니다 
-		var markerPosition  = new kakao.maps.LatLng(37.5294047205, 127.073988376); 
 
-		// 마커를 생성합니다
-		var marker = new kakao.maps.Marker({
-		    position: markerPosition
-		});
-
-		// 마커가 지도 위에 표시되도록 설정합니다
-		marker.setMap(map);
 		
-		
-		// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-		var iwContent = '<div style="padding:5px;">뚝섬한강공원</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-		// 인포윈도우를 생성합니다
-		var infowindow = new kakao.maps.InfoWindow({
-		    content : iwContent,
-		    removable : iwRemoveable
-		});
-
-		// 마커에 클릭이벤트를 등록합니다
-		kakao.maps.event.addListener(marker, 'click', function() {
-		      // 마커 위에 인포윈도우를 표시합니다
-		      infowindow.open(map, marker);  
-		});
-		
-		$(".btn-group").find("button").on("click",function(){
+	$(".place-group").on("click",function(){
 			
-			console.log("1");
+			var group=$(this).data("group");
+			
+			
+			$.ajax({
+				
+				url:"placeList/"+group,
+				type:"get",
+				data:{group:group},
+				success:function(list){
+					
+					
+					drawMarkers(list);
+				
+					
+				},
+				error:function(){
+					
+					alert("장소 불러오기 실패");
+					
+				}
+			
+			});
 			
 			
 			
+			
+			
 		});
 		
+		function drawMarkers(list){
+			
+
+			
+			
+			
+			for(var i=0;i<2;i++){
+				
+				var marker = new kakao.maps.Marker({
+			        map: map, // 마커를 표시할 지도
+			        position: new kakao.maps.LatLng(list[i].placeLat,list[i].placeLon ), // 마커를 표시할 위치
+			     
+			    });
+				
+				marker.idx=i;
+				
+				
+				markers.push(marker);
+				
+//				var infowindow = new kakao.maps.InfoWindow({
+//					position: marker.getPosition(),
+//				    content : '<div style="padding:5px;">'+list[i].placeName+'</div>',
+//				    removable : true
+//				});
+//				
+//				
+//				infowindows.push(infowindow);
+
+//				// 마커에 클릭이벤트를 등록합니다
+//				kakao.maps.event.addListener(marker, 'click', function(mouseEvent){
+//					
+//					if(removewindow!=null)
+//					removewindow.close();
+//						
+//					var infowindow=infowindows[this.idx];
+//					
+//					infowindow.open(map,this);
+//					
+//					removewindow=infowindows[this.idx];
+//				
+//			
+//				});
+				
+			}	
+			
+			
+		}
+	
 		
+		function removeMarker() {
+		    for ( var i = 0; i < markers.length; i++ ) {
+		        markers[i].setMap(null);
+		    }   
+		    markers = [];
+		    infowindows=[];
+		  
+		}
 		
