@@ -16,6 +16,7 @@ public class TasteDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("tasteMapper.selectBoard",placeNo);
 	}
+}
 
 
 
