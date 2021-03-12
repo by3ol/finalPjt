@@ -16,7 +16,6 @@
 
 .login-form .hint-text {
     color: #777;
-    padding-bottom: 15px;
     text-align: center;
 }
 
@@ -47,13 +46,6 @@
     z-index: 1;
 }
 
-.social-btn .btn {
-    margin: 10px 0;
-    font-size: 15px;
-    text-align: left;
-    line-height: 24px;
-}
-
 .social-btn2 .btn {
     border: 1px solid rgba(120, 185, 250);
     background-color: rgba(120, 185, 250);
@@ -63,10 +55,34 @@
     line-height: 24px;
 }
 
+.social-btn .btn {
+    width: 130px;
+    margin: 10px 0;
+    font-size: 15px;
+    text-align: left;
+    line-height: 24px;
+
+}
+
+.social-btn .btn:first-child {
+    margin-left: 0;
+}
+.social-btn .btn:hover {
+    opacity: 0.8;
+}
+.social-btn .btn-primary {
+    background: #507cc0;
+}
+.social-btn .btn-info {
+    background: #64ccf1;
+}
+.social-btn .btn-danger {
+    background: #df4930;
+}
 .social-btn .btn i {
     float: left;
-    margin: 4px 15px 0 5px;
-    min-width: 15px;
+    margin: 3px 10px;
+    font-size: 20px;
 }
 
 .input-group-addon .fa {
