@@ -1,6 +1,7 @@
 package com.kh.drommetur.taste.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,7 +13,7 @@ import com.kh.drommetur.taste.model.vo.Taste;
 public class TasteController {
 		
 	@Autowired
-	private TasteService tasteservice;
+	private TasteService tasteService;
 	@RequestMapping("detail.ta")
 	public ModelAndView selectBoard(int placeNo, ModelAndView mv) {
 
@@ -26,6 +27,7 @@ public class TasteController {
 		}
 		return mv;
 	}
+}
 
 
 	
