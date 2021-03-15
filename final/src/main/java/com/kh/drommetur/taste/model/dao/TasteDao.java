@@ -40,8 +40,3 @@ public class TasteDao {
 		return (ArrayList)sqlSession.selectList("tasteMapper.selectList",null,rowBounds);
 	}
 }
-
-
-
-
-

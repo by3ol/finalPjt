@@ -22,14 +22,18 @@ public class TasteController {
 	@Autowired
 	private TasteService tasteService;
 	@RequestMapping("detail.ta")
+
 	public ModelAndView selectBoard(String placeNo, ModelAndView mv) {
 		placeNo="2";
 		int a = Integer.parseInt(placeNo);
 		
 		int result = tasteService.updateIncreaseCount(a);
+
 		
 		if(result>0) {
+
 			Taste t = tasteService.selectBoard(a);
+
 			mv.addObject("t",t).setViewName("taste/tasteDetail");
 		}else {
 			
