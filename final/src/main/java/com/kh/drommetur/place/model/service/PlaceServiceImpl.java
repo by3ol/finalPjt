@@ -51,9 +51,9 @@ public class PlaceServiceImpl implements PlaceService {
 
 
 	@Override
-	public ArrayList<Place> selectPlaceList(String group) {
+	public ArrayList<Place> selectPlaceList(Place place) {
 		// TODO Auto-generated method stub
-		return placeDao.selectPlaceList(sqlSession,group);
+		return placeDao.selectPlaceList(sqlSession,place);
 	}
 
 
