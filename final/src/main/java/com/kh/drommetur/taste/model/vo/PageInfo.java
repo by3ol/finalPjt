@@ -1,3 +1,4 @@
+
 package com.kh.drommetur.taste.model.vo;
 
 public class PageInfo {
@@ -93,8 +94,4 @@ public class PageInfo {
 	
 }
 
-	
-
-	
-	
 
