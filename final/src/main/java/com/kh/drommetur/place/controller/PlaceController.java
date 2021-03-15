@@ -21,11 +21,16 @@ public class PlaceController {
 	@Autowired
 	PlaceService placeService;
 	
-	@GetMapping(value="placeList/{group}", produces="application/json;charset=UTF-8")
+	@GetMapping(value="placeList/{group}/{region}", produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public String selectPlaceList(@PathVariable("group")String group) {
+	public String selectPlaceList(@PathVariable("group")String group, @PathVariable("region")int region) {
 		
-		ArrayList<Place> list=placeService.selectPlaceList(group);
+		
+		Place place=new Place();
+		place.setPlaceGroup(group);
+		place.setRegionNo(region);
+		
+		ArrayList<Place> list=placeService.selectPlaceList(place);
 		
 		Gson gson=new GsonBuilder().create();
 		

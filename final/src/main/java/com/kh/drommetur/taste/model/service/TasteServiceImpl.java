@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.drommetur.taste.model.dao.TasteDao;
-
+import com.kh.drommetur.taste.model.vo.PageInfo;
 import com.kh.drommetur.taste.model.vo.Taste;
 
 @Service("tasteService")
@@ -27,6 +27,15 @@ public class TasteServiceImpl implements TasteService{
 	public Taste selectBoard(int placeNo) {
 		// TODO Auto-generated method stub
 		return tasteDao.selectBoard(sqlSession, placeNo);
+	}
+	@Override
+	public int selectListCount() {
+		return tasteDao.selectListCount(sqlSession);
+		
+	}
+	@Override
+	public ArrayList<Taste> selectList(PageInfo pi) {
+		return tasteDao.selectList(sqlSession, pi);
 	}
 	
 }
