@@ -10,5 +10,5 @@ public interface PlaceService {
 	
 	int insertPlaceList(ArrayList<Place> list);
 
-	ArrayList<Place> selectPlaceList(String group);
+	ArrayList<Place> selectPlaceList(Place place);
 }

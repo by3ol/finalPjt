@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ㅅ<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 
@@ -37,6 +38,7 @@
     </style>
 </head>
 <body>
+<jsp:include page="../common/menubar1.jsp"/>
       <div id="container" style="min-height:1000px;">
         <div id="contents">
             <div id="main_contents">
@@ -52,7 +54,7 @@
                                                                                                                                         
                                     
                                        
-                                    </tr>
+                                    
                                 
                                 </form>
                             </div>
@@ -83,58 +85,24 @@
                          
                          <div class ="cont_size">
                              <div class=taste_menu_line>
-                               <div class="taste_menu">
+                            	 <c:forEach items="${list }" var="list">
+                            
+                              		 <div class="taste_menu">
+                               		
                                     <a href="#">
-                                        <img src="img/dog.jpg" width="200px"> <br>
-                                        <strong>3.8</strong> <br>
-                                        <label>귀여운 강아지</label> <br>  
-                                        <label>작고소중합니다.</label>                                    
+                                        <img src=${ list.placeUrl } width="200px"> <br>
+                                        <strong>${list.placeScore }</strong> <br>
+                                        <label>${list.placeName }</label> <br>  
+                                        <label>${list.placePhone } </label>                                    
                                     </a>
+                                     
+	                      
                                </div> 
-                               <div class="taste_menu">
-                                <a href="#">
-                                    <img src="img/dog.jpg" width="200px"> <br>
-                                    <strong>3.8</strong> <br>
-                                    <label>귀여운 강아지</label> <br>  
-                                    <label>작고소중합니다.</label>                                    
-                                </a>
-                           </div> 
-                           <div class="taste_menu">
-                            <a href="#">
-                                <img src="img/dog.jpg" width="200px"> <br>
-                                <strong>3.8</strong> <br>
-                                <label>귀여운 강아지</label> <br>  
-                                <label>작고소중합니다.</label>                                    
-                            </a>
-                                 </div> 
+                               </c:forEach>
+                           
                             </div>
 
-                            <div class=taste_menu_line>
-                                <div class="taste_menu">
-                                     <a href="#">
-                                         <img src="img/dog.jpg" width="200px"> <br>
-                                         <strong>3.8</strong> <br>
-                                         <label>귀여운 강아지</label> <br>  
-                                         <label>작고소중합니다.</label>                                    
-                                     </a>
-                                </div> 
-                                <div class="taste_menu">
-                                 <a href="#">
-                                     <img src="img/dog.jpg" width="200px"> <br>
-                                     <strong>3.8</strong> <br>
-                                     <label>귀여운 강아지</label> <br>  
-                                     <label>작고소중합니다.</label>                                    
-                                 </a>
-                            </div> 
-                            <div class="taste_menu">
-                             <a href="#">
-                                 <img src="img/dog.jpg" width="200px"> <br>
-                                 <strong>3.8</strong> <br>
-                                 <label>귀여운 강아지</label> <br>  
-                                 <label>작고소중합니다.</label>                                    
-                             </a>
-                                  </div> 
-                             </div>
+                            
                          </div>  
                         
                         </div>
@@ -142,8 +110,51 @@
             </div>
 
         </div>
-    
-    
+              <div id="pagingArea">
+                <ul class="pagination">
+                	<c:choose>
+                		<c:when test="${ pi.currentPage ne 1 }">
+                			<li class="page-item"><a class="page-link" href="list.bo?currentPage=${ pi.currentPage-1 }">Previous</a></li>
+                		</c:when>
+                		<c:otherwise>
+                			<li class="page-item disabled"><a class="page-link" href="">Previous</a></li>
+                		</c:otherwise>
+                	</c:choose>
+                	
+                    <c:forEach begin="${ pi.startPage }" end="${ pi.endPage }" var="p">
+                    	<c:choose>
+	                		<c:when test="${ pi.currentPage ne p }">
+                    			<li class="page-item"><a class="page-link" href="list.bo?currentPage=${ p }">${ p }</a></li>
+	                		</c:when>
+	                		<c:otherwise>
+	                			<li class="page-item disabled"><a class="page-link" href="">${ p }</a></li>
+	                		</c:otherwise>
+	                	</c:choose>
+                    </c:forEach>
+                    
+                    
+                    <c:choose>
+                		<c:when test="${ pi.currentPage ne pi.maxPage }">
+                			<li class="page-item"><a class="page-link" href="list.bo?currentPage=${ pi.currentPage+1 }">Next</a></li>
+                		</c:when>
+                		<c:otherwise>
+                			<li class="page-item disabled"><a class="page-link" href="list.bo?currentPage=${ pi.currentPage+1 }">Next</a></li>
+                		</c:otherwise>
+                	</c:choose>
+                </ul>
+            </div>
+           
+            <br clear="both"><br>
+            
+			
+            <br><br>
+        </div>
+        <br><br>
     </div>
+ 
+    
+    
+            
+     <div class="footer">
 </body>
 </html>

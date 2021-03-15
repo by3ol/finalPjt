@@ -1,4 +1,4 @@
-package com.kh.spring.board.model.vo;
+package com.kh.drommetur.customer.model.vo;
 
 import java.sql.Date;
 

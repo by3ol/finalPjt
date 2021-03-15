@@ -12,7 +12,10 @@
 		<result property="status" column="STATUS" />
 	</resultMap>
 	
-	
+	<insert id="insertQuestion" parameterType="Question">
+	INSERT INTO QUESTION
+	VALUES(SEQ_QUESTION.NEXTVAL,#{category},#{questionTitle},#{questionContent},#{questionSecret},SYSDATE,DEFAULT)
+	</insert>
 
 	
 </mapper>
