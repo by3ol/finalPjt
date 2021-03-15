@@ -22,10 +22,10 @@
   
   </resultMap>
   
-  <select id="selectPlaceList" parameterType="string" resultMap="placeResultSet">
+  <select id="selectPlaceList" parameterType="Place" resultMap="placeResultSet">
   		SELECT PLACE_NO,PLACE_ADDR,PLACE_NAME,PLACE_PHONE,PLACE_GROUP,PLACE_LON,PLACE_LAT,PLACE_CATEGORY,PLACE_URL,PLACE_SCORE
 	FROM PLACE
-	WHERE PLACE_STATUS='Y' AND PLACE_GROUP=#{group}
+	WHERE PLACE_STATUS='Y' AND PLACE_GROUP=#{placeGroup} AND REGION_NO =#{regionNo}
   	
   
   </select>
