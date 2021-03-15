@@ -27,7 +27,7 @@
 	<mappers>
 		<mapper resource="mappers/place-mapper.xml"></mapper>
 		<mapper resource="mappers/customer-mapper.xml"></mapper>
-		<mapper resource="mappers/taste-Mapper.xml"></mapper>
+		<mapper resource="mappers/taste-mapper.xml"></mapper>
 	</mappers>
 
 
