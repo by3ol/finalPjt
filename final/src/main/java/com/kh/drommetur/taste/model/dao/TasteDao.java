@@ -17,8 +17,3 @@ public class TasteDao {
 		return sqlSession.selectOne("tasteMapper.selectBoard",placeNo);
 	}
 }
-
-
-
-
-

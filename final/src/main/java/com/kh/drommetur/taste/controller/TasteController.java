@@ -13,14 +13,14 @@ import com.kh.drommetur.taste.model.vo.Taste;
 public class TasteController {
 		
 	@Autowired
-	private TasteService tasteService;
+	private TasteService tasteservice;
 	@RequestMapping("detail.ta")
 	public ModelAndView selectBoard(int placeNo, ModelAndView mv) {
 
-		int result = tasteService.updateIncreaseCount(placeNo);
+		int result = tasteservice.updateIncreaseCount(placeNo);
 		
 		if(result>0) {
-			Taste t = tasteService.selectBoard(placeNo);
+			Taste t = tasteservice.selectBoard(placeNo);
 			mv.addObject("t",t).setViewName("taste/tasteDetail");
 		}else {
 			
