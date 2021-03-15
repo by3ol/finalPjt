@@ -20,9 +20,9 @@
 		<typeAlias type="com.kh.drommetur.customer.model.vo.Question" alias="Question"></typeAlias>
 		<typeAlias type="com.kh.drommetur.customer.model.vo.Notice" alias="Notice"></typeAlias>
 
+
 		<typeAlias type="com.kh.drommetur.taste.model.vo.Taste" alias="Taste"></typeAlias>
 		<typeAlias type="com.kh.drommetur.taste.model.vo.PageInfo" alias="PageInfo"></typeAlias>
-		
 
 	</typeAliases>
 	

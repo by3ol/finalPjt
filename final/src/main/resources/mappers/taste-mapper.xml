@@ -31,7 +31,6 @@
    	ORDER BY PLACE_NO DESC
 	</select>
 	
-
 	 <select id="selectListCount" resultType="_int">
       SELECT COUNT(*)
       FROM PLACE
@@ -46,7 +45,5 @@
    	AND PLACE_GROUP='음식점'
    	ORDER BY PLACE_NO DESC
    </select>
-
-
 
 </mapper>
