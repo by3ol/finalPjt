@@ -57,7 +57,7 @@
 			<ul class="navbar-nav navbar-right">
 				<li class="nav-item"><a class="nav-link"
 					href="${ pageContext.servletContext.contextPath }/view.tr">여행</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">맛집</a></li>
+				<li class="nav-item"><a class="nav-link" href="list.ta">맛집</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">숙박</a></li>
 
 				<li class="nav-item"><a class="nav-link" href="#">명소/액티비티</a></li>
