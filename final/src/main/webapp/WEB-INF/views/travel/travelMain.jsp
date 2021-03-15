@@ -26,9 +26,30 @@
 					
 					<div class="col-lg-4 " > <!-- 검색창부분  -->
 						
-						<div class="form-group ">  
-						 
-												  
+						<div class="form-group form-inline">  
+						 	 <label for="regionNo" class="col-sm-4">지역 선택</label>
+							  
+							  <div class="col-sm-8">
+								  <select class="form-control" id="regionNo" name="regionNo">
+								    <option value="1" selected>서울</option>
+								    <option value="6" >부산</option>
+								    <option value="4" >대구</option>
+								    <option value="2">인천</option>
+								    <option value="5">광주</option>
+								    <option value="3">대전</option>
+								    <option value="7">울산</option>
+								    <option value="8">세종</option>
+								    <option value="31">경기</option>
+								    <option value="32">강원</option>
+								    <option value="33">충북</option>
+								    <option value="34">충남</option>
+								    <option value="37">전북</option>
+								    <option value="38">전남</option>
+								    <option value="35">경북</option>
+								    <option value="36">경남</option>
+								    <option value="39">제주</option>
+								  </select>
+		  					</div>
 						  
 						 </div>
 						

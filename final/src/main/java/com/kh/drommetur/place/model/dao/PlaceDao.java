@@ -53,9 +53,9 @@ public class PlaceDao {
 		return result;
 	}
 
-	public ArrayList<Place> selectPlaceList(SqlSessionTemplate sqlSession, String group) {
+	public ArrayList<Place> selectPlaceList(SqlSessionTemplate sqlSession, Place place) {
 		// TODO Auto-generated method stub
-		return (ArrayList)sqlSession.selectList("placeMapper.selectPlaceList", group);
+		return (ArrayList)sqlSession.selectList("placeMapper.selectPlaceList", place);
 	}
 
 

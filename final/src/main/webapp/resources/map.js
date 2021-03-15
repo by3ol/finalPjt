@@ -3,32 +3,40 @@
 	var container=document.getElementById("map");
 
 		var options = { //지도를 생성할 때 필요한 기본 옵션
-				center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-		        level: 3 // 지도의 확대 레벨
+				center: new kakao.maps.LatLng(36.8087371194, 127.7940437093), // 지도의 중심좌표
+		        level: 10 // 지도의 확대 레벨
 			};
 
 		
 		var map = new kakao.maps.Map(container, options); 
 		
 		var markers=[];
-		var infowindows=[];
-		var removewindow;
+		var overlays=[];
+		var removeoverlay;
 		
 
+		kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+		    
+			if(removeoverlay!=null)
+				removeoverlay.setMap(null);
+		    
+		});
 		
 	$(".place-group").on("click",function(){
 			
 			var group=$(this).data("group");
+			var region=$("select[name=regionNo] option:selected").val();
+			
 			
 			
 			$.ajax({
 				
-				url:"placeList/"+group,
+				url:"placeList/"+group+"/"+region,
 				type:"get",
-				data:{group:group},
+				
 				success:function(list){
 					
-					
+					removeMarker();
 					drawMarkers(list);
 				
 					
@@ -53,7 +61,7 @@
 			
 			
 			
-			for(var i=0;i<2;i++){
+			for(var i=0;i<list.length;i++){
 				
 				var marker = new kakao.maps.Marker({
 			        map: map, // 마커를 표시할 지도
@@ -65,30 +73,77 @@
 				
 				
 				markers.push(marker);
-				
-//				var infowindow = new kakao.maps.InfoWindow({
-//					position: marker.getPosition(),
-//				    content : '<div style="padding:5px;">'+list[i].placeName+'</div>',
-//				    removable : true
-//				});
-//				
-//				
-//				infowindows.push(infowindow);
 
-//				// 마커에 클릭이벤트를 등록합니다
-//				kakao.maps.event.addListener(marker, 'click', function(mouseEvent){
-//					
-//					if(removewindow!=null)
-//					removewindow.close();
-//						
-//					var infowindow=infowindows[this.idx];
-//					
-//					infowindow.open(map,this);
-//					
-//					removewindow=infowindows[this.idx];
+				
+				var content = '<div class="card" style="width:300px">';
+										
+											
+				
+								if( typeof list[i].placeUrl !="undefined" && list[i].placeUrl!=null && list[i].placeUrl!=""){
+										content+='<img class="card-img-top" src="'+list[i].placeUrl+'">';
+				
+									}
+				
+					content+='<div class="card-body">'+
+					'<h4 class="card-title" style="width:300px" data-pNo="'+list[i].placeNo+'">'+list[i].placeName+'</h4>'+
+					'<p class="card-text" style="width:300px"> '+list[i].placeCategory+'&nbsp;'+list[i].placeScore+'</p>'+
+					'<p class="card-text" style="width:300px">주소 : '+list[i].placeAddr+'</p>'+
+					'<p class="card-text" style="width:300px">전화번호 : '+list[i].placePhone+'</p>'+
+ 
+					'<a href="#" class="btn btn-primary">일정에 추가하기</a>'+
+				'</div></div>';
+				
+				
+//				var $card=$('<div class="card" style="width:300px" />');
 //				
-//			
-//				});
+//				var $cardbody=$('<div class="card-body" />');
+//				var $title=$('<h4 class="card-title" data-pNo="'+list[i].placeNo+' />').text(list[i].placeName);
+//				var $category=$('<p class="card-text" />').text(list[i].placeCategory+'&nbsp;'+list[i].placeScore);
+//				var $addr=$('<p class="card-text" />').text('주소 : '+list[i].placeAddr);
+//				var $phone=$('<p class="card-text" />').text('전화번호 : '+list[i].placePhone);
+//				var $button=$('<a href="#" class="btn btn-primary" />').text('일정에 추가하기');
+//				
+//				
+//				
+//				
+//				if( typeof list[i].placeUrl !="undefined" && list[i].placeUrl!=null && list[i].placeUrl!=""){
+//					
+//					 var $image=$('<img class="card-img-top" src="'+list[i].placeUrl+'">');
+//					 $card.append($image);
+//				}
+//				
+//				$card.append($cardbody);
+//				
+//				$cardbody.append($title).append($category).append($addr).append($phone).append($button);
+//				
+//				var content=$card[0];
+				
+				var overlay = new kakao.maps.CustomOverlay({
+				    content: content,
+				    map: map,
+				    position: marker.getPosition()       
+				});
+
+				overlay.setMap(null);
+				
+				overlays.push(overlay);
+				
+				
+
+				// 마커에 클릭이벤트를 등록합니다
+				kakao.maps.event.addListener(marker, 'click', function(mouseEvent){
+					
+					if(removeoverlay!=null)
+						removeoverlay.setMap(null);
+						
+					var overlay=overlays[this.idx];
+					
+					overlay.setMap(map);
+					
+					removeoverlay=overlays[this.idx];
+				
+			
+				});
 				
 			}	
 			
@@ -97,11 +152,15 @@
 	
 		
 		function removeMarker() {
+			
+			if(removeoverlay!=null)
+				removeoverlay.setMap(null);
+			
 		    for ( var i = 0; i < markers.length; i++ ) {
 		        markers[i].setMap(null);
 		    }   
 		    markers = [];
-		    infowindows=[];
+		    overlays=[];
 		  
 		}
 		
