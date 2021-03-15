@@ -19,12 +19,13 @@
 		<typeAlias type="com.kh.drommetur.customer.model.vo.Answer" alias="Answer"></typeAlias>
 		<typeAlias type="com.kh.drommetur.customer.model.vo.Question" alias="Question"></typeAlias>
 		<typeAlias type="com.kh.drommetur.customer.model.vo.Notice" alias="Notice"></typeAlias>
-		
+		<typeAlias type="com.kh.drommetur.taste.model.vo.Taste" alias="Taste"></typeAlias>	
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappers/place-mapper.xml"></mapper>
 		<mapper resource="mappers/customer-mapper.xml"></mapper>
+		<mapper resource="mappers/taste-mapper.xml"></mapper>
 	</mappers>
 
 
