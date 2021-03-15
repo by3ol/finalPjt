@@ -22,6 +22,8 @@
 <!-- member css -->
 <link rel="stylesheet" href="resources/memberStyle/loginForm.css">
 <link rel="stylesheet" href="resources/memberStyle/joinChoose.css">
+<link rel="stylesheet" href="resources/memberStyle/signUpForm.css">
+
 
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
