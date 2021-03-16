@@ -72,7 +72,7 @@
 					</div></li>
 
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="navbardrop"
+					class="nav-link dropdown-toggle" href="customercenter.cu" id="navbardrop"
 					data-toggle="dropdown"> 관리 게시판 </a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="#">공지사항</a> <a
