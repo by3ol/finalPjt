@@ -1,45 +1,45 @@
-.login-form {
+#login-form {
     width: 340px;
     margin: 30px auto;
+    margin-top: 8%;
 }
 
-.login-form form {
+#login-form form {
     margin-bottom: 15px;
     background: #f7f7f7;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     padding: 30px;
 }
 
-.login-form h2 {
-    margin: 0 0 15px;
-}
-
-.login-form .hint-text {
+#login-form #hint-text {
     color: #777;
     padding-top: 5px;
     text-align: center;
 }
 
-.form-control,
-.btn {
+#text-control,
+#loginBtn,
+#btnFace,
+#btnGoogle {
     min-height: 38px;
     border-radius: 2px;
+    font-size: 13px;
 }
 
-.login-btn {
+#loginBtn {
     font-size: 15px;
     font-weight: bold;
     border: 1px solid rgba(120, 185, 250, 0.5);
     background-color: rgba(120, 185, 250, 0.5);
 }
 
-.or-seperator {
+#or-line {
     margin: 20px 0 10px;
     text-align: center;
     border-top: 1px solid #ccc;
 }
 
-.or-seperator i {
+#or-line i {
     padding: 0 10px;
     background: #f7f7f7;
     position: relative;
@@ -47,7 +47,8 @@
     z-index: 1;
 }
 
-.social-btn .btn {
+#btnFace,
+#btnGoogle{
     width: 130px;
     margin: 10px 0;
     font-size: 15px;
@@ -56,31 +57,42 @@
 
 }
 
-.social-btn .btn:first-child {
+#social-btn:first-child {
     margin-left: 0;
 }
-.social-btn .btn:hover {
+
+#btnFace:hover {
     opacity: 0.8;
 }
-.social-btn .btn-primary {
+
+#btnGoogle:hover {
+    opacity: 0.8;
+}
+
+#loginBtn:hover {
+    opacity: 0.8;
+}
+
+#btnFace {
     background: #507cc0;
 }
-.social-btn .btn-info {
-    background: #64ccf1;
-}
-.social-btn .btn-danger {
+
+#btnGoogle {
     background: #df4930;
 }
-.social-btn .btn i {
+
+#faceText,
+#googleText{
     float: left;
     margin: 3px 10px;
     font-size: 20px;
 }
 
-.text-center {
+#mainText {
+    margin: 0 0 15px;
     color: rgba(120, 185, 250, 0.5);
 }
 
-.clearfix {
+#textFix {
     text-align: right;
 }

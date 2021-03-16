@@ -1,44 +1,37 @@
-.login-form {
+.join-choose-from_1 {
     width: 340px;
     margin: 30px auto;
 }
 
-.login-form form {
+.join-choose-from_2 {
     margin-bottom: 15px;
     background: #f7f7f7;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     padding: 30px;
 }
 
-.login-form h2 {
+.join-choose-from_2 h2 {
     margin: 0 0 15px;
 }
 
-.login-form .hint-text {
+#check-loginId {
     color: #777;
     text-align: center;
 }
 
-.form-control,
-.btn {
+#signUp_btn
+{
     min-height: 38px;
     border-radius: 2px;
 }
 
-.login-btn {
-    font-size: 15px;
-    font-weight: bold;
-    border: 1px solid rgba(120, 185, 250, 0.5);
-    background-color: rgba(120, 185, 250, 0.5);
-}
-
-.or-seperator {
+#or-line {
     margin: 20px 0 10px;
     text-align: center;
     border-top: 1px solid #ccc;
 }
 
-.or-seperator i {
+#or-line i {
     padding: 0 10px;
     background: #f7f7f7;
     position: relative;
@@ -46,7 +39,7 @@
     z-index: 1;
 }
 
-.social-btn2 .btn {
+#signUp_btn {
     border: 1px solid rgba(120, 185, 250);
     background-color: rgba(120, 185, 250);
     margin: 10px 0;
@@ -55,39 +48,39 @@
     line-height: 24px;
 }
 
-.social-btn .btn {
+#facebook_btn, 
+#google_btn {
     width: 130px;
     margin: 10px 0;
     font-size: 15px;
     text-align: left;
     line-height: 24px;
-
+    min-height: 38px;
+    border-radius: 2px;
 }
 
-.social-btn .btn:first-child {
+#signUp_btn {
     margin-left: 0;
 }
-.social-btn .btn:hover {
+#signUp_btn:hover {
     opacity: 0.8;
 }
-.social-btn .btn-primary {
+#facebook_btn {
     background: #507cc0;
 }
-.social-btn .btn-info {
-    background: #64ccf1;
-}
-.social-btn .btn-danger {
+
+#google_btn {
     background: #df4930;
 }
-.social-btn .btn i {
+#social-fab {
     float: left;
     margin: 3px 10px;
     font-size: 20px;
 }
 
-.input-group-addon .fa {
+#social-fab{
     font-size: 18px;
 }
-.text-center {
+#join-text {
     color: rgba(120, 185, 250, 0.5);
 }
