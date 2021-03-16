@@ -13,8 +13,6 @@
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- css -->
 <link rel="stylesheet" href="resources/byeol.css">
@@ -23,7 +21,6 @@
 <link rel="stylesheet" href="resources/memberStyle/loginForm.css">
 <link rel="stylesheet" href="resources/memberStyle/joinChoose.css">
 <link rel="stylesheet" href="resources/memberStyle/signUpForm.css">
-
 
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
@@ -90,7 +87,7 @@
 				<li class="nav-item"><a class="nav-link"
 					href="${ pageContext.servletContext.contextPath }/login.mem">로그인</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="${ pageContext.servletContext.contextPath }/join.mem">회원가입</a></li>
+					href="${ pageContext.servletContext.contextPath }/joinChoose.mem">회원가입</a></li>
 
 			</ul>
 		</div>
