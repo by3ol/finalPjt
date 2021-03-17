@@ -22,7 +22,6 @@ public class TasteController {
 	@Autowired
 	private TasteService tasteService;
 	@RequestMapping("detail.ta")
-
 	public ModelAndView selectBoard(String placeNo, ModelAndView mv) {
 		placeNo="2";
 		int a = Integer.parseInt(placeNo);
