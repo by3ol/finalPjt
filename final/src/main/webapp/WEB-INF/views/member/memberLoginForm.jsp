@@ -4,7 +4,7 @@
 	<jsp:include page="../common/menubar1.jsp" />
 
 	    <div class="login-form" id="login-form">
-        <form action="/examples/actions/confirmation.php" method="post">
+        <form action="login.mem" method="post">
             <h2 class="text-center" id="mainText">Drommetur</h2>
             <br>
             <div class="form-group" id="form-group">
@@ -30,7 +30,7 @@
                 <a href="#" class="btn btn-danger btn-lg" id="btnGoogle"><i class="fab fa-google" id="googleText"></i>google</a>
             </div>
             <br>
-            <div class="hint-text small" id="hint-text">아직 회원이 아니신가요? <a href="joinChoose.html" class="text-success" id="text-success">회원가입!</a></div>
+            <div class="hint-text small" id="hint-text">아직 회원이 아니신가요? <a href="joinChoose.mem" class="text-success" id="text-success">회원가입!</a></div>
         </form>
 
 	<jsp:include page="../common/footer.jsp" />

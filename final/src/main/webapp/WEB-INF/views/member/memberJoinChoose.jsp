@@ -11,7 +11,7 @@
             <br>
 
             <div class="text-center social-btn2">
-                <a href="#" class="btn btn-info btn-block" id="signUp_btn"><b>Drommetur</b> 가입하기</a>
+                <a href="signUpFrom.mem" class="btn btn-info btn-block" id="signUp_btn"><b>Drommetur</b> 가입하기</a>
             </div>
 
             <div class="or-seperator" id="or-line"></div>
@@ -20,7 +20,7 @@
                 <a href="#" class="btn btn-danger btn-lg" id="google_btn"><i class="fab fa-google" id="social-fab"></i>google</a>
             </div>
             <br>
-            <div class="hint-text small" id="check-loginId">이미 아이디가 있으신가요? <a href="LoginForm.html" class="text-success">로그인</a></div>
+            <div class="hint-text small" id="check-loginId">이미 아이디가 있으신가요? <a href="loginFrom.mem" class="text-success">로그인</a></div>
         </form>
     </div>
 

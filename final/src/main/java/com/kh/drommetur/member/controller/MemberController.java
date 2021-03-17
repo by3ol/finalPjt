@@ -10,8 +10,18 @@ import com.kh.drommetur.member.model.service.MemberService;
 public class MemberController {
 	
 	
-	@RequestMapping("login.mem")
+	@RequestMapping("loginFrom.mem")
 	public String loginForm() {
 		return "member/memberLoginForm";
+	}
+	
+	@RequestMapping("joinChoose.mem")
+	public String joinChoose() {
+		return "member/memberJoinChoose";
+	}
+	
+	@RequestMapping("signUpFrom.mem")
+	public String signUpForm() {
+		return "member/memberSignUpForm";
 	}
 }
