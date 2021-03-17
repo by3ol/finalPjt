@@ -8,9 +8,14 @@ import com.kh.drommetur.customer.model.vo.Question;
 @Repository("boardDao")
 public class CustomerDao {
 
-	public int insertQuestion(SqlSessionTemplate slqSession, Question q) {
+	public int insertQuestion(SqlSessionTemplate sqlSession, Question q) {
 		// TODO Auto-generated method stub
-		return slqSession.insert("customerMapper.insertQuestion", q);
+		return sqlSession.insert("customerMapper.insertQuestion", q);
+	}
+
+	public int selectQuestion(SqlSessionTemplate sqlSession, int questionNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("customerMapper.selectBoard", questionNo);
 	}
 
 }
