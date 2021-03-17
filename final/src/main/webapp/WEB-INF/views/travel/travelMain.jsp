@@ -19,7 +19,6 @@
 						    <button type="button" class="btn btn-outline-warning place-group" data-group="숙박"><i class="fas fa-bed"></i> 숙박업소</button>
 						    <button type="button" class="btn btn-outline-success place-group" data-group="관광지"><i class="fas fa-camera-retro"></i>관광지</button>
 						    <button type="button" class="btn btn-outline-info place-group" data-group="레포츠"><i class="fas fa-skiing"></i> 레포츠</button>
-						    <button type="button" class="btn btn-outline-primary" data-group="food"><i class="fas fa-bus"></i> 이동수단</button>
 						</div>
 					
 					</div>
@@ -83,6 +82,9 @@
 		  					<textarea class="form-control" rows="5" id="travelMemo" name="travelMemo"></textarea>
 						</div>
 							<button class="btn btn-primary ">여행 등록</button>
+					
+					
+					
 					</div>
 				</div>
 		
