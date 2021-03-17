@@ -4,17 +4,29 @@
 	<jsp:include page="common/menubar1.jsp"/>
 
 
-	<div class="container-fluid"  style="margin-top:70px">
-		<div class="card" style="width:300px">
-			<img class="card-img-top" src="http://tong.visitkorea.or.kr/cms/resource/97/2630897_image2_1.jpg">
-			 <div class="card-body">
-			    <h4 class="card-title" data-pNo=""></h4>
-			    <p class="card-text">카테고리</p>
-			    <p class="card-text">주소</p>
-			    <p class="card-text">전화번호</p>
+	<div class="container-fluid test"  style="margin-top:70px">
+		<div class="d-flex " style='width:300px'>
+			<div style='width:30%'>
+				<img src="http://tong.visitkorea.or.kr/cms/resource/70/1334870_image2_1.jpg" style='width:80px;height:50px;margin-top:20px;' >
+			
+			</div>
+			
+			
+			<div style='width:70%'>
+			  <div >
+			  	<p style="float:right"><i class="fas fa-times"></i></p>
+			    <p>Card title</p>
+			    <p style="font-size:0.8em;margin-botton:0.8rem">Some example text. Some example text.</p>
+			    <p style="font-size:0.8em;margin-botton:0.8rem">Some example text. Some example text.</p>
+			    <a href="#" class="card-link" style="font-size:0.8em;margin-botton:0.8rem">Card link</a>
 			    
-			    <a href="#" class="btn btn-primary">일정에 추가하기</a>
 			  </div>
+			</div>
 		</div>
 	</div>
+	
+	<script>
+	
+
+	</script>
 	<jsp:include page="common/footer.jsp"/>

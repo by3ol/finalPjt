@@ -14,14 +14,14 @@
 		var overlays=[];
 		var removeoverlay;
 		
-
-		kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-		    
-			if(removeoverlay!=null)
-				removeoverlay.setMap(null);
-		    
-		});
-		
+//
+//		kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+//		    
+//			if(removeoverlay!=null)
+//				removeoverlay.setMap(null);
+//		    
+//		});
+//		
 	$(".place-group").on("click",function(){
 			
 			var group=$(this).data("group");
@@ -55,12 +55,16 @@
 			
 		});
 		
+
+		var openAddModal=function(){
+			
+			console.log(1);
+		};
+	
+	
 		function drawMarkers(list){
 			
-
-			
-			
-			
+		
 			for(var i=0;i<list.length;i++){
 				
 				var marker = new kakao.maps.Marker({
@@ -73,50 +77,33 @@
 				
 				
 				markers.push(marker);
-
+			
 				
-				var content = '<div class="card" style="width:300px">';
-										
-											
+				var $card=$('<div class="card" style="width:300px" />');
 				
-								if( typeof list[i].placeUrl !="undefined" && list[i].placeUrl!=null && list[i].placeUrl!=""){
-										content+='<img class="card-img-top" src="'+list[i].placeUrl+'">';
+				var $cardbody=$('<div class="card-body" />');
 				
-									}
-				
-					content+='<div class="card-body">'+
-					'<h4 class="card-title" style="width:300px" data-pNo="'+list[i].placeNo+'">'+list[i].placeName+'</h4>'+
-					'<p class="card-text" style="width:300px"> '+list[i].placeCategory+'&nbsp;'+list[i].placeScore+'</p>'+
-					'<p class="card-text" style="width:300px">주소 : '+list[i].placeAddr+'</p>'+
-					'<p class="card-text" style="width:300px">전화번호 : '+list[i].placePhone+'</p>'+
- 
-					'<a href="#" class="btn btn-primary">일정에 추가하기</a>'+
-				'</div></div>';
+				var $title=$('<h4 class="card-title"  />').text(list[i].placeName);
+				var $category=$('<p class="card-text" />').text(list[i].placeCategory+' '+list[i].placeScore);
+				var $addr=$('<p class="card-text" >').text('주소 : '+list[i].placeAddr);
 				
 				
-//				var $card=$('<div class="card" style="width:300px" />');
-//				
-//				var $cardbody=$('<div class="card-body" />');
-//				var $title=$('<h4 class="card-title" data-pNo="'+list[i].placeNo+' />').text(list[i].placeName);
-//				var $category=$('<p class="card-text" />').text(list[i].placeCategory+'&nbsp;'+list[i].placeScore);
-//				var $addr=$('<p class="card-text" />').text('주소 : '+list[i].placeAddr);
-//				var $phone=$('<p class="card-text" />').text('전화번호 : '+list[i].placePhone);
-//				var $button=$('<a href="#" class="btn btn-primary" />').text('일정에 추가하기');
-//				
-//				
-//				
-//				
-//				if( typeof list[i].placeUrl !="undefined" && list[i].placeUrl!=null && list[i].placeUrl!=""){
-//					
-//					 var $image=$('<img class="card-img-top" src="'+list[i].placeUrl+'">');
-//					 $card.append($image);
-//				}
-//				
-//				$card.append($cardbody);
-//				
-//				$cardbody.append($title).append($category).append($addr).append($phone).append($button);
-//				
-//				var content=$card[0];
+				
+				var $phone=$('<p class="card-text" />').text('전화번호 : '+list[i].placePhone);
+				var $button=$('<button class="btn btn-primary" />').text('일정에 추가하기').attr("data-pno",list[i].placeNo).click(openAddModal);
+				
+				
+				if( typeof list[i].placeUrl !="undefined" && list[i].placeUrl!=null && list[i].placeUrl!=""){
+					
+					 var $image=$('<img class="card-img-top" src="'+list[i].placeUrl+'">');
+					 $card.append($image);
+				}
+				
+				$card.append($cardbody);
+				
+				$cardbody.append($title).append($category).append($addr).append($phone).append($button);
+				
+				var content=$card[0];
 				
 				var overlay = new kakao.maps.CustomOverlay({
 				    content: content,
@@ -124,6 +111,8 @@
 				    position: marker.getPosition()       
 				});
 
+				
+				
 				overlay.setMap(null);
 				
 				overlays.push(overlay);
@@ -150,6 +139,7 @@
 			
 		}
 	
+
 		
 		function removeMarker() {
 			
@@ -164,3 +154,4 @@
 		  
 		}
 		
+
