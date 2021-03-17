@@ -22,7 +22,6 @@ public class TasteController {
 	@Autowired
 	private TasteService tasteService;
 	@RequestMapping("detail.ta")
-
 	public ModelAndView selectBoard(String placeNo, ModelAndView mv) {
 		placeNo="2";
 		int a = Integer.parseInt(placeNo);
@@ -46,7 +45,7 @@ public class TasteController {
 		int listCount = tasteService.selectListCount();
 		System.out.println(listCount);
 		
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 9);
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 30, 12);
 		
 		ArrayList<Taste> list = tasteService.selectList(pi);
 		

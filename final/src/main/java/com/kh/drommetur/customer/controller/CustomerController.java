@@ -16,8 +16,14 @@ import com.kh.drommetur.customer.model.vo.Question;
 @Controller
 public class CustomerController {
 
+	
 	@Autowired
 	private CustomerService customerservice;
+	
+	@RequestMapping("customercenter.cu")
+	public String customercenter() {
+		return "customer/customercenter";
+	}
 	
 	@RequestMapping("insert.cu")
 	public String insertQuestion(Question q, HttpServletRequest request, Model model) throws Exception {
