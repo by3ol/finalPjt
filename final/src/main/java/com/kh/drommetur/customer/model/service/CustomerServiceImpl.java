@@ -11,7 +11,7 @@ import com.kh.drommetur.customer.model.vo.Question;
 public class CustomerServiceImpl implements CustomerService{
 
 	@Autowired
-	private SqlSessionTemplate slqSession;
+	private SqlSessionTemplate sqlSession;
 
 	@Autowired
 	private CustomerDao customerDao;
@@ -19,8 +19,13 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	@Override
 	public int insertQuestion(Question q) {
-		// TODO Auto-generated method stub
-		return customerDao.insertQuestion(slqSession, q);
+		return customerDao.insertQuestion(sqlSession, q);
+	}
+
+
+	@Override
+	public int selectQuestion(int questionNo) {
+		return customerDao.selectQuestion(sqlSession, questionNo);
 	}
 	
 	

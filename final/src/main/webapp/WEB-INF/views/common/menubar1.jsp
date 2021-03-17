@@ -71,13 +71,7 @@
 							href="#">여행코스 추천</a>
 					</div></li>
 
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="customercenter.cu" id="navbardrop"
-					data-toggle="dropdown"> 관리 게시판 </a>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">공지사항</a> <a
-							class="dropdown-item" href="#">Q&A</a>
-					</div></li>
+				<li class="nav-item"><a class="nav-link" href="customercenter.cu">고객센터</a></li>
 			</ul>
 		</div>
 
