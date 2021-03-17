@@ -85,7 +85,7 @@
 			id="collapsibleNavbar">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link"
-					href="${ pageContext.servletContext.contextPath }/login.mem">로그인</a></li>
+					href="${ pageContext.servletContext.contextPath }/loginFrom.mem">로그인</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="${ pageContext.servletContext.contextPath }/joinChoose.mem">회원가입</a></li>
 

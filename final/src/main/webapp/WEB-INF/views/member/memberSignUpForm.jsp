@@ -2,10 +2,11 @@
 	pageEncoding="UTF-8"%>
 
 	<jsp:include page="../common/menubar1.jsp" />
-
+	
 	<div class="warp">
         <div class="signup-form" id="signUp_Form_1">
-            <form action="/examples/actions/confirmation.php" method="post" class="form-horizontal" id="signUp_Form_2">
+		<br><br><br>
+            <form action="insert.mem" method="post" class="form-horizontal" id="signUp_Form_2">
                 <div class="text-center col-xs-8 col-xs-offset-4" id="text-signUp">
                     <h2>회원가입</h2>
                 </div>
