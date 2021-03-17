@@ -34,7 +34,7 @@ public class TasteDao {
 
 	public ArrayList<Taste> selectList(SqlSessionTemplate sqlSession, PageInfo pi) {
 		// TODO Auto-generated method stub
-		int offset=(pi.getCurrentPage()-1*pi.getBoardLimit());
+		int offset=(pi.getCurrentPage()-1)*pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
 		
 		return (ArrayList)sqlSession.selectList("tasteMapper.selectList",null,rowBounds);
