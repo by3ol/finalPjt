@@ -27,12 +27,14 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member loginMember(BCryptPasswordEncoder bCryptPasswordEncoder, Member m) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println(m);
+		
 		Member loginUser = memberDao.loginUser(sqlSession, m);
 		if(loginUser == null) {
 			throw new Exception("loginUser 확인하세요");
 		}
 		
-		if(bCryptPasswordEncoder.matches(m.getMemberPwd(), loginUser.getMemberPwd())) {
+		if(!bCryptPasswordEncoder.matches(m.getMemberPwd(), loginUser.getMemberPwd())) {
 			throw new Exception("비밀번호가 다릅니다!");
 		}
 		
