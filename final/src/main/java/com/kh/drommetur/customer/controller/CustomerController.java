@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.drommetur.customer.model.service.CustomerService;
 import com.kh.drommetur.customer.model.vo.Question;
 
-
 @Controller
 public class CustomerController {
 
@@ -46,26 +45,24 @@ public class CustomerController {
 		int result = customerservice.insertQuestion(q);
 
 		if (result > 0) {
-			return "customer";
+			return "redirect:customercenter";
 		} else {
-			throw new Exception("게시물 작성에 실패하였습니다.");
+			throw new Exception("문의글 작성에 실패하였습니다.");
 		}
 	}
 
-	/*
-	 * @RequestMapping("detail.cu") public ModelAndView selectquestion(int
-	 * questionNo, ModelAndView mv) {
-	 * 
-	 * int result = customerservice.selectQuestion(questionNo);
-	 * 
-	 * if (result > 0) {
-	 * 
-	 * mv.addObject("q", q).setViewName("board/customersaydetail"); } else { throw
-	 * new Exception("게시물 상세조회에 실패 하였습니다."); } return mv; }
-	 */
+	@RequestMapping("detail.cu")
+	public ModelAndView selectquestion(int questionNo, ModelAndView mv) throws Exception {
 
-	
+		int result = customerservice.updateQuestion(questionNo);
 
-	
-	
+		if (result > 0) {
+			Question q = customerservice.selectQuestion(questionNo);
+			mv.addObject("q", q).setViewName("board/customersaydetail");
+		} else {
+			throw new Exception("문의 상세조회에 실패 하였습니다.");
+		}
+		return mv;
+	}
+
 }
