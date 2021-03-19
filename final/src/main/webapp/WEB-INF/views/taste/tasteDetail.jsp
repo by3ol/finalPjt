@@ -174,6 +174,11 @@
     background-color:white;
     }
     
+    
+    .area{
+            
+            visibility: hidden;
+        }
 </style>
 <body>
 <jsp:include page="../common/menubar1.jsp"/>
@@ -189,9 +194,10 @@
       <div class="body">
         <hr>
         <div class="navbarDiv">
+        <form  action="list.ta" method="post" onsubmit="">
         <ul class="navbar1" >
         	<li class="l">
-        	<select name="location" >
+        	<select name="location" id="location">
         	  <option value="99">지역 전체</option>
               <option value="1">서울</option>
               <option value="31">경기</option>
@@ -212,14 +218,29 @@
               <option value="39">제주</option>
             </select>
             </li>
-            <li class="a"><button>전체</button></li>
-            <li class="k"><button>한식</button></li>
-            <li class="w"><button>양식</button></li>
-            <li class="c"><button>카페/디저트</button></li>
+            <li class="a"><button type="submit" value="한식" id="all" onclick="allFood();">한식</button></li>
+            <li class="k"><button value="한식">한식</button></li>
+            <li class="w"><button value="양식">양식</button></li>
+            <li class="c"><button value="">카페/디저트</button></li>
             <li class="t"><button>중식/일식/세계음식</button></li>
             <li class="f"><button>패스트푸드</button></li>
         </ul>
+         <script>
+         
+       function allFood(){
+    	   
+    	   var category = document.getElementById("all");
+    	  
+    	   document.getElementById("cate").innerHTML = category.value;
+    	   
+    	  
+       }
+      </script>
+      <textArea id="cate" name="cate"></textArea>
+     </form>
       </div>
+     
+     
       <!--상세페이지-->
       <div class="foodDetailViewDiv">
         <div class="foodDetailViewForm">
