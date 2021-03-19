@@ -18,6 +18,7 @@ import com.kh.drommetur.taste.model.vo.Taste;
 
 @Controller
 public class TasteController {
+
 		
 	@Autowired
 	private TasteService tasteService;
@@ -63,13 +64,12 @@ public class TasteController {
 		return "taste/tasteList";
 		
 	}
+
 }
 
+   
+   
 
-	
-	
 
-
-	
-	
-
+   
+   
