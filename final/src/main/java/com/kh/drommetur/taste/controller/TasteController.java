@@ -18,48 +18,46 @@ import com.kh.drommetur.taste.model.vo.Taste;
 
 @Controller
 public class TasteController {
-		
-	@Autowired
-	private TasteService tasteService;
-	@RequestMapping("detail.ta")
-	public ModelAndView selectBoard(String placeNo, ModelAndView mv) {
-		placeNo="2";
-		int a = Integer.parseInt(placeNo);
-		
-		int result = tasteService.updateIncreaseCount(a);
+      
+   @Autowired
+   private TasteService tasteService;
+   @RequestMapping("detail.ta")
+   public ModelAndView selectBoard(int placeNo, ModelAndView mv) {
+     
+    
+      
+      int result = tasteService.updateIncreaseCount(placeNo);
 
-		
-		if(result>0) {
+      
+      if(result>0) {
 
-			Taste t = tasteService.selectBoard(a);
+         Taste t = tasteService.selectBoard(placeNo);
 
-			mv.addObject("t",t).setViewName("taste/tasteDetail");
-		}else {
-			
-		}
-		return mv;
-	}
-	@RequestMapping("list.ta")
-	public String selectList(@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage, Model model) {
-		
-		int listCount = tasteService.selectListCount();
-		System.out.println(listCount);
-		
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 30, 12);
-		
-		ArrayList<Taste> list = tasteService.selectList(pi);
-		
-		model.addAttribute("list", list);
-		model.addAttribute("pi", pi);
-		return "taste/tasteList";
-	}
+         mv.addObject("t",t).setViewName("taste/tasteDetail");
+      }else {
+         
+      }
+      return mv;
+   }
+   @RequestMapping("list.ta")
+   public String selectList(@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage, Model model) {
+      
+      int listCount = tasteService.selectListCount();
+      System.out.println(listCount);
+      
+      PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 30, 12);
+      
+      ArrayList<Taste> list = tasteService.selectList(pi);
+      
+      model.addAttribute("list", list);
+      model.addAttribute("pi", pi);
+      return "taste/tasteList";
+   }
 }
 
+   
+   
 
-	
-	
 
-
-	
-	
-
+   
+   
