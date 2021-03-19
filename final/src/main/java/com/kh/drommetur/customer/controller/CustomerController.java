@@ -51,18 +51,14 @@ public class CustomerController {
 		}
 	}
 
-	@RequestMapping("detail.cu")
-	public ModelAndView selectquestion(int questionNo, ModelAndView mv) throws Exception {
-
-		int result = customerservice.updateQuestion(questionNo);
-
-		if (result > 0) {
-			Question q = customerservice.selectQuestion(questionNo);
-			mv.addObject("q", q).setViewName("board/customersaydetail");
-		} else {
-			throw new Exception("문의 상세조회에 실패 하였습니다.");
-		}
-		return mv;
-	}
-
+	/*
+	 * @RequestMapping("detail.cu") public ModelAndView selectquestion(int
+	 * questionNo, ModelAndView mv) throws Exception {
+	 * 
+	 * int result = customerservice.updateQuestion(questionNo);
+	 * 
+	 * if (result > 0) { Question q = customerservice.selectQuestion(questionNo);
+	 * mv.addObject("q", q).setViewName("board/customersaydetail"); } else { throw
+	 * new Exception("문의 상세조회에 실패 하였습니다."); } return mv; }
+	 */
 }
