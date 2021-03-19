@@ -6,6 +6,8 @@ public interface CustomerService {
 
 	int insertQuestion(Question q);
 
-	int selectQuestion(int questionNo);
+	Question selectQuestion(int questionNo);
+
+	int updateQuestion(int questionNo);
 
 }
