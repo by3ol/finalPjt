@@ -37,6 +37,7 @@
       FROM PLACE
       WHERE PLACE_STATUS='Y' 
       AND PLACE_GROUP='음식점'
+      AND PLACE_URL IS NOT NULL
    </select>
    
    <select id="selectList" resultMap="tasteResultSet">
@@ -44,9 +45,28 @@
    	FROM PLACE
    	WHERE PLACE_STATUS='Y'
    	AND PLACE_GROUP='음식점'
+   	AND PLACE_URL IS NOT NULL
    	ORDER BY PLACE_NO DESC
    </select>
 
+	 <select id="selectListCountca" resultType="_int">
+      SELECT COUNT(*)
+      FROM PLACE 
+      WHERE PLACE_STATUS='Y' 
+      AND PLACE_GROUP='음식점'
+      AND PLACE_CATEGORY= #{placeCategory}
+      AND PLACE_URL IS NOT NULL
+   </select>
+   
+   <select id="selectListca" resultMap="tasteResultSet">
+   	SELECT *
+   	FROM PLACE
+   	WHERE PLACE_STATUS='Y'
+   	AND PLACE_GROUP='음식점'
+   	AND PLACE_CATEGORY= #{placeCategory}
+   	AND PLACE_URL IS NOT NULL
+   	ORDER BY PLACE_NO DESC
+   </select>
 
 
 </mapper>

@@ -20,4 +20,8 @@ public interface TasteService {
 	int selectListCount();
 
 	ArrayList<Taste> selectList(PageInfo pi);
+
+	int selectListCountca(String placeCategory);
+
+	ArrayList<Taste> selectListca(PageInfo pi,String placeCategory);
 }

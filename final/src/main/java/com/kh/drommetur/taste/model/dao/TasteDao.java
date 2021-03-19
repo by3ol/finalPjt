@@ -39,4 +39,18 @@ public class TasteDao {
 		
 		return (ArrayList)sqlSession.selectList("tasteMapper.selectList",null,rowBounds);
 	}
+
+	public int selectListCountca(SqlSessionTemplate sqlSession,String placeCategory) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("tasteMapper.selectListCountca",placeCategory);
+	}
+
+	
+	public ArrayList<Taste> selectListca(SqlSessionTemplate sqlSession, PageInfo pi,String placeCategory) {
+		// TODO Auto-generated method stub
+		int offset=(pi.getCurrentPage()-1)*pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+		
+		return (ArrayList)sqlSession.selectList("tasteMapper.selectListca",placeCategory,rowBounds);
+	}
 }

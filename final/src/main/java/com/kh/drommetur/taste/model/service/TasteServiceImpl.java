@@ -37,6 +37,17 @@ public class TasteServiceImpl implements TasteService{
 	public ArrayList<Taste> selectList(PageInfo pi) {
 		return tasteDao.selectList(sqlSession, pi);
 	}
+	@Override
+	public int selectListCountca(String placeCategory) {
+		return tasteDao.selectListCountca(sqlSession,placeCategory);
+		
+	}
+	@Override
+	public ArrayList<Taste> selectListca(PageInfo pi,String placeCategory) {
+		// TODO Auto-generated method stub
+		
+		return tasteDao.selectListca(sqlSession, pi,placeCategory);
+	}
 	
 }
 

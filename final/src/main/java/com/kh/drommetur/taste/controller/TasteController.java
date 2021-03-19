@@ -18,41 +18,53 @@ import com.kh.drommetur.taste.model.vo.Taste;
 
 @Controller
 public class TasteController {
-      
-   @Autowired
-   private TasteService tasteService;
-   @RequestMapping("detail.ta")
-   public ModelAndView selectBoard(int placeNo, ModelAndView mv) {
-     
-    
-      
-      int result = tasteService.updateIncreaseCount(placeNo);
 
-      
-      if(result>0) {
+		
+	@Autowired
+	private TasteService tasteService;
+	@RequestMapping("detail.ta")
+	public ModelAndView selectBoard(int placeNo, ModelAndView mv) {
+		
+		
+		
+		int result = tasteService.updateIncreaseCount(placeNo);
 
-         Taste t = tasteService.selectBoard(placeNo);
+		
+		if(result>0) {
 
-         mv.addObject("t",t).setViewName("taste/tasteDetail");
-      }else {
-         
-      }
-      return mv;
-   }
-   @RequestMapping("list.ta")
-   public String selectList(@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage, Model model) {
-      
-      int listCount = tasteService.selectListCount();
-      System.out.println(listCount);
-      
-      PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 30, 12);
-      
-      ArrayList<Taste> list = tasteService.selectList(pi);
-      
-      model.addAttribute("list", list);
-      model.addAttribute("pi", pi);
-      return "taste/tasteList";
-   }
+			Taste t = tasteService.selectBoard(placeNo);
+
+			mv.addObject("t",t).setViewName("taste/tasteDetail");
+		}else {
+			
+		}
+		return mv;
+	}
+	@RequestMapping("list.ta")
+	public String selectList(@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage, Model model, @RequestParam(value="placeCategory",required=false,defaultValue="전체") String placeCategory) {
+	
+		PageInfo pi=null;
+		ArrayList<Taste> list = null;
+		
+		if(placeCategory.equals("전체")) {
+		int listCount = tasteService.selectListCount();
+		
+		pi= Pagination.getPageInfo(listCount, currentPage, 10, 12);
+		list = tasteService.selectList(pi);
+		}else {
+			int listCount = tasteService.selectListCountca(placeCategory);
+			
+			pi= Pagination.getPageInfo(listCount, currentPage, 10, 12);
+			list = tasteService.selectListca(pi,placeCategory);
+		}
+		
+		model.addAttribute("list", list);
+		model.addAttribute("pi", pi);
+		model.addAttribute("placeCategory",placeCategory);
+		return "taste/tasteList";
+		
+	}
+
 }
 
    
