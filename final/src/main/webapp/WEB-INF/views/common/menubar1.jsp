@@ -18,20 +18,23 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <!-- css -->
-<link rel="stylesheet" href="resources/byeol.css">
 
-<!-- member css -->
+
 <link rel="stylesheet" href="resources/memberStyle/loginForm.css">
 <link rel="stylesheet" href="resources/memberStyle/joinChoose.css">
 <link rel="stylesheet" href="resources/memberStyle/signUpForm.css">
 
+
+<link rel="stylesheet" href="resources/map.css">
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
 	crossorigin="anonymous"></script>
 
-<!--지도 api  -->
+<!--지도 api   -->
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=171ba9799c4dc95de3884a540e75210c"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
 
 
 
