@@ -27,12 +27,11 @@
 
 	<!-- 암호화 전 -->
 	<select id="loginMember"
-		parameterType="com.kh.drommetur.member.model.vo.Member"
+		parameterType="Member"
 		resultMap="memberResultSet">
 		SELECT *
 		FROM MEMBER
 		WHERE MEM_ID = #{memberId}
-		AND MEM_PASSWORD = #{memberPwd}
 		AND STATUS = 'Y'
 	</select>
 </mapper>

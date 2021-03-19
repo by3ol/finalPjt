@@ -15,7 +15,9 @@ public class MemberDao {
 
 	public Member loginUser(SqlSessionTemplate sqlSession, Member m) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("memberMapper.loginMember", m);
+		Member loginUser = sqlSession.selectOne("memberMapper.loginMember", m);
+		System.out.println(loginUser);
+		return loginUser;
 	}
 
 }

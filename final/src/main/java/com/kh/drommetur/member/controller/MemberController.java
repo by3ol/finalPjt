@@ -51,7 +51,7 @@ public class MemberController {
 
 		String encPwd = bCryptPasswordEncoder.encode(m.getMemberPwd());
 		
-		//m.setMemberPwd(encPwd);
+		m.setMemberPwd(encPwd);
 		
 		int result = memberService.insertMember(m);
 
