@@ -9,12 +9,12 @@
             <br>
             <div class="form-group" id="form-group">
                 <div class="input-group" id="input-group">
-                    <input type="text" class="form-control" id="text-control" name="username" placeholder="아이디" required="required">
+                    <input type="text" class="form-control" id="text-control" name="memberId" placeholder="아이디" required="required">
                 </div>
             </div>
             <div class="form-group" id="form-group">
                 <div class="input-group" id="input-group">
-                    <input type="password" class="form-control" id="text-control" name="password" placeholder="비밀번호" required="required">
+                    <input type="password" class="form-control" id="text-control" name="memberPwd" placeholder="비밀번호" required="required">
                 </div>
             </div>
             <div class="form-group" id="form-group">

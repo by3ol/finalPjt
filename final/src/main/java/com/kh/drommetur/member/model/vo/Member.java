@@ -1,5 +1,7 @@
 package com.kh.drommetur.member.model.vo;
 
+import java.sql.Date;
+
 import lombok.Data;
 
 @Data
@@ -13,8 +15,8 @@ public class Member {
 	private String phone;
 	private	String address;
 	private String gender;
-	private String memberLevel;
-	private String regDate;
+	private int memberLevel;
+	private Date regDate;
 	private String status;
 	
 }

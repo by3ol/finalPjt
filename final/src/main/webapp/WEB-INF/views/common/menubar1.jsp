@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +38,12 @@
 
 </head>
 <body>
-
+	<c:if test="${ !empty msg }">
+			<script>
+				alert("${msg}");
+			</script>
+			<c:remove var="msg" scope="session" />
+	</c:if>
 
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
 
@@ -78,11 +86,23 @@
 		<div class="collapse navbar-collapse justify-content-end"
 			id="collapsibleNavbar">
 			<ul class="navbar-nav">
+						
+			<c:if test="${ empty sessionScope.loginUser }">
 				<li class="nav-item"><a class="nav-link"
 					href="${ pageContext.servletContext.contextPath }/loginFrom.mem">로그인</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="${ pageContext.servletContext.contextPath }/joinChoose.mem">회원가입</a></li>
-
+			</c:if>
+			
+			<c:if test="${ !empty sessionScope.loginUser }">
+				<label>${ sessionScope.loginUser.memberName }님 환영합니다</label> &nbsp;&nbsp;
+				
+				<li class="nav-item"><a class="nav-link"
+					href="${ pageContext.servletContext.contextPath }/logout.mem">로그아웃</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="${ pageContext.servletContext.contextPath }/myPage.mem">마이페이지</a></li>
+			</c:if>
+			
 			</ul>
 		</div>
 	</nav>
