@@ -125,7 +125,7 @@ form {
 	margin-bottom: 1rem;
 }
 
-.select1 {
+.category {
 	padding-left: 0.5;
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
@@ -133,13 +133,6 @@ form {
 	border-radius: 5px;
 }
 
-.select2 {
-	padding-left: 0.5;
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
-	padding-right: 3rem;
-	border-radius: 5px;
-}
 
 .textarea1 {
 	margin-bottom: 0.5rem;
@@ -191,17 +184,12 @@ form {
 
 			<form id="questionForm" method="post" action="insert.cu">
 				<div class="select_area">
-					<select class="select1" name="select1" id="select1">
+					<select class="select1" name="category" id="category">
 						<option selected>질문 유형</option>
 						<option>회원신고</option>
 						<option>게시글신고</option>
 						<option>개선사항</option>
-					</select> <select class="select2" name="select2" id="select2">
-						<option selected>카테고리 유형</option>
-						<option>여행추천</option>
-						<option>맛집</option>
-						<option>코스</option>
-					</select>
+					</select> 
 				</div>
 				<div class="textarea1">
 					<textarea class="textarea1" name="questionTitle" id="questionTitle"
@@ -216,9 +204,8 @@ form {
 
 				</div>
 			</form>
-			<input type="text" id="writer" value="${ loginUser.userId }"
-				name="questionWriter" readonly>
-			</td>
+			
+		
 
 		</div>
 

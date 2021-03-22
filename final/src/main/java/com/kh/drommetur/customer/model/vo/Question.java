@@ -10,9 +10,7 @@ public class Question {
 	private String questionContent;
 	private Date datetime;
 	private String status;
-	private String select1;
-	private String select2;
-	private String questionWriter;
+	
 	
 	
 }
