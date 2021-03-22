@@ -25,13 +25,19 @@
 		DEFAULT)
 	</insert>
 
-	<!-- 암호화 전 -->
-	<select id="loginMember"
-		parameterType="Member"
+
+	<select id="loginMember" parameterType="Member"
 		resultMap="memberResultSet">
 		SELECT *
 		FROM MEMBER
 		WHERE MEM_ID = #{memberId}
-		AND STATUS = 'Y'
+		AND STATUS =
+		'Y'
+	</select>
+	
+	<select id="idCheck" parameterType="String" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEM_ID = #{memberId}
 	</select>
 </mapper>

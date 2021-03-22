@@ -12,4 +12,6 @@ public interface MemberService {
 	
 	Member loginMember(BCryptPasswordEncoder bCryptPasswordEncoder, Member m) throws Exception;
 
+	int idCheck(String memberId) throws Exception;
+
 }

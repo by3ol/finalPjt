@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="resources/memberStyle/loginForm.css">
 <link rel="stylesheet" href="resources/memberStyle/joinChoose.css">
 <link rel="stylesheet" href="resources/memberStyle/signUpForm.css">
+<link rel="stylesheet" href="resources/memberStyle/myPage.css">
 
 
 <link rel="stylesheet" href="resources/map.css">

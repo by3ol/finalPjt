@@ -48,6 +48,12 @@ public class MemberServiceImpl implements MemberService {
 
 		return loginUser;
 	}
+
+	@Override
+	public int idCheck(String memberId) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDao.idCheck(sqlSession, memberId);
+	}
 	
 	
 }

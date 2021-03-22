@@ -20,4 +20,9 @@ public class MemberDao {
 		return loginUser;
 	}
 
+	public int idCheck(SqlSessionTemplate sqlSession, String memberId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("memberMapper.idCheck", memberId);
+	}
+
 }

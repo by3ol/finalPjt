@@ -10,10 +10,11 @@
                     <h2>회원가입</h2>
                 </div>
 
-                <div class="form-group" id="insert-info">
+                <div class="form-group" id="insert-info1">
                     <label class="control-label col-xs-4" id="info-label">아이디</label>
                     <input type="text" class="form-control" id="info-text" name="memberId" required="required">
                 </div>
+                <div id="checkResult"></div>
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">비밀번호</label>
                     <input type="password" class="form-control" id="info-text" name="memberPwd" required="required">
@@ -82,7 +83,7 @@
             </form>
         </div>
     </div>
-<!--   
+   
     <script>
         function idCheckValidate(num){ 
     		
@@ -91,12 +92,12 @@
     			$("#join-btn").attr("disabled", true);
     			
     		}else if(num == 1){ 
-    			$("#checkResult").css("color", "red").text("중복된 아이디가 존재합니다. 사용이 불가능합니다.");
+    			$("#checkResult").css("color", "red").text("이미 사용 중인 아이디입니다.");
     			$("#checkResult").show();
     			$("#join-btn").attr("disabled", true);
     			
     		}else if(num == 2){
-    			$("#checkResult").css("color", "green").text("사용 가능한 아이디입니다. ");
+    			$("#checkResult").css("color", "green").text("사용 가능한 아이디입니다.");
     			$("#checkResult").show();
     			$("#join-btn").removeAttr("disabled");
     			
@@ -106,7 +107,7 @@
   
     	$(function(){
     		
-    		var $idInput = $("#enrollForm input[name=userId]");
+    		var $idInput = $("#enrollForm input[name=memberId]");
     		
     		$idInput.keyup(function(){
     			
@@ -115,7 +116,7 @@
     				
    					$.ajax({
    						url:"idCheck.me",
-   						data:{userId:$idInput.val()},
+   						data:{memberId:$idInput.val()},
    						type:"post",
    						success:function(result){
    							if(result > 0){
@@ -136,5 +137,5 @@
     	});
 
     </script>
-    --> 
+     
 	<jsp:include page="../common/footer.jsp" />
