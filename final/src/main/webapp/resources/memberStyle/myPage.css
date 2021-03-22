@@ -18,13 +18,15 @@
 .aside {
     margin-top: 10%;
     margin-bottom: 10%;
+    
 }
 .content {
     margin-top: 10%;
     margin-bottom: 10%;
+    border: 1px solid #CCC;
 }
 
-body, div, ul, li, a {
+#my-body, div, #myLi, #my-a {
     margin: 0;
     padding: 0;
     text-align: left;
@@ -50,16 +52,16 @@ body, div, ul, li, a {
     font-family: 'Sunflower', sans-serif;
 }
 
-a {
+#my-a {
     text-decoration: none;
     color: inherit;
 }
 
-a:hover {
+#my-a:hover {
     text-decoration: none;
 }
 
-.aside .nav {
+#my-nav {
     position: relative;
     box-sizing: border-box;
     width: 100%;
@@ -108,7 +110,7 @@ a:hover {
     color: #9F9F9F;
 }
 
-ul {
+#my-ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -119,9 +121,4 @@ ul {
     width: 70%;
     height: 100%;
     margin-left: 3%;
-}
-
-.header {
-	width: 30%;
-	text-align: center;
 }
