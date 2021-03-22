@@ -15,12 +15,10 @@
     	#container{
     	width:100%;
     	}
-    	#container_space{
-    	width:25%;
-    	}
+    	
     	#contents{
-    	margin:auto;
-    	width:50%;
+    	margin: 0 auto;
+    	
     	}
     
         .ct_de_menu{
@@ -31,7 +29,7 @@
      
         .cont_size{
             
-            width :1000px;
+            width :1100px;
             height:1350px;
             
         }
@@ -63,6 +61,22 @@
                       
       
        }
+       #taste_find{
+       width : 922px;
+       margin : 0 auto;
+       }
+       
+       #pagingArea{
+       text-align : center;
+       margin : 0 auto;
+       }
+       .pagination{
+       width:500px;
+       margin : 0 auto;
+       }
+       .pagination li{
+       float:left;
+       }
     </style>
 </head>
 <body>
@@ -70,23 +84,13 @@
 
 <div class="container-fluid" style="margin-top:70px">
       <div id="container" style="min-height:1000px;">
-      	<div id="container_space">
       	
-      		
-      		
-      	 </div>
         <div id="contents">
             <div id="main_contents">
+   
+     <jsp:include page="../taste/tasteMenubar.jsp"/>
                     <div id="taste_find">
                     
-                    <form class ="category_find" >
-                    		  			<a href="list.ta?placeCategory=한식"  id="ct_de_menu_num">한식  </a>
-                                        <a href="list.ta?placeCategory=일식" id="ct_de_menu_num">일식  </a>
-                                        <a href="list.ta?placeCategory=서양식" id="ct_de_menu_num">양식  </a> 
-                                        <a href="list.ta?placeCategory=중식" id="ct_de_menu_num">중식  </a>
-                                        <a href="list.ta?placeCategory=바/카페" id="ct_de_menu_num">카페  </a>
-                                        <a href="list.ta?placeCategory=아시아식" id="ct_de_menu_num">아시아식  </a>
-                    </form>
                         <div class="category_box">
                             <div class="category_menu">
                                 <form  class="ct_de_menu">
@@ -108,7 +112,7 @@
                         <br><br>
                         
                         
-     <div id="map" style="width:1000px;height:200px;"></div>
+     <div id="map" style="width:922px;height:200px;"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7cdc8b55964d8909243d354220777e13"></script>
 	<script>
 		var container = document.getElementById('map');
@@ -136,7 +140,7 @@
                         </div>
                         
 
-
+						<br><br>
                         <h3>추천 맛집</h3>
                     
                              
@@ -198,7 +202,7 @@
                 <ul class="pagination">
                 	<c:choose>
                 		<c:when test="${ pi.currentPage ne 1 }">
-                			<li class="page-item"><a class="page-link" href="list.ta?currentPage=${ pi.currentPage-1 }">Previous</a></li>
+                			<li class="page-item"><a class="page-link" href="list.ta?currentPage=${ pi.currentPage-1 }&placeCategory=${t.placeCategory }&regionNo=${t.regionNo}">Previous</a></li>
                 		</c:when>
                 		<c:otherwise>
                 			<li class="page-item disabled"><a class="page-link" href="">Previous</a></li>
@@ -208,7 +212,7 @@
                     <c:forEach begin="${ pi.startPage }" end="${ pi.endPage }" var="p">
                     	<c:choose>
 	                		<c:when test="${ pi.currentPage ne p }">
-                    			<li class="page-item"><a class="page-link" href="list.ta?currentPage=${ p }">${ p }</a></li>
+                    			<li class="page-item"><a class="page-link" href="list.ta?currentPage=${ p }&placeCategory=${t.placeCategory }&regionNo=${t.regionNo}">${ p }</a></li>
 	                		</c:when>
 	                		<c:otherwise>
 	                			<li class="page-item disabled"><a class="page-link" href="">${ p }</a></li>
@@ -219,10 +223,10 @@
                     
                     <c:choose>
                 		<c:when test="${ pi.currentPage ne pi.maxPage }">
-                			<li class="page-item"><a class="page-link" href="list.ta?currentPage=${ pi.currentPage+1 }">Next</a></li>
+                			<li class="page-item"><a class="page-link" href="list.ta?currentPage=${ pi.currentPage+1 }&placeCategory=${t.placeCategory }&regionNo=${t.regionNo}">Next</a></li>
                 		</c:when>
                 		<c:otherwise>
-                			<li class="page-item disabled"><a class="page-link" href="list.ta?currentPage=${ pi.currentPage+1 }">Next</a></li>
+                			<li class="page-item disabled"><a class="page-link" href="list.ta?currentPage=${ pi.currentPage+1 }&placeCategory=${t.placeCategory }&regionNo=${t.regionNo}">Next</a></li>
                 		</c:otherwise>
                 	</c:choose>
                 </ul>

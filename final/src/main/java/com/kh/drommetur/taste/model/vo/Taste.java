@@ -30,6 +30,8 @@ public class Taste {
 	private String placeUrl;
 	private int placeCount;
 	private double placeScore;
+	private int placeTotalScore;
+	private int placeScoreCount;
 	
 	private int regionNo; //지역번호 
 	

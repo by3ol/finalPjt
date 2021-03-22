@@ -17,7 +17,10 @@
   	<result property="placeUrl" column="PLACE_URL"/>
   	<result property="placeCount" column="PLACE_COUNT"/>
   	<result property="placeScore" column="PLACE_SCORE"/>
+  	<result property="placeTotalScore" column="PLACE_TOTALSCORE"/>
+  	<result property="placeScoreCount" column="PLACE_SCORECOUNT"/>
   	<result property="regionNo" column="REGION_NO"/>
+  	
   
   
   </resultMap>
