@@ -36,9 +36,13 @@ public class TravelController {
 	@ResponseBody
 	public ResponseEntity<String> insertTravel(@RequestBody Travel travel,HttpSession session) {
 		
+		
+		System.out.println(travel);
 		Member loginUser=(Member) session.getAttribute("loginUser");
-		int result=travelService.insertTravel(travel,loginUser.getMemberNo());
+		//int result=travelService.insertTravel(travel,loginUser.getMemberNo());
 			
-		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		//return result>1 ? new ResponseEntity<>(HttpStatus.OK):new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
