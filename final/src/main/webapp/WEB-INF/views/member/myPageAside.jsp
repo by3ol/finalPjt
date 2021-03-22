@@ -28,10 +28,10 @@
 			<div class="nav_title Info">
 				<a href="info.mem">개인정보</a>
 			</div>
-			<ui class="nav_sub m_list">
+			<ul class="nav_sub m_list">
 			<li class=""><a href="infoUpdate.mem">개인정보 수정</a></li>
 			<li class=""><a href="pwdUpdate.mem">비밀번호 변경</a></li>
-			</ui>
+			</ul>
 
 			<div class="nav_title m_Delete">
 				<a href="delete.mem">회원탈퇴</a>
@@ -39,11 +39,11 @@
 
 			<c:if test="${ sessionScope.loginUser.memberId eq 'admin' }">
 				<div class="nav_title admin">관리자 메뉴</div>
-				<ui class="nav_sub admin-list">
+				<ul class="nav_sub admin-list">
 				<li class=""><a href="member.ad">회원관리</a></li>
 				<li class=""><a href="report.bo">신고게시판 관리</a></li>
 				<li class=""><a href="#"></a></li>
-				</ui>
+				</ul>
 			</c:if>
 		</div>
 	</div>		
