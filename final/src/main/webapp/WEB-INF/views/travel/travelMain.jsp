@@ -75,7 +75,7 @@
 						</div>
 						<div style="width:100%;height:300px">
 							<label >여행 일정</label>
-							<ul id="travelDetailUl">
+							<ul id="travelUl">
 								
 							</ul>
 						</div>
@@ -83,7 +83,7 @@
 							 <label for="travelMemo">여행 메모</label>
 		  					<textarea class="form-control" rows="5" id="travelMemo" name="travelMemo"></textarea>
 						</div>
-							<button class="btn btn-primary ">여행 등록</button>
+							<button class="btn btn-primary " id="travelRegisterBtn">여행 등록</button>
 					
 					
 					
@@ -132,6 +132,7 @@
 		    </div>
 		  </div>
 		</div>
+		
 		<!--  여행추가 모달 -->
 		<div class="modal fade"  id="travelAddModal">
 		  <div class="modal-dialog ">
@@ -175,7 +176,7 @@
 		
 		      <!-- Modal body -->
 		      <div class="modal-body">
-		      <ul id="travelDetailPlaceUl">
+		      <ul id="travelDetailModalUl">
 		      
 		      
 		      
@@ -212,7 +213,7 @@
 		
 		      <!-- Modal body -->
 		      <div class="modal-body">
-		      <ul id="travelModifyPlaceUl">
+		      <ul id="travelModifyModalUl">
 		      
 		      
 		      
