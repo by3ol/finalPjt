@@ -16,6 +16,8 @@ public interface CustomerService {
 
 	ArrayList<Notice> selectList(PageInfo pi);
 
+	int insertNotice(Notice n);
+
 	
 
 
