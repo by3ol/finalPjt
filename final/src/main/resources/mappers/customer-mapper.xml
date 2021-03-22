@@ -3,19 +3,52 @@
 <mapper namespace="customerMapper">
 
 	<resultMap type="Question" id="QuestionResultSet">
-		<id property="answerNo" column="ANSWER_NO" />
+		<result property="answerNo" column="ANSWER_NO" />
 		<result property="category" column="CATEGORY" />
 		<result property="questionTitle" column="QUESTION_TITLE" />
 		<result property="questionContent" column="QUESTION_CONTENT" />
-		<result property="questionSecret" column="QUESTION_SECRET" />
 		<result property="datetime" column="DATETIME" />
 		<result property="status" column="STATUS" />
 	</resultMap>
-	
+
+	<resultMap type="Notice" id="NoticeResultSet">
+		<result property="noticeNo" column="NOTICE_NO" />
+		<result property="noticeTitle" column="NOTICE_TITLE" />
+		<result property="noticeContent" column="NOTICE_CONTENT" />
+		<result property="visit" column="VISIT" />
+		<result property="datetime" column="DATETIME" />
+		<result property="status" column="STATUS" />
+	</resultMap>
+
+	<!-- 문의 내역 -->
 	<insert id="insertQuestion" parameterType="Question">
-	INSERT INTO QUESTION
-	VALUES(SEQ_QUESTION.NEXTVAL,#{category},#{questionTitle},#{questionContent},#{questionSecret},SYSDATE,DEFAULT)
+		INSERT INTO QUESTION
+		VALUES(SEQ_QUESTION.NEXTVAL,#{category},#{questionTitle},#{questionContent},SYSDATE,DEFAULT)
 	</insert>
 
-	
+	<!-- 답변내역 -->
+
+	<!-- 공지 내역 -->
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM
+		NOTICE
+		WHERE STATUS='Y'
+	</select>
+
+	<select id="selectList" resultMap="NoticeResultSet">
+		SELECT *
+		FROM NOTICE
+		WHERE
+		STATUS='Y'
+		ORDER BY BOARD_NO DESC
+	</select>
+
+	<insert id="insertNotice" parameterType="Notice">
+		INSERT INTO NOTICE
+		VALUES(SEQ_NOTICE.NEXTVAL, #{noticeTitle},
+		#{noticeContent},
+		#{visit}, SYSDATE,
+		DEFAULT)
+	</insert>
 </mapper>
