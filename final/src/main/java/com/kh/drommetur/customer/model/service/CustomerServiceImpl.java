@@ -45,6 +45,13 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		return customerDao.selectList(sqlSession, pi);
 	}
+
+
+	@Override
+	public int insertNotice(Notice n) {
+		// TODO Auto-generated method stub
+		return customerDao.insertNotice(sqlSession, n);
+	}
 	
 	
 	

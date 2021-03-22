@@ -38,4 +38,10 @@ public class CustomerDao {
 		return (ArrayList)sqlSession.selectList("customerMapper.selectList", null, rowBounds);
 	}
 
+
+
+	public int insertNotice(SqlSessionTemplate sqlSession, Notice n) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("boardMapper.insertNotice",n);
+	}
 }

@@ -80,6 +80,25 @@ public class CustomerController {
 
 		model.addAttribute("list", list);
 		model.addAttribute("pi", pi);
-		return "board/customernoticelist";
+		return "customer/customernoticelist";
 	}
+	
+	@RequestMapping("noticeEnroll.cu")
+	public String enrollForm() {
+		return "customer/customernoticeEnroll";
+	}
+	
+	@RequestMapping("insertNotice.cu")
+	public String insertNotice(Notice n, HttpServletRequest request, Model model) throws Exception {
+		
+		int result = customerservice.insertNotice(n);
+		
+		if(result > 0) {
+			return "customer/customernoticelist";
+		}else {
+			throw new Exception("공지글 작성에 실패했습니다.");
+		}
+		
+	}
+
 }
