@@ -62,7 +62,7 @@ public class TasteController {
 		model.addAttribute("pi", pi);
 		model.addAttribute("placeCategory",placeCategory);
 		return "taste/tasteList";
-		
+		  
 	}
 
 }
