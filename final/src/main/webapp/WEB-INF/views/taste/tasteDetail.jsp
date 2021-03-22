@@ -26,23 +26,9 @@
         height: 55px;
         
       }
-      .navbarDiv .navbar1{
-        width: 800px;
-        height: 48px;
-        margin: 0%;
-        padding: 0%;
-        padding-top: 3px;
-        margin: auto;
+    
 
-
-      
-      }
-
-      .navbar1 li{
-        float: left;
-        list-style-type: none;
-        padding: 16px;
-      }
+    
       /*상세페이지*/
       .foodDetailViewDiv{
         padding-top: 30px;
@@ -185,67 +171,13 @@
 <div class="container-fluid" style="margin-top:70px">
 
 <div class="wrab">
-      <div class="header">
-        <div class="searchbar">
-        <span class="info">검색 : <input type="text" name="searchloc">
-        </span>  
-        </div>
-      </div>
-      <div class="body">
-        <hr>
-        <div class="navbarDiv">
-        <form  action="list.ta" method="post" onsubmit="">
-        <ul class="navbar1" >
-        	<li class="l">
-        	<select name="location" id="location">
-        	  <option value="99">지역 전체</option>
-              <option value="1">서울</option>
-              <option value="31">경기</option>
-              <option value="2">인천</option>
-              <option value="3">대전</option>
-              <option value="7">울산</option>
-              <option value="8">세종</option>
-              <option value="32">강원</option>
-              <option value="33">충북</option>
-              <option value="34">충남</option>
-              <option value="5">광주</option>
-              <option value="37">전북</option>
-              <option value="38">전남</option>
-              <option value="6">부산</option>
-              <option value="4">대구</option>
-              <option value="35">경북</option>
-              <option value="36">경남</option>
-              <option value="39">제주</option>
-            </select>
-            </li>
-            <li class="a"><button type="submit" value="한식" id="all" onclick="allFood();">한식</button></li>
-            <li class="k"><button value="한식">한식</button></li>
-            <li class="w"><button value="양식">양식</button></li>
-            <li class="c"><button value="">카페/디저트</button></li>
-            <li class="t"><button>중식/일식/세계음식</button></li>
-            <li class="f"><button>패스트푸드</button></li>
-        </ul>
-         <script>
-         
-       function allFood(){
-    	   
-    	   var category = document.getElementById("all");
-    	  
-    	   document.getElementById("cate").innerHTML = category.value;
-    	   
-    	  
-       }
-      </script>
-      <textArea id="cate" name="cate"></textArea>
-     </form>
-      </div>
-     
-     
+     <jsp:include page="../taste/tasteMenubar.jsp"/>
+        <div class="body">
       <!--상세페이지-->
       <div class="foodDetailViewDiv">
         <div class="foodDetailViewForm">
           <div class="foodDetailViewTitle">
-            <h3>${t.placeName }<strong>          ${t.placeScore }</strong></h3>
+            <h3>${t.placeName }<strong>          ${t.placeScore }</strong></h3><form action="score.ta"><input type="number" name="placeTotalScore" id="placeTotalScore" class="placeTotalScore" min="0" max="5" value="0" step="0.5"><input type="hidden" name="placeNo" value="${t.placeNo }"readonly><button type="submit">평점주기</button></form>
             <p>${t.placeCategory }</p>
             <ul class="score">
               <li><span><img src="" width="25px" height="25px">좋아요</span></li>
@@ -330,7 +262,7 @@
                   <ul>
                     <li>좋아요</li>
                     <!-- <li><a id="kakao-link-btn" href="javascript:sendLink()">공유하기</a></li> -->
-                    <li><a id="kakao-link-btn" href="javascript:sendLink()">공유하기</a></li>
+                    <li><a id="kakao-link-btn" class="share" href="javascript:sendLink()">공유하기</a></li>
                   </ul>
                   <a href="" class="reviewWrite_btn">리뷰쓰기</a>
                 </div>

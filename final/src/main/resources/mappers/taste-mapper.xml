@@ -15,9 +15,11 @@
 		<result property="placeUrl" column="PLACE_URL"/>	
 		<result property="placeCount" column="PLACE_COUNT"/>	
 		<result property="placeScore" column="PLACE_SCORE"/>	
+		<result property="placeTotalScore" column="PLACE_TOTALSCORE"/>
+  		<result property="placeScoreCount" column="PLACE_SCORECOUNT"/>
 		<result property="regionNo" column="REGION_NO"/>	
 	</resultMap>
-
+	
 	<update	id="updateIncreaseCount" parameterType="_int">
 	UPDATE PLACE
 	SET PLACE_COUNT = PLACE_COUNT+1
@@ -55,6 +57,7 @@
       WHERE PLACE_STATUS='Y' 
       AND PLACE_GROUP='음식점'
       AND PLACE_CATEGORY= #{placeCategory}
+      AND REGION_NO=#{regionNo}
       AND PLACE_URL IS NOT NULL
    </select>
    
@@ -64,9 +67,51 @@
    	WHERE PLACE_STATUS='Y'
    	AND PLACE_GROUP='음식점'
    	AND PLACE_CATEGORY= #{placeCategory}
+   	AND REGION_NO=#{regionNo}
    	AND PLACE_URL IS NOT NULL
    	ORDER BY PLACE_NO DESC
    </select>
-
-
+   <select id="selectListre" resultMap="tasteResultSet">
+   	SELECT *
+   	FROM PLACE
+   	WHERE PLACE_STATUS='Y'
+   	AND PLACE_GROUP='음식점'
+   	AND PLACE_CATEGORY= #{placeCategory}
+   	AND PLACE_URL IS NOT NULL
+   	ORDER BY PLACE_NO DESC
+   </select>
+   <select id="selectListSearch" resultMap="tasteResultSet">
+   	SELECT *
+   	FROM PLACE
+   	WHERE PLACE_STATUS='Y'
+   	AND PLACE_GROUP='음식점'
+   	AND PLACE_NAME LIKE '%'||#{searchName}||'%'
+   	AND PLACE_URL IS NOT NULL
+   	ORDER BY PLACE_NO DESC
+   </select>
+	<select id="selectListAll" resultMap="tasteResultSet">
+   	SELECT *
+   	FROM PLACE
+   	WHERE PLACE_STATUS='Y'
+   	AND PLACE_GROUP='음식점'
+   	AND REGION_NO= #{regionNo}
+   	AND PLACE_URL IS NOT NULL
+   	ORDER BY PLACE_NO DESC
+   </select>
+	<update	id="updateIncreaseScoreCount" parameterType="_int">
+	UPDATE PLACE
+	SET PLACE_SCORECOUNT = PLACE_SCORECOUNT+1
+	WHERE PLACE_NO = #{placeNo}
+	</update>
+	<update	id="updateTotalScore" parameterType="_int">
+	UPDATE PLACE
+	SET PLACE_TOTALSCORE = PLACE_TOTALSCORE+#{placeTotalScore}
+	WHERE PLACE_NO = #{placeNo}
+	</update>
+	<update id="updateScore" parameterType="_int">
+	UPDATE PLACE
+	SET PLACE_SCORE = ROUND(PLACE_TOTALSCORE/PLACE_SCORECOUNT, 2)
+	WHERE PLACE_NO = #{placeNo}
+	</update>
+	
 </mapper>
