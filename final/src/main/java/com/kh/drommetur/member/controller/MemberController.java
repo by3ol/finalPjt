@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -40,6 +41,24 @@ public class MemberController {
 	@RequestMapping("signUpFrom.mem")
 	public String signUpForm() {
 		return "member/memberSignUpForm";
+	}
+	
+	@RequestMapping("pwdUpdate.mem")
+	public String pwdChange() {
+		return "member/pwdUpdate";
+	}
+	
+	@RequestMapping("delete.mem")
+	public String memberDelete() {
+		return "member/memberDelete";
+	}
+	
+	@ResponseBody
+	@RequestMapping("idCheck.me")
+	public String idCheck(String memberId) throws Exception {
+		int count = memberService.idCheck(memberId);
+		
+		return String.valueOf(count);
 	}
 	
 	@RequestMapping("insert.mem")
@@ -88,4 +107,46 @@ public class MemberController {
 		return "redirect:/";
 	}
 
+	
+
+	@RequestMapping("myPage.mem")
+	public String myPageHome() {
+		return "member/myPageHome";
+	}
+	
+	@RequestMapping("travel.mem")
+	public String myPageTravel() {
+		return "member/myPageTravel";
+	}
+	
+	@RequestMapping("taste.mem")
+	public String myPageTaste() {
+		return "member/myPageTaste";
+	}
+	
+	@RequestMapping("accommodation.mem")
+	public String myPageaccommodation() {
+		return "member/myPageAccommodation";
+	}
+	
+	@RequestMapping("activity.mem")
+	public String myPageActivity() {
+		return "member/myPageActivity";
+	}
+	
+	@RequestMapping("reply.mem")
+	public String myPageReply() {
+		return "member/myPageReply";
+	}
+	
+	@RequestMapping("info.mem")
+	public String myPageInfo() {
+		return "member/myPageInfo";
+	}
+	
+	@RequestMapping("infoUpdate.mem")
+	public String myPageInfoUpdate() {
+		return "member/myPageInfoUpdate";
+	}
+	
 }

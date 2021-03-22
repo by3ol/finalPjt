@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
+
+.myPage-warp {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.myPage-from {
+    font-family: 'Sunflower', sans-serif;
+    font-size: 15px;
+    letter-spacing: -0.08em;
+    color: #1d1d1d;
+    float: left;
+    width: 214px;
+}
+
+.aside {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.content {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+body, div, ul, li, a {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.aside .nav_subject {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 80px;
+    border: 1px solid #DDD;
+    border-bottom: 0;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.aside .nav_subject > a {
+    display: inline-block;
+    height: 47px;
+    margin-top: 21px;
+    color: cornflowerblue;
+    font-family: 'Sunflower', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.aside .nav {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    border: 1px solid #DDD;
+    border-top: 4px solid  rgba(120, 185, 250, 0.5);;
+}
+
+.aside .nav > .nav_title {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding-left: 30px;
+    font-weight: bold;
+    line-height: 40px;
+    color: #636363;
+}
+
+.travel {
+    margin-top: 5%;
+}
+
+.Info {
+    margin-top: 50%;
+}
+
+.m_list {
+    padding-bottom: 10%;
+}
+
+.admin {
+    margin-top: 10%;
+}
+
+.admin-list {
+    padding-bottom: 10%;
+}
+
+.aside .nav > .nav_sub {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 30px;
+    line-height: 20px;
+    color: #9F9F9F;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* myPage_content Style*/
+.content {
+    width: 70%;
+    height: 100%;
+    margin-left: 3%;
+}
+
+.header {
+	width: 30%;
+	text-align: center;
+}
