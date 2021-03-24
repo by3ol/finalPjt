@@ -99,7 +99,7 @@
 			</c:if>
 			
 			<c:if test="${ !empty sessionScope.loginUser }">
-				<label>${ sessionScope.loginUser.memberName }님 환영합니다</label> &nbsp;&nbsp;
+				<li class="nav-link">${ sessionScope.loginUser.memberName }님 환영합니다</li> &nbsp;&nbsp;
 				
 				<li class="nav-item"><a class="nav-link"
 					href="${ pageContext.servletContext.contextPath }/logout.mem">로그아웃</a></li>
