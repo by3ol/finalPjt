@@ -105,7 +105,7 @@ public class TasteController {
 		model.addAttribute("pi", pi);
 		model.addAttribute("t",t);
 		return "taste/tasteList";
-		  
+		
 	}
 	
 	@RequestMapping("search.ta")

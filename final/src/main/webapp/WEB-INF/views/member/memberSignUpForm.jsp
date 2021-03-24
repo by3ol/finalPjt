@@ -10,28 +10,41 @@
                     <h2>회원가입</h2>
                 </div>
 
-                <div class="form-group" id="insert-info1">
+                <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">아이디</label>
                     <input type="text" class="form-control" id="info-text" name="memberId" required="required">
                 </div>
+
                 <div id="checkResult"></div>
+                <br>
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">비밀번호</label>
                     <input type="password" class="form-control" id="info-text" name="memberPwd" required="required">
                 </div>
+                
+                <div id="checkPwdResult"></div>
+                <br>
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">비밀번호 확인</label>
                     <input type="password" class="form-control" id="info-text" name="confirm_password"
                         required="required">
                 </div>
+                
+                <div id="checkPwdResult"></div>
+                <br>
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">이름</label>
                     <input type="text" class="form-control" id="info-text" name="memberName" required="required">
                 </div>
+                
+                <div id="checkNameResult"></div>
+                <br>
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">이메일</label>
                     <input type="email" class="form-control" id="info-text" name="email" required="required">
                 </div>
+                <br>
+                <div id="checkEmailResult"></div>
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">성별</label>
                     <label class="gender-radio" id="info-gender1">
@@ -50,13 +63,13 @@
                     <label class="control-label col-xs-4" id="info-label">전화번호</label>
                     <input type="tel" class="form-control" id="info-text" name="phone" required="required">
                 </div>
-
+				<br>
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">우편번호</label>
                     <input type="text" class="form-control mr-2 postcodify_postcode5" id="info-text-address" name="post" value="${ post }">
                     <button type="button" class="btn btn-primary" id="postcodify_search_btn">검색</button>
                 </div>
-
+				<br>
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">주소</label>
                     <input type="text" class="form-control postcodify_address" id="info-text" name="address1" value="${ address1 }">
@@ -96,10 +109,16 @@
     			$("#checkResult").show();
     			$("#join-btn").attr("disabled", true);
     			
+    			
     		}else if(num == 2){
     			$("#checkResult").css("color", "green").text("사용 가능한 아이디입니다.");
     			$("#checkResult").show();
     			$("#join-btn").removeAttr("disabled");
+    			
+    		}else if(num == 3){ 
+    			$("#checkResult").css("color", "red").text("5자 이상 입력해주세요.");
+    			$("#checkResult").show();
+    			$("#join-btn").attr("disabled", true);
     			
     		}
     		
@@ -110,8 +129,7 @@
     		var $idInput = $("#enrollForm input[name=memberId]");
     		
     		$idInput.keyup(function(){
-    			
-    			
+    			    			
     			if($idInput.val().length >= 5){
     				
    					$.ajax({
@@ -121,7 +139,7 @@
    						success:function(result){
    							if(result > 0){
    								idCheckValidate(1);
-   							}else{
+   							}else {
    								idCheckValidate(2);
    							}
    						},error:function(){
@@ -129,13 +147,16 @@
    						}
    					});
    					
-    			}else{
+    			}else if($idInput.val().length <= 4){
+    				idCheckValidate(3);
+    				
+    			}else {
     				idCheckValidate(0);
     			}
-    			
     		});
     	});
-
+    	
+    	
     </script>
      
 	<jsp:include page="../common/footer.jsp" />

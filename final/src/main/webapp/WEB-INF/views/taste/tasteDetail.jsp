@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -177,7 +177,7 @@
       <div class="foodDetailViewDiv">
         <div class="foodDetailViewForm">
           <div class="foodDetailViewTitle">
-            <h3>${t.placeName }<strong>          ${t.placeScore }</strong></h3><form action="score.ta"><input type="number" name="placeTotalScore" id="placeTotalScore" class="placeTotalScore" min="0" max="5" value="0" step="0.5"><input type="hidden" name="placeNo" value="${t.placeNo }"readonly><button type="submit">평점주기</button></form>
+            <h3>${t.placeName }<strong>          ${t.placeScore }</strong></h3> <c:if test="${ !empty sessionScope.loginUser }"><form action="score.ta"><input type="number" name="placeTotalScore" id="placeTotalScore" class="placeTotalScore" min="0" max="5" value="0" step="0.5"><input type="hidden" name="placeNo" value="${t.placeNo }"readonly><button type="submit">평점주기</button></form></c:if>
             <p>${t.placeCategory }</p>
             <ul class="score">
               <li><span><img src="" width="25px" height="25px">좋아요</span></li>
@@ -186,7 +186,7 @@
            
           </div>
           <div class="foodImgList">
-            <div class="img" align = "center">
+            <div class="img" align ="center">
               <img width="500px" height="300px" src="${t.placeUrl }" alt="사진" >
              
             </div>
@@ -320,7 +320,6 @@
   }
 </script>
       <div class="footer">
-
       </div>
   </div>  
   </div>
