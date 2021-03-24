@@ -1,4 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
+	<jsp:include page="../common/menubar1.jsp" />
 	<div class="warp">
         <div class="signup-form" id="signUp_Form">
             <form id="enrollForm" action="insert.mem" method="post" class="form-horizontal">
