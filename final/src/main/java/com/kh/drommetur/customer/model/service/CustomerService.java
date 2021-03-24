@@ -18,6 +18,14 @@ public interface CustomerService {
 
 	int insertNotice(Notice n);
 
+	int updateIncreaseCount(int noticeNo);
+
+	Notice selectNotice(int noticeNo);
+
+	int deleteNotice(int noticeNo);
+
+	int updateNotice(Notice n);
+
 	
 
 

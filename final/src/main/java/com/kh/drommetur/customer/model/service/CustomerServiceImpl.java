@@ -52,6 +52,34 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		return customerDao.insertNotice(sqlSession, n);
 	}
+
+
+	@Override
+	public int updateIncreaseCount(int noticeNo) {
+		// TODO Auto-generated method stub
+		return customerDao.updateIncreaseCount(sqlSession, noticeNo);
+	}
+
+
+	@Override
+	public Notice selectNotice(int noticeNo) {
+		// TODO Auto-generated method stub
+		return customerDao.selectNotice(sqlSession, noticeNo);
+	}
+
+
+	@Override
+	public int deleteNotice(int noticeNo) {
+		// TODO Auto-generated method stub
+		return customerDao.deleteNotice(sqlSession, noticeNo);
+	}
+
+
+	@Override
+	public int updateNotice(Notice n) {
+		// TODO Auto-generated method stub
+		return customerDao.updateNotice(sqlSession, n);
+	}
 	
 	
 	

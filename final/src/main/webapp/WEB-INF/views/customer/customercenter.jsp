@@ -173,7 +173,7 @@ form {
 				</li>
 				<li class="nav-item"><a class="nav-link link3" href="#">신고하기</a>
 				</li>
-				<li class="nav-item"><a class="nav-link link3" href="#">공지사항</a>
+				<li class="nav-item"><a class="nav-link link3" href="customernotice.cu">공지사항</a>
 				</li>
 			</ul>
 		</div>
