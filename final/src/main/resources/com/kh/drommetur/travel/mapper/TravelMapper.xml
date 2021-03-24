@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kh.drommetur.travel.mapper.TravelMapper">
+  
+ 	<resultMap id="TravelResultSet" type="Travel">
+ 		<id property="travelNo" column="TRAVEL_NO" />
+ 		<result property="travelName" column="TRAVEL_NAME" />
+ 		 <result property="travelMemo" column="TRAVEL_MEMO" />
+ 		<result property="travelRegDate" column="TRAVEL_REGDATE" />	 		
+ 		
+ 		
+ 	</resultMap> 
+ 	
+ 	<resultMap id="TravelDetailResultSet" type="TravelDetail">
+ 		<id property="detailNo" column="DETAIL_NO" />
+ 		<result property="travelDate" column="TRAVEL_DATE" />
+ 			
+ 		
+ 		
+ 	</resultMap>
+ 	
+ 
+ 	
+ 
+ 
+  <insert id="insertTravel">
+  
+  	insert into travel
+  	values(seq_travel.nextval,#{travel.travelName},#{travel.travelMemo},sysdate,default,#{memberNo})
+
+  </insert>
+  
+  <insert id="insertTravelDetail">
+  
+  
+  	
+  	insert into travel_detail
+  	values(seq_travel_detail.nextval,#{travelDate},seq_travel.currval)
+  
+  </insert >
+  
+  <insert id="insertTravelPlace">
+   
+  	
+  	insert into travel_place
+  	values(seq_travel_detail.currval,#{placeNo})
+  
+  </insert>
+  
+  <select id="selectListCount" resultType="_int">
+  	select count(*)
+  	from travel
+  	 where travel_status='Y' and mem_no= #{memberNo}
+  </select>
+  
+    <select id="selectList" resultMap="TravelResultSet">
+  	<![CDATA[
+	  	select travel_no,travel_name,travel_regdate
+	  	from(
+		  	select /*+ INDEX_DESC(travel pk_travel) */ 
+		  	rownum rn , travel_no,travel_name,travel_regdate
+		  	from travel
+		  	where travel_status='Y' and mem_no= #{memberNo} and rownum <= #{cri.amount} * #{cri.pageNo} 
+		  	)
+		 where rn > #{cri.amount} * (#{cri.pageNo}-1)
+  	 ]]>	
+  </select>
+  
+  <select id="selectTravel" resultMap="TravelResultSet">
+  	
+  	select travel_no,travel_name,travel_regdate
+  	from travel
+  	where travel_no=#{travelNo}
+  
+  </select>
+  
+   <select id="selectTravelDetailList" resultMap="TravelDetailResultSet">
+  	
+  	select detail_no,travel_date
+  	from travel_detail
+  	where travel_no=#{travelNo}
+  
+  </select>
+  
+  <select id="selectPlaceNoList" resultType="_int">
+  	
+  	select place_no
+  	from travel_place 
+  	where detail_no=#{detailNo}
+  
+  </select>
+  
+  <select id="selectPlaceName" resultType="string">
+  
+  	select place_name
+  	from place
+  	where place_no=#{placeNo}
+  </select>
+  
+</mapper>

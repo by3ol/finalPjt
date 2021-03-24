@@ -4,27 +4,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div id="my-body">
-	<div class="myPage-warp">
-		<div class="myPage-from aside">
-			<div class="nav_subject">
-				<a href="${ pageContext.servletContext.contextPath }" class="myPage">MyPage</a>
+<div class="myPage-warp">
+	<div class="myPage-from aside">
+		<div class="nav_subject">
+			<a href="${ pageContext.servletContext.contextPath }" class="myPage">MyPage</a>
+		</div>
+		<div class="nav">
+			<div class="nav_title travel">
+				<a href="selectList.tr">여행</a>
 			</div>
-			<div class="nav" id="my-nav">
-				<div class="nav_title travel">
-					<a href="travel.mem" id="my-a">여행</a>
-				</div>
-				<div class="nav_title restaurant">
-					<a href="taste.mem" id="my-a">맛집</a>
-				</div>
-				<div class="nav_title accommodation">
-					<a href="accommodation.mem" id="my-a">숙박</a>
-				</div>
-				<div class="nav_title activity">
-					<a href="activity.mem" id="my-a">엑티비티</a>
-				</div>
-				<div class="nav_title reply">
-					<a href="reply.mem" id="my-a">리뷰</a>
-				</div>
+			<div class="nav_title taste">
+				<a href="taste.mem">맛집</a>
+			</div>
+			<div class="nav_title accommodation">
+				<a href="accommodation.mem">숙박</a>
+			</div>
+			<div class="nav_title activity">
+				<a href="activity.mem">엑티비티</a>
+			</div>
+			<div class="nav_title reply">
+				<a href="reply.mem">리뷰</a>
 
 				<div class="nav_title Info">
 					<a href="info.mem" id="my-a">개인정보</a>

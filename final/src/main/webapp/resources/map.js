@@ -251,6 +251,13 @@
 				
 				travelDetailList.push(newTravelDetail); //여행리스트에 추가하기 
 				
+				
+				travelDetailList.sort(function(left,right){
+					
+					return left>right? 1:-1;
+				
+				
+				}); //날짜순으로 정렬
 				drawTravelList(); //ul 다시그리기
 				
 				
@@ -412,7 +419,12 @@
 				
 				travelDetailList[idx]=newTravelDetail; //새로운 여행날짜객체를 여행리스트에 넣음 
 				
-				
+				travelDetailList.sort(function(left,right){
+					
+						return left>right? 1:-1;
+					
+					
+				}); //날짜순으로 정렬
 				drawTravelList(); //여행일정 다시그리기
 				
 				$travelModifyModal.modal("hide"); //여행수정모달 닫기 
@@ -453,9 +465,15 @@
 				data : travel,
 				contentType: 'application/json',
 				success : function(msg){
-					if(msg=="success"){
+					
+						travelDetailList=[];
+					
+						$travelName.val("");
+						$travelMemo.val("");
+						drawTravelList();
+						
 						alert("등록이 완료되었습니다.");
-					}
+					
 				},
 				error: function(){
 					
