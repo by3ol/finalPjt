@@ -10,7 +10,7 @@
 		</div>
 		<div class="nav">
 			<div class="nav_title travel">
-				<a href="travel.mem">여행</a>
+				<a href="selectList.tr">여행</a>
 			</div>
 			<div class="nav_title taste">
 				<a href="taste.mem">맛집</a>

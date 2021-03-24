@@ -49,7 +49,7 @@
 			<c:remove var="msg" scope="session" />
 	</c:if>
 
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" style="font-family: 'Sunflower', sans-serif;">
 
 
 		<!-- Brand -->
