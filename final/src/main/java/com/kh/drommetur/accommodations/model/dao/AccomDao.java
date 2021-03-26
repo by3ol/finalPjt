@@ -50,11 +50,11 @@ public class AccomDao {
 		return (ArrayList)sqlSession.selectList("accomMapper.selectListca",ac,rowBounds);
 	}
 
-	public ArrayList<Accommodations> selectListre(SqlSessionTemplate sqlSession, PageInfo pi, String placeCategory) {
+	public ArrayList<Accommodations> selectListre(SqlSessionTemplate sqlSession, PageInfo pi, Accommodations ac) {
 		// TODO Auto-generated method stub
 		int offset=(pi.getCurrentPage()-1)*pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
-		return (ArrayList)sqlSession.selectList("accomMapper.selectListre",placeCategory ,rowBounds);
+		return (ArrayList)sqlSession.selectList("accomMapper.selectListre",ac ,rowBounds);
 	}
 
 	public ArrayList<Accommodations> selectListSearch(SqlSessionTemplate sqlSession, PageInfo pi, Search search) {

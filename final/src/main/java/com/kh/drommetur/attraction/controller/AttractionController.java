@@ -33,9 +33,9 @@ public class AttractionController {
 		
 		if(result>0) {
 
-			Attraction ac = attractionService.selectBoard(placeNo);
+			Attraction at = attractionService.selectBoard(placeNo);
 
-			mv.addObject("ac",ac).setViewName("attraction/attractionDetail");
+			mv.addObject("at",at).setViewName("attraction/attractionDetail");
 		}else {
 			
 		}
@@ -46,18 +46,18 @@ public class AttractionController {
 	public String updateScore(@RequestParam("placeNo") int placeNo,  HttpSession session, @RequestParam(value="placeTotalScore", required=false, defaultValue="0") int placeTotalScore, Model model) {
 		System.out.println("placeNo : " + placeNo);
 		System.out.println("placeTotalScore : " + placeTotalScore);
-		Attraction ac = new Attraction();
-		ac.setPlaceNo(placeNo);
-		ac.setPlaceTotalScore(placeTotalScore);
+		Attraction at = new Attraction();
+		at.setPlaceNo(placeNo);
+		at.setPlaceTotalScore(placeTotalScore);
 		int result = attractionService.updateIncreaseScoreCount(placeNo);
-		int result1 = attractionService.updateTotalScore(ac);
+		int result1 = attractionService.updateTotalScore(at);
 		int result3 = attractionService.updateScore(placeNo);
 		
 		if(result>0&&result1>0&&result3>0) {
 			
 		
 			session.setAttribute("msg","평점주기완료!!");
-		return "redirect:/detail.ac?placeNo="+placeNo;
+		return "redirect:/detail.at?placeNo="+placeNo;
 		}else {
 		session.setAttribute("msg","평점주기실패!!");
 		return "redirect:/";
@@ -72,9 +72,9 @@ public class AttractionController {
 		
 		PageInfo pi=null;
 		ArrayList<Attraction> list = null;
-		Attraction ac = new Attraction();
-		ac.setPlaceCategory(placeCategory);
-		ac.setRegionNo(regionNo);
+		Attraction at = new Attraction();
+		at.setPlaceCategory(placeCategory);
+		at.setRegionNo(regionNo);
 		if(regionNo==99) {
 			if(placeCategory.equals("전체")) {
 				int listCount = attractionService.selectListCount();
@@ -86,24 +86,24 @@ public class AttractionController {
 			int listCount = attractionService.selectListCount();
 			
 			pi= Pagination.getPageInfo(listCount, currentPage, 10, 12);
-			list = attractionService.selectListre(pi, placeCategory);
+			list = attractionService.selectListre(pi, at);
 			}
 		}else {
 		if(placeCategory.equals("전체")) {
 		int listCount = attractionService.selectListCount();
 		
 		pi= Pagination.getPageInfo(listCount, currentPage, 10, 12);
-		list = attractionService.selectListAll(pi,ac);
+		list = attractionService.selectListAll(pi,at);
 		}else{
-			int listCount = attractionService.selectListCountca(ac);
+			int listCount = attractionService.selectListCountca(at);
 			
 			pi= Pagination.getPageInfo(listCount, currentPage, 10, 12);
-			list = attractionService.selectListca(pi,ac);
+			list = attractionService.selectListca(pi,at);
 		}}
 		
 		model.addAttribute("list", list);
 		model.addAttribute("pi", pi);
-		model.addAttribute("ac",ac);
+		model.addAttribute("at",at);
 		return "attraction/attractionList";
 		
 	}

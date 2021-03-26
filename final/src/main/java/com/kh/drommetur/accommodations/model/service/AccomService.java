@@ -37,7 +37,7 @@ public interface AccomService {
 
 	int updateScore(int placeNo);
 
-	ArrayList<Accommodations> selectListre(PageInfo pi, String placeCategory);
+	ArrayList<Accommodations> selectListre(PageInfo pi, Accommodations ac);
 
 	
 

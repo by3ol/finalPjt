@@ -50,11 +50,11 @@ public class AttractionDao {
 		return (ArrayList)sqlSession.selectList("attractionMapper.selectListca",at,rowBounds);
 	}
 
-	public ArrayList<Attraction> selectListre(SqlSessionTemplate sqlSession, PageInfo pi, String placeCategory) {
+	public ArrayList<Attraction> selectListre(SqlSessionTemplate sqlSession, PageInfo pi, Attraction at) {
 		// TODO Auto-generated method stub
 		int offset=(pi.getCurrentPage()-1)*pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
-		return (ArrayList)sqlSession.selectList("attractionMapper.selectListre",placeCategory ,rowBounds);
+		return (ArrayList)sqlSession.selectList("attractionMapper.selectListre",at ,rowBounds);
 	}
 
 	public ArrayList<Attraction> selectListSearch(SqlSessionTemplate sqlSession, PageInfo pi, Search search) {

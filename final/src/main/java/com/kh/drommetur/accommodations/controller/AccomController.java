@@ -86,7 +86,7 @@ public class AccomController {
 			int listCount = accomService.selectListCount();
 			
 			pi= Pagination.getPageInfo(listCount, currentPage, 10, 12);
-			list = accomService.selectListre(pi, placeCategory);
+			list = accomService.selectListre(pi, ac);
 			}
 		}else {
 		if(placeCategory.equals("전체")) {

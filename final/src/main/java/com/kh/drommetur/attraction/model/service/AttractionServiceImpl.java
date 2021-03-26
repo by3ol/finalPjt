@@ -50,9 +50,9 @@ public class AttractionServiceImpl implements AttractionService{
 		return attractionDao.selectListca(sqlSession, pi,at);
 	}
 	@Override
-	public ArrayList<Attraction> selectListre(PageInfo pi, String placeCategory) {
+	public ArrayList<Attraction> selectListre(PageInfo pi, Attraction at) {
 		// TODO Auto-generated method stub
-		return attractionDao.selectListre(sqlSession, pi, placeCategory);
+		return attractionDao.selectListre(sqlSession, pi, at);
 	}
 	@Override
 	public ArrayList<Attraction> selectListSearch(PageInfo pi, Search search) {
