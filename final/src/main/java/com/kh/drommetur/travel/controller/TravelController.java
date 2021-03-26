@@ -11,10 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.drommetur.common.CommonException;
 import com.kh.drommetur.common.Criteria;
@@ -30,8 +32,8 @@ public class TravelController {
 	@Autowired
 	private TravelService travelService;
 	
-	@GetMapping("view.tr")
-	public String showView(){
+	@GetMapping("enrollForm.tr")
+	public String showEnrollForm(){
 		
 		
 		return "travel/travelMain";
@@ -52,6 +54,22 @@ public class TravelController {
 		
 		
 	}
+	
+	
+	@RequestMapping(value="modify.tr",method=RequestMethod.POST,consumes="application/json")
+	@ResponseBody
+	public ResponseEntity<String> modifyTravel( @RequestBody Travel travel,HttpSession session) {
+		
+		
+		System.out.println(travel);
+		Member loginUser=(Member) session.getAttribute("loginUser");
+		
+		int result=travelService.modifyTravel(travel,loginUser.getMemberNo());
+			
+		return result>0 ? new ResponseEntity<>(HttpStatus.OK):new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		
+	}
 	@GetMapping("selectList.tr")
 	public String selectTravelList(Criteria cri,Model model,HttpSession session) throws CommonException  {
 		
@@ -59,7 +77,8 @@ public class TravelController {
 		
 		Member loginUser=(Member)session.getAttribute("loginUser");
 		List<Travel> travelList=travelService.selectList(cri,loginUser.getMemberNo());
-		int listCount=travelService.selectListCount();
+		int listCount=travelService.selectListCount(loginUser.getMemberNo());
+		
 		
 		
 		
@@ -86,7 +105,7 @@ public class TravelController {
 		
 		Travel travel=travelService.selectTravel(travelNo);
 		
-		System.out.println(cri);
+		System.out.println(travel);
 		
 		if(travel!=null) {
 			
@@ -98,7 +117,7 @@ public class TravelController {
 		}else {
 			
 
-			throw new CommonException("여행목록 불러오기 실패");
+			throw new CommonException("여행 불러오기 실패");
 			
 		}
 		
@@ -106,5 +125,49 @@ public class TravelController {
 		
 		
 	}
+	
+	@PostMapping("delete.tr")
+	public String deleteTravel( Criteria cri,int travelNo ,RedirectAttributes rttr,HttpSession session) throws CommonException {
+		
+		int result=travelService.deleteTravel(travelNo);
+		
+		
+		
+		if(result>0) {
+			
+			session.setAttribute("msg", "삭제가 완료되었습니다.");
+			
+			rttr.addAttribute("pageNo", cri.getPageNo());
+			rttr.addAttribute("amount", cri.getAmount());
+			
+			return "redirect:/selectList.tr";
+			
+		}else {
+			
+
+			throw new CommonException("여행 삭제 실패");
+			
+		}
+		
+		
+		
+		
+	}
+	
+	
+	@GetMapping("modifyForm.tr")
+	public String showModifyForm(@ModelAttribute("cri") Criteria cri,int travelNo,Model model) {
+		
+		Travel travel=travelService.selectTravel(travelNo);
+		
+		model.addAttribute("travel", travel);
+		
+	
+		
+		
+		
+		return "travel/travelMain";
+	}
+	
 	
 }

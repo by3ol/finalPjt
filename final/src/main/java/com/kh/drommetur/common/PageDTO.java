@@ -24,11 +24,11 @@ public class PageDTO {
 		
 		
 		this.cri=cri;
-		this.endPage=(int)(Math.ceil(cri.getPageNo()/(double)cri.getAmount()))*10;
+		this.endPage=(int)(Math.ceil(cri.getPageNo()/10.0))*10;
 		this.startPage=endPage-9;
 		
 		
-		this.realEnd=(int)Math.ceil(listCount/(double)cri.getAmount());
+		this.realEnd=(int)Math.ceil(listCount*1.0/cri.getAmount());
 		
 
 		

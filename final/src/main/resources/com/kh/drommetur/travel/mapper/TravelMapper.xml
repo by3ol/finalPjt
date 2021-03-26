@@ -57,10 +57,11 @@
   	<![CDATA[
 	  	select travel_no,travel_name,travel_regdate
 	  	from(
-		  	select /*+ INDEX_DESC(travel pk_travel) */ 
+		  	select /*+ INDEX_DESC(travel pk_travel) */
 		  	rownum rn , travel_no,travel_name,travel_regdate
 		  	from travel
 		  	where travel_status='Y' and mem_no= #{memberNo} and rownum <= #{cri.amount} * #{cri.pageNo} 
+		  	
 		  	)
 		 where rn > #{cri.amount} * (#{cri.pageNo}-1)
   	 ]]>	
@@ -68,7 +69,7 @@
   
   <select id="selectTravel" resultMap="TravelResultSet">
   	
-  	select travel_no,travel_name,travel_regdate
+  	select travel_no,travel_name,travel_regdate,travel_memo
   	from travel
   	where travel_no=#{travelNo}
   
@@ -96,5 +97,32 @@
   	from place
   	where place_no=#{placeNo}
   </select>
+  
+  <update id="deleteTravel">
+  	update travel
+  	set travel_status='N'
+  	where travel_no=#{travelNo}
+  	
+  
+  </update>
+  
+  <delete id="modifyDeleteTravel">
+  	delete from travel
+  	where travel_no=#{travelNo}
+  
+  </delete>
+  
+  <insert id="modifyInsertTravel">
+  
+  	 insert into travel
+  	values(#{travel.travelNo},#{travel.travelName},#{travel.travelMemo},#{travel.travelRegDate},default,#{memberNo})
+  
+  </insert>
+  
+  <insert id="modifyInsertTravelDetail">
+  	 insert into travel_detail
+  	values(seq_travel_detail.nextval,#{travelDetail.travelDate},#{travelNo})
+  
+  </insert>
   
 </mapper>

@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 
 	<jsp:include page="../common/menubar1.jsp"/>
-
+	
 	
 	
 	
  	<div class="container-fluid" id="travelContainer" style="margin-top:70px">
 	
 		<div class="row">
-			<div class="col-xl-8"  >
+			<div class="col-xl-6"  >
 				<div class="row">
 					<div class="col-lg-8 " > <!--맵 메뉴 부분  -->
 					
@@ -57,23 +59,42 @@
 			</div>
 		</div>
 		<div class="row" >
-			<div class="col-xl-8" id="map" style="width:100% ;height:800px"  >
+			<div class="col-xl-6" id="map" style="width:100% ;height:750px"  >
 				
 				
 			
 			
 			
 			</div>
-			
-			<div class="col-xl-4">
+			<div class="col-xl-2" >
+				
 				<div class="card">
+					<div class="card-body" style="width:100% ;height:750px">
+						<h3 style="text-align:center">장소 검색</h3>
+						<br>
+						<div class="input-group mb-3">
+						  <input type="text" class="form-control" id="keyword" placeholder="Search">
+						  <div class="input-group-append">
+						    <button class="btn btn-success" type="submit" id="searchBtn">Go</button>
+						  </div>
+						</div>
+						<div id="displayResultDiv" style="width:100% ;height:590px"  >
+							
+						
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-xl-4" >
+				<div class="card" style="width:100% ;height:750px" >
 					<div class="card-body">
 						<h3 style="text-align:center">여행 계획</h3>
 						<div class="form-group">
 						  <label for="travel-name">여행 이름</label>
 						  <input type="text" class="form-control" id="travelName" name="travelName">
 						</div>
-						<div style="width:100%;height:300px">
+						<div style="width:100%;height:350px;overflow-y:auto;">
 							<label >여행 일정</label>
 							<ul id="travelUl">
 								
@@ -234,7 +255,66 @@
 		    </div>
 		  </div>
 		</div>
+		
+		
+			<form id="moveForm" action="selectList.tr" method="get">
+				<input type="hidden" name="pageNo" value='<c:out value="${cri.pageNo }"/>'>
+				<input type="hidden" name="amount"  value='<c:out value="${cri.amount }"/>' />
+				
+ 			</form>
+ 	
+ 	
+ 	<c:if test="${ !empty travel }">
+		<script>
+			
+			$(function(){
+				
+				
+				travelNo=<c:out value="${travel.travelNo}"/>;
+				travelRegDate='<fmt:formatDate pattern="yyyy-MM-dd" value="${travel.travelRegDate}" />';
+			
+				
+				
+				$travelName.val("<c:out value="${travel.travelName}"/>");
+				
+				$travelMemo.val("<c:out value="${travel.travelMemo}"/>");
+				
+				<c:forEach var="travelDetail" items="${travel.travelDetailList}" >
+					
+					var travelDetail={};
+					
+					travelDetail.travelDate='<fmt:formatDate pattern="yyyy-MM-dd" value="${travelDetail.travelDate}" />';
+					
+					
+					var travelPlaces=[];
+					
+					
+					<c:forEach var="place" items="${travelDetail.travelPlaces}">
+						var place={};
+						place.placeNo= <c:out value="${place.placeNo}"/>;
+						place.placeName='<c:out value="${place.placeName}"/>';
+						
+						
+						travelPlaces.push(place);
+					
+				
+					</c:forEach>
+			
+				travelDetail.travelPlaces=travelPlaces;
+				travelDetailList.push(travelDetail);
+					
 	
-
+				</c:forEach>
+				
+				
+				drawTravelList();
+				
+				
+				
+			});
+		
+		</script>
+	</c:if>
+	
 	
 	<jsp:include page="../common/footer.jsp"/>

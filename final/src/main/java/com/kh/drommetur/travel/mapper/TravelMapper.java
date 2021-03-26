@@ -19,7 +19,7 @@ public interface TravelMapper {
 
 	List<Travel> selectList(@Param("cri")Criteria cri,@Param("memberNo") int memberNo);
 
-	int selectListCount();
+	int selectListCount(int memberNo);
 
 	Travel selectTravel(int travelNo);
 
@@ -28,6 +28,14 @@ public interface TravelMapper {
 	List<Integer> selectPlaceNoList(int detailNo);
 
 	String selectPlaceName(int placeNo);
+
+	int deleteTravel(int travelNo);
+
+	int modifyDeleteTravel(Travel travel);
+
+	int modifyInsertTravel(@Param("travel")Travel travel, @Param("memberNo")int memberNo);
+
+	int modifyInsertTravelDetail(@Param("travelDetail")TravelDetail travelDetail, @Param("travelNo")int travelNo);
 	
 	
 

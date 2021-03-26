@@ -14,6 +14,14 @@
 		var placelist=[];
 		var travelDetailList=[];
 		
+		//여행 수정할때 필요한 요소들 
+		var travelNo=0;
+		var travelRegDate="";
+		
+		
+		
+		
+		
 		//모달외 요소 
 		var $placeGroupBtn=$(".place-group");
 		var $travelUl=$("#travelUl");
@@ -49,8 +57,11 @@
 		var $travelModifyModalBtn=$("#travelModifyModalBtn");
 		
 
+		//검색관련 요소
 		
-		
+		var $searchBtn=$("#searchBtn");
+		var $keyword=$("#keyword");
+		var $displayResultDiv=$("#displayResultDiv");
 		
 		$placeGroupBtn.on("click",function(){ //음식점, 관광지,레포츠, 숙박 버튼중하나를 누르면 
 			
@@ -82,7 +93,31 @@
 		
 		});
 		
-
+		$searchBtn.on("click",function(){ //검색버튼을 누르면 
+			
+			$.ajax({ //요청
+					
+					url:"placeList",
+					type:"get",
+					data: {keyword:$keyword.val()},
+					success:function(list){
+						
+						removeMarker();
+						drawsearchMarkers(list); //지도에 장소 마커 그리기 
+					
+						
+					},
+					error:function(){
+						
+						alert("검색 실패");
+						
+					}
+				
+				});
+			
+			
+			
+		});
 
 	
 		function drawMarkers(list){
@@ -120,19 +155,82 @@
 			
 			
 		}
+		
+		function drawsearchMarkers(list){
+			
+			var str="";
+			for(var i=0;i<list.length;i++){
+				
+				var marker = new kakao.maps.Marker({
+			        map: map, // 마커를 표시할 지도
+			        position: new kakao.maps.LatLng(list[i].placeLat,list[i].placeLon ), // 마커를 표시할 위치
+			     
+			    });
+				
+				marker.idx=i;
+				
+				
+				markers.push(marker);
+				placelist.push(list[i]);
+				
+
+				
+
+				// 마커에 클릭이벤트를 등록합니다
+				kakao.maps.event.addListener(marker, 'click', function(mouseEvent){
+					
+					
+					openPlaceModal(this.idx); //마커를 클릭하면 장소모달이 열리게 설정 
+					
+					
+				
+			
+				});
+				
+				str+='<div class="card searchResults" data-idx='+i+'><div class="card-body"><h6>'+list[i].placeName+'</h6>';
+				
+				
+				if( typeof list[i].placeAddr !="undefined" && list[i].placeAddr!=null && list[i].placeAddr!=""){
+					
+					str+='<p style="font-size:0.8em">'+list[i].placeAddr+'</p>';
+				 
+				}
+				
+
+				if( typeof list[i].placePhone !="undefined" && list[i].placePhone!=null && list[i].placePhone!=""){
+					
+					str+='<p style="font-size:0.8em">'+list[i].placePhone+'</p>';
+				 
+				}
+				
+				
+				str+='</div></div>';
+				
+			}	
+			
+			$displayResultDiv.html(str);
+		}
 	
 		
 		function removeMarker() { //사용자가 장소버튼을 클릭 했을 때 이전의 마커들을 지워주는 함수 
 			
 			
-			
+			$keyword.val("");
 		    for ( var i = 0; i < markers.length; i++ ) {
 		        markers[i].setMap(null);
 		    }   
 		    markers = [];
 		    placelist=[];
+		    $displayResultDiv.empty();
 		  
 		}
+		
+		$displayResultDiv.on("click",".searchResults",function(){ //검색결과를 클릭했을때
+			
+			
+			openPlaceModal($(this).data("idx"));  //장소모달이 열리게설정
+			
+		});
 		
 		function openPlaceModal(idx){ //사용자가 지도에서 마커를 클릭했을 때 
 			
@@ -194,7 +292,7 @@
 			var placeName=$travelAddModalPlaceName.text(); //추가할 장소의 이름을 여행추가모달에서 가져옴 
 			var placeNo=$travelAddModalBtn.data("pno"); //여행추가모달의 버튼에 있던 장소 번호를 가져옴 
 				
-			
+			console.log(typeof(travelDate));
 			if(travelDate==""){ //여행날짜를 선택하지 않았다면 
 				
 				
@@ -252,12 +350,7 @@
 				travelDetailList.push(newTravelDetail); //여행리스트에 추가하기 
 				
 				
-				travelDetailList.sort(function(left,right){
-					
-					return left>right? 1:-1;
-				
-				
-				}); //날짜순으로 정렬
+
 				drawTravelList(); //ul 다시그리기
 				
 				
@@ -269,6 +362,14 @@
 
 		
 		function drawTravelList(){ //여행리스트그리기
+			
+			
+			travelDetailList.sort(function(left,right){
+				
+				return left.travelDate>right.travelDate? 1:-1;
+			
+			
+			}); //날짜순으로 정렬
 			
 			
 			var str="";
@@ -314,7 +415,6 @@
 			
 			for(var i=0;i<travelPlaces.length;i++){ //장소객체를 순회하면서 li를 만듬 
 				
-				console.log(travelPlaces[i].placeNo+" "+travelPlaces[i].placeName);
 				str+='<li data-pno='+travelPlaces[i].placeNo+'><span style="color:#2d7fc7">'+travelPlaces[i].placeName+'</span>&nbsp;'
 				
 				+' <button class="btn" ><i class="fas fa-times"></i></button></li>';
@@ -419,12 +519,7 @@
 				
 				travelDetailList[idx]=newTravelDetail; //새로운 여행날짜객체를 여행리스트에 넣음 
 				
-				travelDetailList.sort(function(left,right){
-					
-						return left>right? 1:-1;
-					
-					
-				}); //날짜순으로 정렬
+
 				drawTravelList(); //여행일정 다시그리기
 				
 				$travelModifyModal.modal("hide"); //여행수정모달 닫기 
@@ -452,42 +547,83 @@
 			var travelName=$travelName.val();
 			var travelMemo=$travelMemo.val();
 			
-			var travelObj={travelName :travelName, travelMemo:travelMemo , travelDetailList : travelDetailList };
+			var travelObj={travelNo : travelNo, travelName :travelName, travelMemo:travelMemo ,travelRegDate: travelRegDate, travelDetailList : travelDetailList };
 			var travel =JSON.stringify(travelObj);
 			
+			if(travelNo==0){ //새로등록한 여행일때 
 			
-			
-			
-			$.ajax({
 				
-				type:"post",
-				url:"insert.tr",
-				data : travel,
-				contentType: 'application/json',
-				success : function(msg){
-					
-						travelDetailList=[];
-					
-						$travelName.val("");
-						$travelMemo.val("");
-						drawTravelList();
-						
-						alert("등록이 완료되었습니다.");
-					
-				},
-				error: function(){
-					
-					alert("등록에 실패하였습니다.");
-				}
-				
-				
-				
-			});
-			
-		
-			
-			
-		});
 
+			
+				$.ajax({
+					
+					type:"post",
+					url:"insert.tr",
+					data : travel,
+					contentType: 'application/json',
+					success : function(msg){
+						
+							travelDetailList=[];
+						
+							$travelName.val("");
+							$travelMemo.val("");
+							drawTravelList();
+							
+							alert("등록이 완료되었습니다.");
+						
+					},
+					error: function(){
+						
+						alert("등록에 실패하였습니다.");
+					}
+					
+					
+					
+				});
+				
+			
+			}else{ //수정하는 여행일때
+				
+				
+				
+				
+				$.ajax({
+					
+					type:"post",
+					url:"modify.tr",
+					data :  travel,
+					contentType: 'application/json',
+					success : function(msg){
+						
+							travelDetailList=[];
+						
+							$travelName.val("");
+							$travelMemo.val("");
+							drawTravelList();
+							
+							alert("수정을 완료하였습니다.");
+							
+							$("#moveForm").submit();
+							
+						
+					},
+					error: function(){
+						
+						alert("수정에 실패하였습니다.");
+					}
+					
+					
+					
+				});
+				
+				
+				
+			}
+				
+		});
+		
+		
+		
+		
 		
 

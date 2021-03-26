@@ -16,7 +16,7 @@ import com.kh.drommetur.place.model.dao.PlaceDao;
 import com.kh.drommetur.place.model.vo.Place;
 
 @Service
-public class PlaceServiceImpl implements PlaceService {
+public  class PlaceServiceImpl implements PlaceService {
 
 	
 	@Autowired
@@ -54,6 +54,13 @@ public class PlaceServiceImpl implements PlaceService {
 	public ArrayList<Place> selectPlaceList(Place place) {
 		// TODO Auto-generated method stub
 		return placeDao.selectPlaceList(sqlSession,place);
+	}
+
+
+	@Override
+	public ArrayList<Place> searchPlaceList(String keyword) {
+		// TODO Auto-generated method stub
+		return placeDao.searchPlaceList(sqlSession,keyword);
 	}
 
 
