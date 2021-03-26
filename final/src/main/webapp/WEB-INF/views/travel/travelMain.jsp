@@ -118,7 +118,7 @@
 		</div> 
 
 	</div>
-	
+	<br>
 	
 	
 	
@@ -316,5 +316,5 @@
 		</script>
 	</c:if>
 	
-	
+	<script type="text/javascript" src="resources/map.js"></script>
 	<jsp:include page="../common/footer.jsp"/>
