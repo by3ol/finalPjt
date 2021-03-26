@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 
-	 <script type="text/javascript" src="resources/map.js"></script>
+	 
 
 	<footer class="py-5 bg-dark">
 		<div class="container" style="font-family: 'Sunflower', sans-serif;">

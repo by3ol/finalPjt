@@ -6,13 +6,13 @@
 
 <jsp:include page="../member/myPageAside.jsp" />
 
-<div class="myPage-from content">
-	<div class="myPage-form header">
+<div class="my_content">
+	
 		<h1>여행 조회</h1>
-	</div>	
+		<hr>
 	<div>
 		
-		<div class="card">
+		<div >
 			<div class="card-body">
 				<h4 class="card-title"><c:out value="${travel.travelName}"/></h4>
 				<br><br>
@@ -41,7 +41,7 @@
 			</div>
 		
 		</div>
-		
+		<hr>
 		<div class="float-right">
 			<button class="btn btn-success " id="modifyBtn">수정하기</button>
 			<button class="btn btn-danger " id="deleteBtn">삭제하기</button>
@@ -59,6 +59,8 @@
 	</div>
 	
 	
+</div>
+</div>
 </div>
 <script>
 	
