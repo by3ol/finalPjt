@@ -6,39 +6,40 @@
 
 <jsp:include page="../member/myPageAside.jsp" />
 
-<div class="myPage-from content">
-	<div class="myPage-form header">
-		<h1>여행 조회</h1>
-	</div>	
-	<div>
-		
-		<div class="card">
-		
-			<c:forEach items="">
-			
-			</c:forEach>
-		
-		
-		
-		
-		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-			<form id="moveForm" action="selectList.tr" method="get">
-				<input type="hidden" name="pageNo" value='<c:out value="${cri.pageNo }"/>'>
-				<input type="hidden" name="amount"  value='<c:out value="${cri.amount }"/>' />
-				<input type="hidden" name="travelNo" value='<c:out value="${travel.travelNo }"/>' />
- 			</form>
-	</div>
+            <div class="my_content">
+                <h1>마이페이지 홈</h1><br>
+                	
+				<div>
+					
+					<div class="card">
+					
+						<c:forEach items="">
+						
+						</c:forEach>
+					
+					
+					
+					
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+						<form id="moveForm" action="selectList.tr" method="get">
+							<input type="hidden" name="pageNo" value='<c:out value="${cri.pageNo }"/>'>
+							<input type="hidden" name="amount"  value='<c:out value="${cri.amount }"/>' />
+							<input type="hidden" name="travelNo" value='<c:out value="${travel.travelNo }"/>' />
+			 			</form>
+				</div>
 	
-	
-</div>
+            </div>
+        </div>
+    </div>	
+
 
 
 

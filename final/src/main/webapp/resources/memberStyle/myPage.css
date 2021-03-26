@@ -1,124 +1,171 @@
 @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
 
-.myPage-warp {
+.myPage_warp {
     position: relative;
-    width: 80%;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 57px;
 }
 
-.myPage-from {
-    font-family: 'Sunflower', sans-serif;
-    font-size: 15px;
-    letter-spacing: -0.08em;
-    color: #1d1d1d;
-    float: left;
-    width: 214px;
+.my_container {
+    display: inline-block;
+    position: relative;
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    margin-bottom: 10%;
 }
 
 .aside {
-    margin-top: 10%;
-    margin-bottom: 10%;
-    
-}
-.content {
-    margin-top: 10%;
-    margin-bottom: 10%;
-    border: 1px solid #CCC;
+    float: left;
+    width: 15%;
+    margin: 8% 0 0 10%;
 }
 
-#my-body, #myLi, #my-a {
-    margin: 0;
-    padding: 0;
-    text-align: left;
-}
-
-.aside .nav_subject {
+#aside_subject {
     position: relative;
-    box-sizing: border-box;
-    width: 100%;
-    height: 80px;
+    box-sizing: border-box;  
+    height: 87px;
     border: 1px solid #DDD;
     border-bottom: 0;
     font-size: 25px;
     font-weight: bold;
-    text-align: center;
+    text-align: center;    
 }
 
-.aside .nav_subject > a {
-    display: inline-block;
-    height: 47px;
-    margin-top: 21px;
-    color: cornflowerblue;
-    font-family: 'Sunflower', sans-serif;
-}
-
-#my-a {
+#aside_subject > a {
     text-decoration: none;
     color: inherit;
 }
 
-#my-a:hover {
-    text-decoration: none;
+.myPageHome {
+    background-position: -10px -10px;
+    display: inline-block;
+    margin: 12% 0 0 0;
+    font-family: 'Sunflower', sans-serif;
 }
 
-#my-nav {
+.myPageHome:-webkit-any-link {
+    cursor: pointer;
+}
+
+#aside_nav {
     position: relative;
     box-sizing: border-box;
     width: 100%;
     height: auto;
     border: 1px solid #DDD;
-    border-top: 4px solid  rgba(120, 185, 250, 0.5);;
+    border-top: 4px solid rgba(120, 185, 250, 0.5);
 }
 
-.aside .nav > .nav_title {
+#aside_title_1 {
     position: relative;
     box-sizing: border-box;
     width: 100%;
     height: 40px;
-    padding-left: 30px;
+    padding: 10% 0 10% 15%;
     font-weight: bold;
-    line-height: 40px;
     color: #636363;
+    font-size: 1em;
+    font-family: 'Sunflower', sans-serif;
 }
 
-.travel {
-    margin-top: 5%;
-}
-
-.Info {
-    margin-top: 50%;
-}
-
-.m_list {
-    padding-bottom: 10%;
-}
-
-.admin {
-    margin-top: 10%;
-}
-
-.admin-list {
-    padding-bottom: 10%;
-}
-
-.aside .nav > .nav_sub {
+#aside_title_2 {
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    padding-left: 30px;
-    line-height: 20px;
+    padding: 10% 0 0 15%;
+    margin-top: 30%;
+    font-weight: bold;
+    color: #636363;
+    font-size: 1em;
+    font-family: 'Sunflower', sans-serif;
+}
+
+#aside_title_3 {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10% 0 0 15%;
+    margin: 5% 0 10% 0;
+    font-weight: bold;
+    color: #636363;
+    font-size: 1em;
+    font-family: 'Sunflower', sans-serif;
+}
+
+#aside_title_4 {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10% 0 0 15%;
+    margin-top: 10%;
+    font-weight: bold;
+    color: #636363;
+    font-size: 1em;
+    font-family: 'Sunflower', sans-serif;
+}
+
+#aside_title_1 > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#aside_title_2 > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#aside_title_3 > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#aside_sub_1 {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 15%;
+    margin-top: 2.5%;
     color: #9F9F9F;
-}
-
-#my-ul {
-    margin: 0;
-    padding: 0;
     list-style: none;
+    font-size: 0.8em;
+    font-family: 'Sunflower', sans-serif;
 }
 
-/* myPage_content Style*/
-.content {
-    width: 70%;
-    height: 100%;
-    margin-left: 3%;
+#aside_sub_2 {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 15%;
+    margin-top: 2.5%;
+    color: #9F9F9F;
+    list-style: none;
+    font-size: 0.8em;
+    font-family: 'Sunflower', sans-serif;
+}
+
+#aside_sub_1 > li > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#aside_sub_2 > li > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.my_content {
+    position: relative;
+    width: 60%;
+    float: right;
+    margin: 8% 12% 0 0;
+    border: 1px solid white; 
+    padding: 1%;
+}
+
+.my_content > h1 {
+    font-family: 'Sunflower', sans-serif;
 }
