@@ -120,7 +120,7 @@ public class TasteController {
 		list = tasteService.selectListSearch(pi, search);
 		model.addAttribute("list", list);
 		model.addAttribute("pi", pi);
-		model.addAttribute("searchPlace",searchPlace);
+		model.addAttribute("searchPlace",searchPlace);   
 		
 		return "taste/tasteList";
 	}
