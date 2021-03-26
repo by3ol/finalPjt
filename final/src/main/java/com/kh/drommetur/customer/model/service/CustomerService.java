@@ -7,11 +7,22 @@ import com.kh.drommetur.customer.model.vo.Question;
 import com.kh.drommetur.taste.model.vo.PageInfo;
 
 public interface CustomerService {
-
+	
+	//질문
 	int insertQuestion(Question q);
 
 	int selectQuestion(int questionNo);
-
+	/*
+	 * Question selectQuestion(int questionNo);
+	 * 
+	 * int updateQuestion(int questionNo);
+	 */
+	
+	
+	
+	
+	
+	//공지
 	int selectListCount();
 
 	ArrayList<Notice> selectList(PageInfo pi);
@@ -29,10 +40,6 @@ public interface CustomerService {
 	
 
 
-	/*
-	 * Question selectQuestion(int questionNo);
-	 * 
-	 * int updateQuestion(int questionNo);
-	 */
+	
 
 }
