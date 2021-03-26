@@ -3,53 +3,55 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div id="my-body">
-<div class="myPage-warp">
-	<div class="myPage-from aside">
-		<div class="nav_subject">
-			<a href="${ pageContext.servletContext.contextPath }" class="myPage">MyPage</a>
-		</div>
-		<div class="nav">
-			<div class="nav_title travel">
-				<a href="selectList.tr">여행</a>
-			</div>
-			<div class="nav_title taste">
-				<a href="taste.mem">맛집</a>
-			</div>
-			<div class="nav_title accommodation">
-				<a href="accommodation.mem">숙박</a>
-			</div>
-			<div class="nav_title activity">
-				<a href="activity.mem">엑티비티</a>
-			</div>
-			<div class="nav_title reply">
-				<a href="reply.mem">리뷰</a>
+    <div class="myPage_warp">
+        <div class="my_container" id="my_content">
+            <div class="aside">
+                <div class="nav_subject" id="aside_subject">
+                    <a href="#" class="myPageHome">myPage</a>
+                </div>
+                <div class="nav" id="aside_nav">
+                    <div class="nav_title" id="aside_title_1">
+                        <a href="selectList.tr">여행</a>
+                    </div>
+                    <div class="nav_title" id="aside_title_1">
+                        <a href="taste.mem">맛집</a>
+                    </div>
+                    <div class="nav_title" id="aside_title_1">
+                        <a href="accommodation.mem">숙박</a>
+                    </div>
+                    <div class="nav_title" id="aside_title_1">
+                        <a href="activity.mem">엑티비티</a>
+                    </div>
+                    <div class="nav_title" id="aside_title_1">
+                        <a href="reply.mem">리뷰</a>
+                    </div>
+                    <div class="nav_title" id="aside_title_2">
+                        <a href="info.mem">개인정보</a>
+                    </div>
+                    <ul class="nav_sub g_list" id="aside_sub_1">
+                        <li class>
+                            <a href="infoUpdate.mem">개인정보 수정</a>
+                        </li>
+                        <li class>
+                            <a href="pwdUpdate.mem">비밀번호 변경</a>
+                        </li>
+                    </ul>
+                    <div class="nav_title" id="aside_title_3">
+                        <a href="delete.mem">회원탈퇴</a>
+                    </div>
 
-				<div class="nav_title Info">
-					<a href="info.mem" id="my-a">개인정보</a>
-				</div>
-				<ul class="nav_sub m_list" id="my-ul">
-					<li id="myLi"><a href="infoUpdate.mem" id="list_li">개인정보
-							수정</a></li>
-					<li id="myLi"><a href="pwdUpdate.mem" id="list_li">비밀번호 변경</a>
-					</li>
-				</ul>
-
-				<div class="nav_title m_Delete">
-					<a href="delete.mem" id="my-a">회원탈퇴</a>
-				</div>
-
-				<c:if test="${ sessionScope.loginUser.memberId eq 'admin' }">
-					<div class="nav_title admin">관리자 메뉴</div>
-					<ul class="nav_sub admin-list" id="my-ul">
-						<li id="myLi" id="my-a"><a href="member.ad" id="list_li">회원관리</a>
-						</li>
-						<li id="myLi" id="my-a"><a href="report.bo" id="list_li">신고게시판
-								관리</a></li>
-						<li id="myLi"><a href="#"></a></li>
-					</ul>
-				</c:if>
-			</div>
-		</div>
-	</div>
-</div>
+                    <c:if test="${ sessionScope.loginUser.memberId eq 'admin' }">
+                        <div class="nav_title" id="aside_title_4">
+                            관리자메뉴
+                        </div>
+                        <ul class="nav_sub g_list" id="aside_sub_2">
+                            <li class>
+                                <a href="member.ad">회원관리</a>
+                            </li>
+                            <li class>
+                                <a href="report.bo">신고게시판 관리</a>
+                            </li>
+                        </ul>
+                    </c:if>             
+                </div>
+            </div>
