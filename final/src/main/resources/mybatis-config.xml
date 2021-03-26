@@ -25,7 +25,10 @@
 		<typeAlias type="com.kh.drommetur.travel.model.vo.SimplePlace" alias="SimplePlace"></typeAlias>
 		
 		<typeAlias type="com.kh.drommetur.taste.model.vo.Taste" alias="Taste"></typeAlias>
-		<typeAlias type="com.kh.drommetur.taste.model.vo.PageInfo" alias="PageInfo"></typeAlias>
+		<typeAlias type="com.kh.drommetur.taste.model.vo.PageInfo" alias="tastePageInfo"></typeAlias>
+		
+		<typeAlias type="com.kh.drommetur.accommodations.model.vo.Accommodations" alias="Accommodations"></typeAlias>
+		<typeAlias type="com.kh.drommetur.accommodations.model.vo.PageInfo" alias="accomPageInfo"></typeAlias>
 		
 		<typeAlias type="com.kh.drommetur.member.model.vo.Member" alias="Member"></typeAlias>
 		
@@ -35,6 +38,7 @@
 		<mapper resource="mappers/place-mapper.xml"></mapper>
 		<mapper resource="mappers/customer-mapper.xml"></mapper>
 		<mapper resource="mappers/taste-mapper.xml"></mapper>
+		<mapper resource="mappers/accom-mapper.xml"></mapper>
 		<mapper resource="mappers/member-mapper.xml"></mapper>
 	</mappers>
 

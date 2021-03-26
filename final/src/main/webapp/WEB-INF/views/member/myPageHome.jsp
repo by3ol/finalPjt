@@ -5,10 +5,13 @@
 
 <jsp:include page="../member/myPageAside.jsp" />
 
-<div class="myPage-from content" id="my-content">
-	<div class="myPage-form header" id="my-con-header">
-		<h1>마이페이지 홈</h1>
-	</div>	
-</div>
+            <div class="my_content">
+                <h1>마이페이지 홈</h1><br>
 
+					<!-- 본문 내용 -->
+
+            </div>
+        </div>
+    </div>
+    
 <jsp:include page="../common/footer.jsp" />

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="attractionMapper">
+	<resultMap type="Attraction" id="attractionResultSet">
+		<id property="placeNo" column="PLACE_NO"/>
+		<result property="placeAddr" column="PLACE_ADDR"/>
+		<result property="placeName" column="PLACE_NAME"/>
+		<result property="placePhone" column="PLACE_PHONE"/>
+		<result property="placeGroup" column="PLACE_GROUP"/>
+		<result property="placeLon" column="PLACE_LON"/>
+		<result property="placeLat" column="PLACE_LAT"/>
+		<result property="placeCategory" column="PLACE_CATEGORY"/>
+		<result property="placeDate" column="PLACE_DATE"/>
+		<result property="placeStatus" column="PLACE_STATUS"/>	
+		<result property="placeUrl" column="PLACE_URL"/>	
+		<result property="placeCount" column="PLACE_COUNT"/>	
+		<result property="placeScore" column="PLACE_SCORE"/>	
+		<result property="placeTotalScore" column="PLACE_TOTALSCORE"/>
+  		<result property="placeScoreCount" column="PLACE_SCORECOUNT"/>
+		<result property="regionNo" column="REGION_NO"/>	
+	</resultMap>
+	
+	<update	id="updateIncreaseCount" parameterType="_int">
+	UPDATE PLACE
+	SET PLACE_COUNT = PLACE_COUNT+1
+	WHERE PLACE_NO = #{placeNo}
+	</update>
+	
+	<select id="selectBoard" resultMap="accomResultSet">
+	SELECT *
+   	FROM PLACE
+   	WHERE PLACE_STATUS='Y' AND PLACE_NO = #{placeNo}
+   	ORDER BY PLACE_NO DESC
+	</select>
+	
+
+	 <select id="selectListCount" resultType="_int">
+      SELECT COUNT(*)
+      FROM PLACE
+      WHERE PLACE_STATUS='Y' 
+      AND PLACE_GROUP='숙박'
+      AND PLACE_URL IS NOT NULL
+   </select>
+   
+   <select id="selectList" resultMap="accomResultSet">
+   	SELECT *
+   	FROM PLACE
+   	WHERE PLACE_STATUS='Y'
+   	AND PLACE_GROUP='숙박'
+   	AND PLACE_URL IS NOT NULL
+   	ORDER BY PLACE_NO DESC
+   </select>
+
+	 <select id="selectListCountca" resultType="_int" parameterType="string">
+      SELECT COUNT(*)
+      FROM PLACE 
+      WHERE
+      PLACE_STATUS='Y' 
+      AND PLACE_GROUP='숙박'
+      <choose>
+      <when test="placeCategory != null and placeCategory.equals('게스트하우스')">
+	  AND PLACE_CATEGORY = '게스트하우스'
+	  </when>
+	  <when test="placeCategory != null and placeCategory.equals('호텔')">
+	  AND PLACE_CATEGORY IN ('가족호텔','관광호텔','소형호텔')
+	  </when>
+	  <when test="placeCategory != null and placeCategory.equals('모텔')">
+	  AND PLACE_CATEGORY = '모텔'
+	  </when>
+	  <when test="placeCategory != null and placeCategory.equals('펜션')">
+	  AND PLACE_CATEGORY = '펜션'
+	  </when>
+	  <when test="placeCategory != null and placeCategory.equals('이색호텔')">
+	  AND PLACE_CATEGORY IN ('전통호텔','한옥스테이')
+	  </when>
+	  <when test="placeCategory != null and placeCategory.equals('저가숙박')">
+	  AND PLACE_CATEGORY IN ('여관','민박')
+	  </when>
+	  <when test="placeCategory != null and placeCategory.equals('교육시설')">
+	  AND PLACE_CATEGORY IN ('홈스테이','유스호스텔')
+	  </when>
+	  <when test="placeCategory != null and placeCategory.equals('주거')">
+	  AND PLACE_CATEGORY IN ('서비스드레지던스','콘도미니엄')
+	  </when>
+	  </choose>
+	  AND REGION_NO=#{regionNo}
+      AND PLACE_URL IS NOT NULL
+	  </select>
+   <select id="selectListca" resultMap="accomResultSet" parameterType="string">
+   	SELECT *
+   	FROM PLACE
+   	WHERE
+   	PLACE_STATUS='Y'
+   	AND PLACE_GROUP='숙박'
+    <choose>
+    <when test="placeCategory != null and placeCategory.equals('게스트하우스')">
+	AND PLACE_CATEGORY = '게스트하우스'
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('호텔')">
+	AND PLACE_CATEGORY IN ('가족호텔','관광호텔','소형호텔')
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('모텔')">
+	AND PLACE_CATEGORY = '모텔'
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('펜션')">
+	AND PLACE_CATEGORY = '펜션'
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('이색호텔')">
+	AND PLACE_CATEGORY IN ('전통호텔','한옥스테이')
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('저가숙박')">
+	AND PLACE_CATEGORY IN ('여관','민박')
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('교육시설')">
+	AND PLACE_CATEGORY IN ('홈스테이','유스호스텔')
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('주거')">
+	AND PLACE_CATEGORY IN ('서비스드레지던스','콘도미니엄')
+	</when>
+	</choose>
+   	AND REGION_NO=#{regionNo}
+   	AND PLACE_URL IS NOT NULL
+   	ORDER BY PLACE_NO DESC
+   </select>
+   
+   <select id="selectListre" resultMap="accomResultSet" parameterType="string">
+   	SELECT *
+   	FROM PLACE
+   	WHERE
+   	PLACE_STATUS='Y'
+   	AND PLACE_GROUP='숙박'
+    <choose>
+    <when test="placeCategory != null and placeCategory.equals('게스트하우스')">
+	AND PLACE_CATEGORY = '게스트하우스'
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('호텔')">
+	AND PLACE_CATEGORY IN ('가족호텔','관광호텔','소형호텔')
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('모텔')">
+	AND PLACE_CATEGORY = '모텔'
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('펜션')">
+	AND PLACE_CATEGORY = '펜션'
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('이색호텔')">
+	AND PLACE_CATEGORY IN ('전통호텔','한옥스테이')
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('저가숙박')">
+	AND PLACE_CATEGORY IN ('여관','민박')
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('교육시설')">
+	AND PLACE_CATEGORY IN ('홈스테이','유스호스텔')
+	</when>
+	<when test="placeCategory != null and placeCategory.equals('주거')">
+	AND PLACE_CATEGORY IN ('서비스드레지던스','콘도미니엄')
+	</when>
+	</choose>
+	AND PLACE_URL IS NOT NULL
+   	ORDER BY PLACE_NO DESC
+   </select>
+   
+   <select id="selectListSearch" resultMap="accomResultSet">
+   	SELECT *
+   	FROM PLACE
+   	WHERE PLACE_STATUS='Y'
+   	AND PLACE_GROUP='숙박'
+   	AND PLACE_NAME LIKE '%'||#{searchName}||'%'
+   	AND PLACE_URL IS NOT NULL
+   	ORDER BY PLACE_NO DESC
+   </select>
+   
+	<select id="selectListAll" resultMap="accomResultSet">
+   	SELECT *
+   	FROM PLACE
+   	WHERE PLACE_STATUS='Y'
+   	AND PLACE_GROUP='숙박'
+   	AND REGION_NO= #{regionNo}
+   	AND PLACE_URL IS NOT NULL
+   	ORDER BY PLACE_NO DESC
+   </select>
+   
+	<update	id="updateIncreaseScoreCount" parameterType="_int">
+	UPDATE PLACE
+	SET PLACE_SCORECOUNT = PLACE_SCORECOUNT+1
+	WHERE PLACE_NO = #{placeNo}
+	</update>
+	
+	<update	id="updateTotalScore" parameterType="_int">
+	UPDATE PLACE
+	SET PLACE_TOTALSCORE = PLACE_TOTALSCORE+#{placeTotalScore}
+	WHERE PLACE_NO = #{placeNo}
+	</update>
+	
+	<update id="updateScore" parameterType="_int">
+	UPDATE PLACE
+	SET PLACE_SCORE = ROUND(PLACE_TOTALSCORE/PLACE_SCORECOUNT, 2)
+	WHERE PLACE_NO = #{placeNo}
+	</update>
+	
+</mapper>
