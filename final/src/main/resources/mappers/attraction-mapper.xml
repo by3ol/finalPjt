@@ -26,7 +26,7 @@
 	WHERE PLACE_NO = #{placeNo}
 	</update>
 	
-	<select id="selectBoard" resultMap="accomResultSet">
+	<select id="selectBoard" resultMap="attractionResultSet">
 	SELECT *
    	FROM PLACE
    	WHERE PLACE_STATUS='Y' AND PLACE_NO = #{placeNo}
@@ -38,15 +38,15 @@
       SELECT COUNT(*)
       FROM PLACE
       WHERE PLACE_STATUS='Y' 
-      AND PLACE_GROUP='숙박'
+      AND PLACE_GROUP IN ('관광지','레포츠')
       AND PLACE_URL IS NOT NULL
    </select>
    
-   <select id="selectList" resultMap="accomResultSet">
+   <select id="selectList" resultMap="attractionResultSet">
    	SELECT *
    	FROM PLACE
    	WHERE PLACE_STATUS='Y'
-   	AND PLACE_GROUP='숙박'
+   	AND PLACE_GROUP IN ('관광지','레포츠')
    	AND PLACE_URL IS NOT NULL
    	ORDER BY PLACE_NO DESC
    </select>
@@ -56,124 +56,124 @@
       FROM PLACE 
       WHERE
       PLACE_STATUS='Y' 
-      AND PLACE_GROUP='숙박'
-      <choose>
-      <when test="placeCategory != null and placeCategory.equals('게스트하우스')">
-	  AND PLACE_CATEGORY = '게스트하우스'
+      AND PLACE_GROUP IN ('관광지','레포츠')
+     <choose>
+	<when test="placeCategory != null and placeCategory.equals('액티비티')">
+     AND PLACE_CATEGORY IN ('스키/스키보드','카약/카누','ATV','빙벽등반','스케이트','스키(보드) 렌탈샵','자전거하이킹','수영','경륜','복합 레포츠','MTB','자동차경주','번지점프','승마','사격장','서바이벌게임','스노쿨링/스킨스쿠버다이빙','래프팅','윈드서핑/제트스키','레포츠','골프','썰매장','행글라이딩/패러글라이딩','초경량비행','암벽등반','카트','스카이다이빙')
+     </when>
+     <when test="placeCategory != null and placeCategory.equals('힐링')">
+     AND PLACE_CATEGORY IN ('경마','카지노','수련시설','경기장','바다낚시','트래킹','요트','야영장,오토캠핑장','민물낚시','스포츠센터','온천/욕장/스파','계곡','유원지','해수욕장')
+     </when>
+     <when test="placeCategory != null and placeCategory.equals('직업체험')">
+     AND PLACE_CATEGORY IN ('유적지/사적지','동상','전통체험','성','문','고택','생가','고궁')
+     </when>
+	<when test="placeCategory != null and placeCategory.equals('공공시설')">
+	  AND PLACE_CATEGORY IN ('등대','약수터','항구/포구','분수','다리/대교','기념탑/기념비/전망대','터널','공원','도립공원')
 	  </when>
-	  <when test="placeCategory != null and placeCategory.equals('호텔')">
-	  AND PLACE_CATEGORY IN ('가족호텔','관광호텔','소형호텔')
+	<when test="placeCategory != null and placeCategory.equals('종교')">
+	  AND PLACE_CATEGORY IN ('사찰','종교성지')
 	  </when>
-	  <when test="placeCategory != null and placeCategory.equals('모텔')">
-	  AND PLACE_CATEGORY = '모텔'
+	<when test="placeCategory != null and placeCategory.equals('환경')">
+	  AND PLACE_CATEGORY IN ('군립공원','농.산.어촌 체험','자연휴양림','수목원','호수','섬','국립공원','폭포','산','기암괴석','동굴','자연생태관광지','관광농원','강')
 	  </when>
-	  <when test="placeCategory != null and placeCategory.equals('펜션')">
-	  AND PLACE_CATEGORY = '펜션'
+	<when test="placeCategory != null and placeCategory.equals('이색체험')">
+	  AND PLACE_CATEGORY IN ('이색체험','관광단지','유명건물','이색거리','이색찜질방','유람선/잠수함관광','민속마을','해안절경','헬스투어','희귀동.식물','테마공원')
 	  </when>
-	  <when test="placeCategory != null and placeCategory.equals('이색호텔')">
-	  AND PLACE_CATEGORY IN ('전통호텔','한옥스테이')
+	<when test="placeCategory != null and placeCategory.equals('기타')">
+	  AND PLACE_CATEGORY IN ('기타','관광지','안보관광','식음료')
 	  </when>
-	  <when test="placeCategory != null and placeCategory.equals('저가숙박')">
-	  AND PLACE_CATEGORY IN ('여관','민박')
-	  </when>
-	  <when test="placeCategory != null and placeCategory.equals('교육시설')">
-	  AND PLACE_CATEGORY IN ('홈스테이','유스호스텔')
-	  </when>
-	  <when test="placeCategory != null and placeCategory.equals('주거')">
-	  AND PLACE_CATEGORY IN ('서비스드레지던스','콘도미니엄')
-	  </when>
-	  </choose>
+	</choose>
 	  AND REGION_NO=#{regionNo}
       AND PLACE_URL IS NOT NULL
 	  </select>
-   <select id="selectListca" resultMap="accomResultSet" parameterType="string">
+   <select id="selectListca" resultMap="attractionResultSet" parameterType="string">
    	SELECT *
    	FROM PLACE
    	WHERE
    	PLACE_STATUS='Y'
-   	AND PLACE_GROUP='숙박'
-    <choose>
-    <when test="placeCategory != null and placeCategory.equals('게스트하우스')">
-	AND PLACE_CATEGORY = '게스트하우스'
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('호텔')">
-	AND PLACE_CATEGORY IN ('가족호텔','관광호텔','소형호텔')
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('모텔')">
-	AND PLACE_CATEGORY = '모텔'
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('펜션')">
-	AND PLACE_CATEGORY = '펜션'
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('이색호텔')">
-	AND PLACE_CATEGORY IN ('전통호텔','한옥스테이')
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('저가숙박')">
-	AND PLACE_CATEGORY IN ('여관','민박')
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('교육시설')">
-	AND PLACE_CATEGORY IN ('홈스테이','유스호스텔')
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('주거')">
-	AND PLACE_CATEGORY IN ('서비스드레지던스','콘도미니엄')
-	</when>
-	</choose>
+   	AND PLACE_GROUP IN ('관광지','레포츠')
+       <choose>
+<when test="placeCategory != null and placeCategory.equals('액티비티')">
+     AND PLACE_CATEGORY IN ('스키/스키보드','카약/카누','ATV','빙벽등반','스케이트','스키(보드) 렌탈샵','자전거하이킹','수영','경륜','복합 레포츠','MTB','자동차경주','번지점프','승마','사격장','서바이벌게임','스노쿨링/스킨스쿠버다이빙','래프팅','윈드서핑/제트스키','레포츠','골프','썰매장','행글라이딩/패러글라이딩','초경량비행','암벽등반','카트','스카이다이빙')
+     </when>
+     <when test="placeCategory != null and placeCategory.equals('힐링')">
+     AND PLACE_CATEGORY IN ('경마','카지노','수련시설','경기장','바다낚시','트래킹','요트','야영장,오토캠핑장','민물낚시','스포츠센터','온천/욕장/스파','계곡','유원지','해수욕장')
+     </when>
+     <when test="placeCategory != null and placeCategory.equals('직업체험')">
+     AND PLACE_CATEGORY IN ('유적지/사적지','동상','전통체험','성','문','고택','생가','고궁')
+     </when>
+<when test="placeCategory != null and placeCategory.equals('공공시설')">
+	  AND PLACE_CATEGORY IN ('등대','약수터','항구/포구','분수','다리/대교','기념탑/기념비/전망대','터널','공원','도립공원')
+	  </when>
+<when test="placeCategory != null and placeCategory.equals('종교')">
+	  AND PLACE_CATEGORY IN ('사찰','종교성지')
+	  </when>
+<when test="placeCategory != null and placeCategory.equals('환경')">
+	  AND PLACE_CATEGORY IN ('군립공원','농.산.어촌 체험','자연휴양림','수목원','호수','섬','국립공원','폭포','산','기암괴석','동굴','자연생태관광지','관광농원','강')
+	  </when>
+<when test="placeCategory != null and placeCategory.equals('이색체험')">
+	  AND PLACE_CATEGORY IN ('이색체험','관광단지','유명건물','이색거리','이색찜질방','유람선/잠수함관광','민속마을','해안절경','헬스투어','희귀동.식물','테마공원')
+	  </when>
+<when test="placeCategory != null and placeCategory.equals('기타')">
+	  AND PLACE_CATEGORY IN ('기타','관광지','안보관광','식음료')
+	  </when>
+</choose>
    	AND REGION_NO=#{regionNo}
    	AND PLACE_URL IS NOT NULL
    	ORDER BY PLACE_NO DESC
    </select>
    
-   <select id="selectListre" resultMap="accomResultSet" parameterType="string">
+   <select id="selectListre" resultMap="attractionResultSet" parameterType="string">
    	SELECT *
    	FROM PLACE
    	WHERE
    	PLACE_STATUS='Y'
-   	AND PLACE_GROUP='숙박'
-    <choose>
-    <when test="placeCategory != null and placeCategory.equals('게스트하우스')">
-	AND PLACE_CATEGORY = '게스트하우스'
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('호텔')">
-	AND PLACE_CATEGORY IN ('가족호텔','관광호텔','소형호텔')
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('모텔')">
-	AND PLACE_CATEGORY = '모텔'
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('펜션')">
-	AND PLACE_CATEGORY = '펜션'
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('이색호텔')">
-	AND PLACE_CATEGORY IN ('전통호텔','한옥스테이')
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('저가숙박')">
-	AND PLACE_CATEGORY IN ('여관','민박')
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('교육시설')">
-	AND PLACE_CATEGORY IN ('홈스테이','유스호스텔')
-	</when>
-	<when test="placeCategory != null and placeCategory.equals('주거')">
-	AND PLACE_CATEGORY IN ('서비스드레지던스','콘도미니엄')
-	</when>
+   	AND PLACE_GROUP IN ('관광지','레포츠')
+   	<choose>
+	<when test="placeCategory != null and placeCategory.equals('액티비티')">
+     AND PLACE_CATEGORY IN ('스키/스키보드','카약/카누','ATV','빙벽등반','스케이트','스키(보드) 렌탈샵','자전거하이킹','수영','경륜','복합 레포츠','MTB','자동차경주','번지점프','승마','사격장','서바이벌게임','스노쿨링/스킨스쿠버다이빙','래프팅','윈드서핑/제트스키','레포츠','골프','썰매장','행글라이딩/패러글라이딩','초경량비행','암벽등반','카트','스카이다이빙')
+     </when>
+     <when test="placeCategory != null and placeCategory.equals('힐링')">
+     AND PLACE_CATEGORY IN ('경마','카지노','수련시설','경기장','바다낚시','트래킹','요트','야영장,오토캠핑장','민물낚시','스포츠센터','온천/욕장/스파','계곡','유원지','해수욕장')
+     </when>
+     <when test="placeCategory != null and placeCategory.equals('직업체험')">
+     AND PLACE_CATEGORY IN ('유적지/사적지','동상','전통체험','성','문','고택','생가','고궁')
+     </when>
+	<when test="placeCategory != null and placeCategory.equals('공공시설')">
+	  AND PLACE_CATEGORY IN ('등대','약수터','항구/포구','분수','다리/대교','기념탑/기념비/전망대','터널','공원','도립공원')
+	  </when>
+	<when test="placeCategory != null and placeCategory.equals('종교')">
+	  AND PLACE_CATEGORY IN ('사찰','종교성지')
+	  </when>
+	<when test="placeCategory != null and placeCategory.equals('환경')">
+	  AND PLACE_CATEGORY IN ('군립공원','농.산.어촌 체험','자연휴양림','수목원','호수','섬','국립공원','폭포','산','기암괴석','동굴','자연생태관광지','관광농원','강')
+	  </when>
+	<when test="placeCategory != null and placeCategory.equals('이색체험')">
+	  AND PLACE_CATEGORY IN ('이색체험','관광단지','유명건물','이색거리','이색찜질방','유람선/잠수함관광','민속마을','해안절경','헬스투어','희귀동.식물','테마공원')
+	  </when>
+	<when test="placeCategory != null and placeCategory.equals('기타')">
+	  AND PLACE_CATEGORY IN ('기타','관광지','안보관광','식음료')
+	  </when>
 	</choose>
 	AND PLACE_URL IS NOT NULL
    	ORDER BY PLACE_NO DESC
    </select>
    
-   <select id="selectListSearch" resultMap="accomResultSet">
+   <select id="selectListSearch" resultMap="attractionResultSet">
    	SELECT *
    	FROM PLACE
    	WHERE PLACE_STATUS='Y'
-   	AND PLACE_GROUP='숙박'
+   	AND PLACE_GROUP IN ('관광지','레포츠')
    	AND PLACE_NAME LIKE '%'||#{searchName}||'%'
    	AND PLACE_URL IS NOT NULL
    	ORDER BY PLACE_NO DESC
    </select>
    
-	<select id="selectListAll" resultMap="accomResultSet">
+	<select id="selectListAll" resultMap="attractionResultSet">
    	SELECT *
    	FROM PLACE
    	WHERE PLACE_STATUS='Y'
-   	AND PLACE_GROUP='숙박'
+   	AND PLACE_GROUP IN ('관광지','레포츠')
    	AND REGION_NO= #{regionNo}
    	AND PLACE_URL IS NOT NULL
    	ORDER BY PLACE_NO DESC

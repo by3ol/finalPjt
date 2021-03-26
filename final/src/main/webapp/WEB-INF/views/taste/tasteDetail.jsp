@@ -318,9 +318,8 @@
       ],
     })
   }
-</script>
-      <div class="footer">
-      </div>
+</script><br><br><br>
+      <jsp:include page="../common/footer.jsp" />
   </div>  
   </div>
 </body>

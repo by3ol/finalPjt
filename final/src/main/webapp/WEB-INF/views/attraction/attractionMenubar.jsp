@@ -80,14 +80,15 @@
             </select>
             </li>
             <li class="all"><label>전체</label></li>
-            <li class="h"><label>호텔</label></li>
-            <li class="m"><label>모텔</label></li>
-            <li class="p"><label>펜션</label></li>
-            <li class="g"><label>게스트하우스</label></li>
-            <li class="n"><label>이색호텔</label></li>
-            <li class="c"><label>저가숙박</label></li>
-            <li class="e"><label>교육시설</label></li>
-            <li class="s"><label>주거</label></li>
+            <li class="a"><label>액티비티</label></li>
+            <li class="hl"><label>힐링</label></li>
+            <li class="j"><label>직업체험</label></li>
+            <li class="hi"><label>역사</label></li>
+            <li class="p"><label>공공시설</label></li>
+            <li class="r"><label>종교</label></li>
+            <li class="e"><label>환경</label></li>
+            <li class="n"><label>이색체험</label></li>
+            <li class="etc"><label>기타</label></li>
         </ul>
         <!-- 
 홈스테이 유스호스텔         		교육시설
@@ -105,40 +106,44 @@
     	$(function(){
     		$(".all").click(function(){
        		 var regionNo=document.getElementById("location").value;
-       		location.href="<%=request.getContextPath()%>/list.ac?placeCategory=전체&regionNo="+regionNo;
+       		location.href="<%=request.getContextPath()%>/list.at?placeCategory=전체&regionNo="+regionNo;
        		});
-    		$(".h").click(function(){
+    		$(".a").click(function(){
     		 var regionNo=document.getElementById("location").value;
-    		location.href="<%=request.getContextPath()%>/list.ac?placeCategory=호텔&regionNo="+regionNo;
+    		location.href="<%=request.getContextPath()%>/list.at?placeCategory=액티비티&regionNo="+regionNo;
     		});
-    		$(".m").click(function(){
+    		$(".hl").click(function(){
     		 var regionNo=document.getElementById("location").value;
-    		location.href="<%=request.getContextPath()%>/list.ac?placeCategory=모텔&regionNo="+regionNo;
+    		location.href="<%=request.getContextPath()%>/list.at?placeCategory=힐링&regionNo="+regionNo;
     		});
+    		$(".j").click(function(){
+    		 var regionNo=document.getElementById("location").value;
+    		location.href="<%=request.getContextPath()%>/list.at?placeCategory=직업체험&regionNo="+regionNo;
+    		});
+    		$(".hi").click(function(){
+   			 var regionNo=document.getElementById("location").value;
+   			location.href="<%=request.getContextPath()%>/list.at?placeCategory=역사&regionNo="+regionNo;
+   			});
     		$(".p").click(function(){
-    		 var regionNo=document.getElementById("location").value;
-    		location.href="<%=request.getContextPath()%>/list.ac?placeCategory=펜션&regionNo="+regionNo;
-    		});
-    		$(".g").click(function(){
    			 var regionNo=document.getElementById("location").value;
-   			location.href="<%=request.getContextPath()%>/list.ac?placeCategory=게스트하우스&regionNo="+regionNo;
+   			location.href="<%=request.getContextPath()%>/list.at?placeCategory=공공시설&regionNo="+regionNo;
    			});
-    		$(".n").click(function(){
+    		$(".r").click(function(){
    			 var regionNo=document.getElementById("location").value;
-   			location.href="<%=request.getContextPath()%>/list.ac?placeCategory=이색호텔&regionNo="+regionNo;
-   			});
-    		$(".c").click(function(){
-   			 var regionNo=document.getElementById("location").value;
-   			location.href="<%=request.getContextPath()%>/list.ac?placeCategory=저가숙박&regionNo="+regionNo;
+   			location.href="<%=request.getContextPath()%>/list.at?placeCategory=종교&regionNo="+regionNo;
    			});
     		$(".e").click(function(){
    			 var regionNo=document.getElementById("location").value;
-   			location.href="<%=request.getContextPath()%>/list.ac?placeCategory=교육시설&regionNo="+regionNo;
+   			location.href="<%=request.getContextPath()%>/list.at?placeCategory=환경&regionNo="+regionNo;
    			});
-    		$(".s").click(function(){
-   			 var regionNo=document.getElementById("location").value;
-   			location.href="<%=request.getContextPath()%>/list.ac?placeCategory=주거&regionNo="+regionNo;
-   			});
+    		$(".n").click(function(){
+      		var regionNo=document.getElementById("location").value;
+      		location.href="<%=request.getContextPath()%>/list.at?placeCategory=이색체험&regionNo="+regionNo;
+      		});
+    		$(".etc").click(function(){
+      		var regionNo=document.getElementById("location").value;
+      		location.href="<%=request.getContextPath()%>/list.at?placeCategory=기타&regionNo="+regionNo;
+      		});
     		
     		
     	});

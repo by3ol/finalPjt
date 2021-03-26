@@ -34,7 +34,7 @@ public interface AttractionService {
 
 	int updateScore(int placeNo);
 
-	ArrayList<Attraction> selectListre(PageInfo pi, String placeCategory);
+	ArrayList<Attraction> selectListre(PageInfo pi, Attraction at);
 
 	
 

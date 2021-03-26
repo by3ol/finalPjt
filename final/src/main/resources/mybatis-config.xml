@@ -30,6 +30,10 @@
 		<typeAlias type="com.kh.drommetur.accommodations.model.vo.Accommodations" alias="Accommodations"></typeAlias>
 		<typeAlias type="com.kh.drommetur.accommodations.model.vo.PageInfo" alias="accomPageInfo"></typeAlias>
 		
+		
+		<typeAlias type="com.kh.drommetur.attraction.model.vo.Attraction" alias="Attraction"></typeAlias>
+		<typeAlias type="com.kh.drommetur.attraction.model.vo.PageInfo" alias="attractionPageInfo"></typeAlias>
+		
 		<typeAlias type="com.kh.drommetur.member.model.vo.Member" alias="Member"></typeAlias>
 		
 	</typeAliases>
@@ -39,6 +43,7 @@
 		<mapper resource="mappers/customer-mapper.xml"></mapper>
 		<mapper resource="mappers/taste-mapper.xml"></mapper>
 		<mapper resource="mappers/accom-mapper.xml"></mapper>
+		<mapper resource="mappers/attraction-mapper.xml"></mapper>
 		<mapper resource="mappers/member-mapper.xml"></mapper>
 	</mappers>
 

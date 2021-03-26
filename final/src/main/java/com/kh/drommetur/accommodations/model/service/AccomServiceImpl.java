@@ -53,9 +53,9 @@ public class AccomServiceImpl implements AccomService{
 		return accomDao.selectListca(sqlSession, pi,ac);
 	}
 	@Override
-	public ArrayList<Accommodations> selectListre(PageInfo pi, String placeCategory) {
+	public ArrayList<Accommodations> selectListre(PageInfo pi, Accommodations ac) {
 		// TODO Auto-generated method stub
-		return accomDao.selectListre(sqlSession, pi, placeCategory);
+		return accomDao.selectListre(sqlSession, pi, ac);
 	}
 	@Override
 	public ArrayList<Accommodations> selectListSearch(PageInfo pi, Search search) {
