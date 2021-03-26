@@ -58,6 +58,11 @@ public class PlaceDao {
 		return (ArrayList)sqlSession.selectList("placeMapper.selectPlaceList", place);
 	}
 
+	public ArrayList<Place> searchPlaceList(SqlSessionTemplate sqlSession, String keyword) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("placeMapper.searchPlaceList", keyword);
+	}
+
 
 
 

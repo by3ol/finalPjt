@@ -18,3 +18,8 @@
 #travelContainer{
 	font-family: 'Sunflower', sans-serif;
 }
+
+#displayResultDiv{
+	
+	overflow-y:auto;
+}

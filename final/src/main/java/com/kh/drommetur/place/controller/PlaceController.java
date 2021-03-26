@@ -39,4 +39,21 @@ public class PlaceController {
 		
 	}
 	
+	
+	@GetMapping(value="placeList", produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseEntity<List<Place>> searchPlaceList(String keyword) {
+		
+		
+
+		
+		ArrayList<Place> list=placeService.searchPlaceList(keyword);
+		
+		
+		
+		return new ResponseEntity<>(list,HttpStatus.OK);
+		
+	}
+	
+	
 }

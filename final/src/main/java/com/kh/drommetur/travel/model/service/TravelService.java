@@ -11,10 +11,18 @@ public interface TravelService {
 
 	
 
-	int selectListCount();
+	int selectListCount(int memberNo);
 
 	Travel selectTravel(int travelNo);
 
 	List<Travel> selectList(Criteria cri, int memberNo);
+
+
+
+	int deleteTravel(int travelNo);
+
+
+
+	int modifyTravel(Travel travel, int memberNo);
 
 }

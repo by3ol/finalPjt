@@ -8,7 +8,10 @@ public class SimplePlace {
 	private int placeNo;
 	private String placeName;
 	
-	
+	public SimplePlace() {
+		
+		
+	}
 	public SimplePlace(int placeNo,String placeName) {
 		
 		this.placeNo=placeNo;

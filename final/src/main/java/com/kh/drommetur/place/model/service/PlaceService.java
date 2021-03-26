@@ -11,4 +11,6 @@ public interface PlaceService {
 	int insertPlaceList(ArrayList<Place> list);
 
 	ArrayList<Place> selectPlaceList(Place place);
+
+	ArrayList<Place> searchPlaceList(String keyword);
 }

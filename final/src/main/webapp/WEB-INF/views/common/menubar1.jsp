@@ -67,21 +67,17 @@
 		<div class="collapse navbar-collapse " id="collapsibleNavbar">
 			<ul class="navbar-nav navbar-right">
 				<li class="nav-item"><a class="nav-link"
-					href="${ pageContext.servletContext.contextPath }/view.tr">여행</a></li>
+					href="${ pageContext.servletContext.contextPath }/enrollForm.tr">여행</a></li>
 				<li class="nav-item"><a class="nav-link" href="list.ta">맛집</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">숙박</a></li>
 
 				<li class="nav-item"><a class="nav-link" href="#">명소/액티비티</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">이동수단</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">리뷰</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">여행코스 추천</a></li>
 
 
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="navbardrop"
-					data-toggle="dropdown"> 사용자 게시판 </a>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">리뷰</a> <a class="dropdown-item"
-							href="#">여행코스 추천</a>
-					</div></li>
+				
 
 				<li class="nav-item"><a class="nav-link" href="customercenter.cu">고객센터</a></li>
 			</ul>

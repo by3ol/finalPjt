@@ -33,7 +33,13 @@
   
   </select>
   
+   <select id="searchPlaceList" parameterType="string" resultMap="placeResultSet">
+  		SELECT PLACE_NO,PLACE_ADDR,PLACE_NAME,PLACE_PHONE,PLACE_GROUP,PLACE_LON,PLACE_LAT,PLACE_CATEGORY,PLACE_URL,PLACE_SCORE
+	FROM PLACE
+	WHERE PLACE_STATUS='Y' AND PLACE_NAME LIKE '%'||#{keyword}||'%'
+  	
   
+  </select>
   
   
 </mapper>

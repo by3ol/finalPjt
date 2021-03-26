@@ -51,9 +51,9 @@ public class TravelServiceImpl implements TravelService {
 	}
 
 	@Override
-	public int selectListCount() {
+	public int selectListCount(int memberNo) {
 		// TODO Auto-generated method stub
-		return travelMapper.selectListCount();
+		return travelMapper.selectListCount(memberNo);
 	}
 
 	@Override
@@ -86,6 +86,35 @@ public class TravelServiceImpl implements TravelService {
 		
 		
 		return travel ;
+	}
+
+	@Override
+	public int deleteTravel(int travelNo) {
+		
+		return travelMapper.deleteTravel(travelNo);
+	}
+
+	@Override
+	public int modifyTravel(Travel travel, int memberNo) {
+		
+		
+		int result=travelMapper.modifyDeleteTravel(travel);
+		
+		result*=travelMapper.modifyInsertTravel(travel,memberNo);
+		
+		for(TravelDetail travelDetail : travel.getTravelDetailList()) {
+			
+			result*=travelMapper.modifyInsertTravelDetail(travelDetail,travel.getTravelNo());
+			
+			for(SimplePlace simplePlace:travelDetail.getTravelPlaces()) {
+				
+				result*=travelMapper.insertTravelPlace(simplePlace);
+			}
+			
+		
+		}
+		
+		return result;
 	}
 
 }
