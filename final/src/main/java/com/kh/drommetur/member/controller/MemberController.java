@@ -141,7 +141,7 @@ public class MemberController {
 	
 	@RequestMapping("info.mem")
 	public String myPageInfo() {
-		return "member/myPageInfo";
+		return "member/myPageProfile";
 	}
 	
 	@RequestMapping("infoUpdate.mem")
