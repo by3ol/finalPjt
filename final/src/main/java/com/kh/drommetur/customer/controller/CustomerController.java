@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,16 +53,18 @@ public class CustomerController {
 	
 	@RequestMapping("customernoticeenroll.cu")
 	public String customernoticeenroll() {
-		return "customer/customernoticedetail";
+		return "customer/customernoticeenroll";
 	}
 
 	@RequestMapping("insert.cu")
-	public String insertQuestion(Question q, HttpServletRequest request, Model model) throws Exception {
+	public String insertQuestion(@Param("memberNo") Integer memberNo,Question q, Model model) throws Exception {
 
 		int result = customerservice.insertQuestion(q);
-
+		
+	
 		if (result > 0) {
 			return "redirect:customercenter";
+			
 		} else {
 			throw new Exception("문의글 작성에 실패하였습니다.");
 		}
@@ -90,7 +93,7 @@ public class CustomerController {
 
 		model.addAttribute("list", list);
 		model.addAttribute("pi", pi);
-		return "customer/customernoticelist";
+		return "customer/customernotice";
 	}
 
 	@RequestMapping("noticeEnroll.cu")
@@ -99,10 +102,10 @@ public class CustomerController {
 	}
 
 	@RequestMapping("insertNotice.cu")
-	public String insertNotice(Notice n, HttpServletRequest request, Model model) throws Exception {
+	public String insertNotice(Notice n, Model model) throws Exception {
 
 		int result = customerservice.insertNotice(n);
-
+		model.addAttribute("n", n);
 		if (result > 0) {
 			return "customer/customernoticelist";
 		} else {
@@ -117,8 +120,8 @@ public class CustomerController {
 		int result = customerservice.updateIncreaseCount(noticeNo);
 
 		if (result > 0) {
-			Notice b = customerservice.selectNotice(noticeNo);
-			mv.addObject("b", b).setViewName("customer/customerNoticeDetail");
+			Notice n = customerservice.selectNotice(noticeNo);
+			mv.addObject("n", n).setViewName("customer/customerNoticeDetail");
 		} else {
 			throw new Exception("공지글 조회에 실패했습니다.");
 		}

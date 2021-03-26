@@ -45,8 +45,9 @@ table td, table th {
 
 table thead tr {
 	height: 40px;
-	background: #36304a;
+	background: #808080;
 	font-size: 14px
+	text-align:center;
 }
 
 table tbody tr {
@@ -175,8 +176,10 @@ h2 {
 			</table>
 			<div class="bottomarea">
 			<div>
+			<c:if test="${sessionScope.loginUser.memberId==admin }">
 				<button type="button" onclick="location.href='customernoticeenroll.cu'">공지사항
 					등록</button>
+					</c:if>
 			</div><br><br>
 			<div id="pagingArea">
 				<ul class="pagination">
