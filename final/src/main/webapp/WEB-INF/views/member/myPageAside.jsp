@@ -7,7 +7,7 @@
         <div class="my_container" id="my_content">
             <div class="aside">
                 <div class="nav_subject" id="aside_subject">
-                    <a href="#" class="myPageHome">myPage</a>
+                    <a href="myPage.mem" class="myPageHome">myPage</a>
                 </div>
                 <div class="nav" id="aside_nav">
                     <div class="nav_title" id="aside_title_1">

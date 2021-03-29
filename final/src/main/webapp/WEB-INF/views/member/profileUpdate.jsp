@@ -7,12 +7,12 @@
 
 <jsp:include page="../member/myPageAside.jsp" />
 
-            <div class="my_content">
+			<div class="my_content">
                 <div class="warp" style="font-family: 'Sunflower', sans-serif;">
                     <div class="signup-form" id="signUp_Form">
-                        <form id="enrollForm" action="" method="post" class="form-horizontal">
+                        <form id="enrollForm" action="profileUpdate.me" method="post" class="form-horizontal">
                             <div class="text-center col-xs-8 col-xs-offset-4" id="text-signUp">
-                                <h2>개인정보</h2>
+                                <h2>개인정보 수정</h2>
                             </div>
             
                             <div class="form-group" id="insert-info">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group" id="insert-info">
                                 <label class="control-label col-xs-4" id="info-label">이메일</label>
-                                <input type="email" class="form-control" id="info-text" name="email" value="${ loginUser.email }" readonly>
+                                <input type="email" class="form-control" id="info-text" name="email" value="${ loginUser.email }">
                             </div>
                             
                             <div class="form-group" id="insert-info">
@@ -37,7 +37,7 @@
             
                             <div class="form-group" id="insert-info">
                                 <label class="control-label col-xs-4" id="info-label">전화번호</label>
-                                <input type="tel" class="form-control" id="info-text" name="phone" value="${ loginUser.phone }" readonly>
+                                <input type="tel" class="form-control" id="info-text" name="phone" value="${ loginUser.phone }">
                             </div>
 
             				<c:forTokens var="addr" items="${ loginUser.address }" delims="/" varStatus="status">
@@ -54,18 +54,38 @@
 									<c:set var="address2" value="${ addr }"/>
 								</c:if>
 							</c:forTokens>
-                      
+
+                            <div class="form-group" id="insert-info">
+                                <label class="control-label col-xs-4" id="info-label">우편번호</label>
+                                <input type="text" class="form-control" id="info-text-address" name="post" value="${ post }">
+                    			<button type="button" class="btn btn-primary" id="postcodify_search_btn">검색</button>
+                            </div>
+
+							<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+							<script>
+								
+								$(function(){
+									$("#postcodify_search_btn").postcodifyPopUp();
+								});
+							</script>
+            
                             <div class="form-group" id="insert-info">
                                 <label class="control-label col-xs-4" id="info-label">주소</label>
-                                <input type="text" class="form-control postcodify_address" id="info-text" name="address1" value="[${ post }] ${ address1 }" readonly>
-                                <input type="text" class="form-control postcodify_extra_info" id="info-text" name="address2" value="${ address2 }" readonly>
+                                <input type="text" class="form-control postcodify_address" id="info-text" name="address1" value="${ address1 }">
+                                <input type="text" class="form-control postcodify_extra_info" id="info-text" name="address2" value="${ address2 }">
                             </div>
             
-                            <div class="form-group" id="insert-info"></div>
+                            <div class="form-group" id="insert-info-profileUp">
+                                <div class="text-center col-xs-8 col-xs-offset-4" id="bottom-insert-info">
+                                    <button type="submit" class="btn btn-primary btn-lg" id="join-btn">수정하기</button>
+                                    <button type="submit" class="btn btn-danger btn-lg" id="cancel-btn">취소</button>
+                                </div>
+                            </div>
                             
                         </form>
                     </div>
                 </div>
+
 
             </div>
         </div>
