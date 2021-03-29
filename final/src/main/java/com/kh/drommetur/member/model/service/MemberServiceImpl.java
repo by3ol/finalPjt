@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.drommetur.member.model.dao.MemberDao;
 import com.kh.drommetur.member.model.vo.Member;
@@ -53,6 +54,13 @@ public class MemberServiceImpl implements MemberService {
 	public int idCheck(String memberId) throws Exception {
 		// TODO Auto-generated method stub
 		return memberDao.idCheck(sqlSession, memberId);
+	}
+
+
+	@Override
+	public int updateMember(Member m) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDao.updateMember(sqlSession, m);
 	}
 	
 	

@@ -14,4 +14,6 @@ public interface MemberService {
 
 	int idCheck(String memberId) throws Exception;
 
+	int updateMember(Member m) throws Exception;
+
 }

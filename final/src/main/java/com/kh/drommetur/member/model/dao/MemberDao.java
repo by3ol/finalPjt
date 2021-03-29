@@ -25,4 +25,9 @@ public class MemberDao {
 		return sqlSession.selectOne("memberMapper.idCheck", memberId);
 	}
 
+	public int updateMember(SqlSessionTemplate sqlSession, Member m) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("memberMapper.updateMember", m);
+	}
+
 }
