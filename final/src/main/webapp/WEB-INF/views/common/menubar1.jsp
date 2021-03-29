@@ -73,7 +73,7 @@
 
 				<li class="nav-item"><a class="nav-link" href="list.at">명소/액티비티</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">이동수단</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">리뷰</a></li>
+				<li class="nav-item"><a class="nav-link" href="list.re">리뷰</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">여행코스 추천</a></li>
 
 

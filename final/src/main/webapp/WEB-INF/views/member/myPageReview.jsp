@@ -1,21 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <jsp:include page="../common/menubar1.jsp" />
 
 <jsp:include page="../member/myPageAside.jsp" />
 
             <div class="my_content">
-                <h1>여행</h1><br>
-                	
+                <h1>내가 쓴 리뷰</h1><br>
+
+
+		
 				<div>
 					<table class="table table-striped">
 						<thead>
 							<tr>
 								<th>번호</th>
-								<th>여행 이름</th>
-								<th>여행 등록날짜</th>
+								<th>리뷰 이름</th>
+								<th>리뷰 등록날짜</th>
 							
 							</tr>
 						</thead>
@@ -76,36 +78,5 @@
             </div>
         </div>
     </div>
-    
-	<script>
-	
-		var $moveForm=$("#moveForm");
-		
-		$(".getTravel").on("click",function(e){
-			
-			e.preventDefault();
-			
-			$moveForm.attr("action","select.tr");
-			$("input[name=travelNo]").val($(this).attr("href"));
-			
-			$moveForm.submit();
-			
-			
-		});
-		
-		$(".page-item a").on("click",function(e){
-			
-			e.preventDefault();
-			
-			$("input[name=pageNo]").val($(this).attr("href"));
-			
-			$moveForm.submit();
-			
-			
-		});
-	
-	
-	
-	</script>
 
 <jsp:include page="../common/footer.jsp" />
