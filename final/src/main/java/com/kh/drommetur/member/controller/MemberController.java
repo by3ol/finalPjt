@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.kh.drommetur.common.CommonException;
 import com.kh.drommetur.member.model.service.MemberService;
 import com.kh.drommetur.member.model.vo.Member;
 
@@ -146,7 +147,23 @@ public class MemberController {
 	
 	@RequestMapping("infoUpdate.mem")
 	public String myPageInfoUpdate() {
-		return "member/myPageInfoUpdate";
+		return "member/profileUpdate";
+	}
+	
+	@RequestMapping("profileUpdate.me")
+	public String updateMember(@ModelAttribute Member m, @RequestParam("post") String post,
+			@RequestParam("address1") String address1, @RequestParam("address2") String address2, Model model)
+			throws Exception {
+
+		m.setAddress(post + "/" + address1 + "/" + address2);
+		int result = memberService.updateMember(m);
+
+		if (result > 0) {
+			model.addAttribute("loginUser", m);
+			return "member/myPageHome";
+		} else {
+			throw new CommonException("회원정보 수정에 실패하였습니다.");
+		}
 	}
 	
 }

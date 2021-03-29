@@ -148,7 +148,7 @@
     }
     .btn3 a{
       text-decoration: none;
-      color: white;
+      color: black;
       
     }
     .btn3{
@@ -177,7 +177,19 @@
       <div class="accomDetailViewDiv">
         <div class="accomDetailViewForm">
           <div class="accomDetailViewTitle">
-            <h3>${ac.placeName }<strong>          ${ac.placeScore }</strong></h3> <c:if test="${ !empty sessionScope.loginUser }"><form action="score.ac"><input type="number" name="placeTotalScore" id="placeTotalScore" class="placeTotalScore" min="0" max="5" value="0" step="0.5"><input type="hidden" name="placeNo" value="${ac.placeNo }"readonly><button type="submit">평점주기</button></form></c:if>
+            <h3>${t.placeName }<strong>          ${t.placeScore }</strong></h3><form action="score.ac" onsubmit="return userChk();"><input type="number" name="placeTotalScore" id="placeTotalScore" class="placeTotalScore" min="0" max="5" value="0" step="0.5"><input type="hidden" name="placeNo" value="${t.placeNo }"readonly><button type="submit">평점주기</button></form>
+            <script>
+            
+            function userChk(){
+            	if(${!empty sessionScope.loginUser}){
+            		return true;
+            	}else{
+            		alert("로그인을 해주세요");
+            		return false;
+            	}
+            	
+            }
+            </script>
             <p>${ac.placeCategory }</p>
             <ul class="score">
               <li><span><img src="" width="25px" height="25px">좋아요</span></li>
@@ -260,7 +272,7 @@
                 <div class="btn">
                   <div class="btn3">
                   <ul>
-                    <li>좋아요</li>
+                    <li>찜</li>
                     <!-- <li><a id="kakao-link-btn" href="javascript:sendLink()">공유하기</a></li> -->
                     <li><a id="kakao-link-btn" class="share" href="javascript:sendLink()">공유하기</a></li>
                   </ul>

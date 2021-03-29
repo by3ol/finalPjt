@@ -7,7 +7,7 @@
         <div class="my_container" id="my_content">
             <div class="aside">
                 <div class="nav_subject" id="aside_subject">
-                    <a href="#" class="myPageHome">myPage</a>
+                    <a href="myPage.mem" class="myPageHome">myPage</a>
                 </div>
                 <div class="nav" id="aside_nav">
                     <div class="nav_title" id="aside_title_1">
@@ -23,7 +23,7 @@
                         <a href="activity.mem">엑티비티</a>
                     </div>
                     <div class="nav_title" id="aside_title_1">
-                        <a href="reply.mem">리뷰</a>
+                        <a href="mylist.re">리뷰</a>
                     </div>
                     <div class="nav_title" id="aside_title_2">
                         <a href="info.mem">개인정보</a>
