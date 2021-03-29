@@ -9,9 +9,10 @@ import com.kh.drommetur.taste.model.vo.PageInfo;
 public interface CustomerService {
 	
 	//질문
-	int insertQuestion(Question q);
+	int insertQuestion(Question question, int memberNo);
 
-	int selectQuestion(int questionNo);
+	ArrayList<Question> selectquestionList();
+	
 	/*
 	 * Question selectQuestion(int questionNo);
 	 * 
@@ -36,6 +37,13 @@ public interface CustomerService {
 	int deleteNotice(int noticeNo);
 
 	int updateNotice(Notice n);
+
+	int selectQuestion(int questionNo);
+
+
+
+
+
 
 	
 

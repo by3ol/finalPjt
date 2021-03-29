@@ -135,10 +135,10 @@ h2 {
 <body>
 	<jsp:include page="../common/menubar1.jsp" />
 	<div class="container">
-		<br> <br> <br>
+		<br> <br> 
 
-		<h2 align="center">공지사항</h2>
-
+		<div class="banner">공지사항</div>
+<jsp:include page="../common/customerbar.jsp" />
 		<div class="row">
 			<table id="noticeList" class="tabl table-hover" align="center">
 				<thead>

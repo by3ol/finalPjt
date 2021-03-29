@@ -19,6 +19,8 @@
 		<typeAlias type="com.kh.drommetur.customer.model.vo.Answer" alias="Answer"></typeAlias>
 		<typeAlias type="com.kh.drommetur.customer.model.vo.Question" alias="Question"></typeAlias>
 		<typeAlias type="com.kh.drommetur.customer.model.vo.Notice" alias="Notice"></typeAlias>
+				<typeAlias type="com.kh.drommetur.customer.model.vo.PageInfo" alias="customerPageInfo"></typeAlias>
+		
 
 		<typeAlias type="com.kh.drommetur.travel.model.vo.Travel" alias="Travel"></typeAlias>
 		<typeAlias type="com.kh.drommetur.travel.model.vo.TravelDetail" alias="TravelDetail"></typeAlias>
@@ -40,7 +42,6 @@
 	
 	<mappers>
 		<mapper resource="mappers/place-mapper.xml"></mapper>
-		<mapper resource="mappers/customer-mapper.xml"></mapper>
 		<mapper resource="mappers/taste-mapper.xml"></mapper>
 		<mapper resource="mappers/accom-mapper.xml"></mapper>
 		<mapper resource="mappers/attraction-mapper.xml"></mapper>

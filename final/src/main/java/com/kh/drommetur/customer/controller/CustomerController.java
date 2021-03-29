@@ -1,23 +1,36 @@
 package com.kh.drommetur.customer.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.drommetur.common.CommonException;
+import com.kh.drommetur.common.Criteria;
+import com.kh.drommetur.common.PageDTO;
 import com.kh.drommetur.customer.model.service.CustomerService;
 import com.kh.drommetur.customer.model.vo.Notice;
 import com.kh.drommetur.customer.model.vo.Question;
+import com.kh.drommetur.member.model.vo.Member;
 import com.kh.drommetur.taste.Pagination;
 import com.kh.drommetur.taste.model.vo.PageInfo;
+import com.kh.drommetur.travel.model.vo.Travel;
+
+
 
 
 @Controller
@@ -31,10 +44,6 @@ public class CustomerController {
 		return "customer/customercenter";
 	}
 
-	@RequestMapping("customerreport.cu")
-	public String customerreport() {
-		return "customer/customerreport";
-	}
 
 	@RequestMapping("customersaylist.cu")
 	public String customersaylist() {
@@ -55,31 +64,55 @@ public class CustomerController {
 	public String customernoticeenroll() {
 		return "customer/customernoticeenroll";
 	}
-
-	@RequestMapping("insert.cu")
-	public String insertQuestion(@Param("memberNo") Integer memberNo,Question q, Model model) throws Exception {
-
-		int result = customerservice.insertQuestion(q);
-		
-	
-		if (result > 0) {
-			return "redirect:customercenter";
-			
-		} else {
-			throw new Exception("문의글 작성에 실패하였습니다.");
-		}
+	@RequestMapping("course")
+	public String course() {
+		return "course/course";
 	}
 
-	/*
-	 * @RequestMapping("detail.cu") public ModelAndView selectquestion(int
-	 * questionNo, ModelAndView mv) throws Exception {
-	 * 
-	 * int result = customerservice.updateQuestion(questionNo);
-	 * 
-	 * if (result > 0) { Question q = customerservice.selectQuestion(questionNo);
-	 * mv.addObject("q", q).setViewName("board/customersaydetail"); } else { throw
-	 * new Exception("문의 상세조회에 실패 하였습니다."); } return mv; }
-	 */
+	@RequestMapping(value="insert.cu", method=RequestMethod.POST, consumes="application/json")
+	@ResponseBody
+	public ResponseEntity<String> insertQuestion(@RequestBody Question question, HttpSession session) throws Exception {
+
+		System.out.println(question);
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		int result = customerservice.insertQuestion(question, loginUser.getMemberNo());
+		
+		return result>0 ? new ResponseEntity<>(HttpStatus.OK):new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		
+	}
+	
+	@RequestMapping("questionlist.cu")
+	public String selectquestionList(Model model) {
+
+		
+		
+	
+		ArrayList<Question> list = customerservice.selectquestionList();
+
+		model.addAttribute("list", list);
+	
+		return "customer/cusotmersaylist";
+	}
+	
+
+	@RequestMapping("detail.cu")
+	public ModelAndView selectQuestion(int questionNo, ModelAndView mv) throws Exception {
+
+		int q = customerservice.selectQuestion(questionNo);
+
+		if (q > 0) {
+			
+			mv.addObject("q", q).setViewName("customer/customersaydetail");
+		} else {
+			throw new Exception("게시물 상세조회에 실패 하였습니다.");
+		}
+		return mv;
+	}
+		
+		
+	
+	
+	///////////////////////////////공지
 
 	@RequestMapping("noticelist.cu")
 	public String selectList(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
