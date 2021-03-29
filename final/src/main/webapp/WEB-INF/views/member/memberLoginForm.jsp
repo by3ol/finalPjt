@@ -32,5 +32,6 @@
             <br>
             <div class="hint-text small" id="hint-text">아직 회원이 아니신가요? <a href="joinChoose.mem" class="text-success" id="text-success">회원가입!</a></div>
         </form>
-
+        <br><br>
+	</div>
 	<jsp:include page="../common/footer.jsp" />
