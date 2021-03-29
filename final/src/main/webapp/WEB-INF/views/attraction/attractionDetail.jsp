@@ -177,7 +177,19 @@
       <div class="attractionDetailViewDiv">
         <div class="attractionDetailViewForm">
           <div class="attractionDetailViewTitle">
-            <h3>${at.placeName }<strong>          ${at.placeScore }</strong></h3> <c:if test="${ !empty sessionScope.loginUser }"><form action="score.at"><input type="number" name="placeTotalScore" id="placeTotalScore" class="placeTotalScore" min="0" max="5" value="0" step="0.5"><input type="hidden" name="placeNo" value="${at.placeNo }"readonly><button type="submit">평점주기</button></form></c:if>
+            <h3>${t.placeName }<strong>          ${t.placeScore }</strong></h3><form action="score.at" onsubmit="return userChk();"><input type="number" name="placeTotalScore" id="placeTotalScore" class="placeTotalScore" min="0" max="5" value="0" step="0.5"><input type="hidden" name="placeNo" value="${t.placeNo }"readonly><button type="submit">평점주기</button></form>
+            <script>
+            
+            function userChk(){
+            	if(${!empty sessionScope.loginUser}){
+            		return true;
+            	}else{
+            		alert("로그인을 해주세요");
+            		return false;
+            	}
+            	
+            }
+            </script>
             <p>${at.placeCategory }</p>
             <ul class="score">
               <li><span><img src="" width="25px" height="25px">좋아요</span></li>
