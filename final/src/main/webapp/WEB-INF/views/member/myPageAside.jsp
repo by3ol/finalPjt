@@ -23,7 +23,7 @@
                         <a href="activity.mem">엑티비티</a>
                     </div>
                     <div class="nav_title" id="aside_title_1">
-                        <a href="reply.mem">리뷰</a>
+                        <a href="mylist.re">리뷰</a>
                     </div>
                     <div class="nav_title" id="aside_title_2">
                         <a href="info.mem">개인정보</a>
