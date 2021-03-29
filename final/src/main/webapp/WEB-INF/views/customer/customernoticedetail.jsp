@@ -29,11 +29,11 @@
 	<div class="content">
 		<h3>제목</h3>
 		<div>
-			<div class="border">${n.noticeTitle}</div>
+			<div class="border">${q.questionTitle}</div>
 			<h3>내용</h3>
 
 			<div class="border">
-				<p>${n.noticeContent}</p>
+				<p>${q.questionContent}</p>
 			</div>
 		</div>
 

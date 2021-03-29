@@ -3,16 +3,13 @@ package com.kh.drommetur.customer.model.vo;
 import java.sql.Date;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@Data
 public class Question {
 
 	private int questionNo;

@@ -11,59 +11,9 @@ import com.kh.drommetur.customer.model.vo.Question;
 import com.kh.drommetur.taste.model.vo.PageInfo;
 
 
-@Repository("boardDao")
 public class CustomerDao {
 
-	public int insertQuestion(SqlSessionTemplate sqlSession, Question q) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("customerMapper.insertQuestion", q);
-	}
-
-	public int selectQuestion(SqlSessionTemplate sqlSession, int questionNo) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("customerMapper.selectBoard", questionNo);
-	}
-
-	public int selectListCount(SqlSessionTemplate sqlSession) {
-		// TODO Auto-generated method stub
-		
-		return sqlSession.selectOne("customerMapper.selectListCount");
-
-	}
-
-	public ArrayList<Notice> selectList(SqlSessionTemplate sqlSession, PageInfo pi) {
-		// TODO Auto-generated method stub
-		int offset = (pi.getCurrentPage() -1)* pi.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
-		
-		return (ArrayList)sqlSession.selectList("customerMapper.selectList", null, rowBounds);
-	}
-
-
-
-	public int insertNotice(SqlSessionTemplate sqlSession, Notice n) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("customerMapper.insertNotice",n);
-	}
-
-	public int updateIncreaseCount(SqlSessionTemplate sqlSession, int noticeNo) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("customerMapper.updateIncreaseCount");
-	}
-
-	public Notice selectNotice(SqlSessionTemplate sqlSession, int noticeNo) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("customerMapper.selectNotice", noticeNo);
-	}
-	public int deleteNotice(SqlSessionTemplate sqlSession, int noticeNo) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("customerMapper.deleteNotice", noticeNo);
-	}
-
-	public int updateNotice(SqlSessionTemplate sqlSession, Notice n) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("customerMapper.updateNotice", n);
-	}
+	
 
 	
 	

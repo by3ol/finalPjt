@@ -1,37 +1,12 @@
-* {
-	box-sizing: border-box;
-}
-
-select {
-	width: 200px;
-	height: 50px;
-}
-
-body {
-	margin: 0 auto;
-	color: #3f464d;
-	font-family: 'Spoqa Han Sans Neo', 'Sans-serif';
-}
-
-hr {
-	margin-top: -1rem;
-	margin-bottom: 50px;
-}
-
-form {
-	width: 100%;
-	border: 0;
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-textarea::placeholder {
-	font-weight: bold;
-}
-/* a 링크 태그 스타일 초기화 */
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
 a {
 	all: unset;
 	text-decoration: none;
@@ -104,7 +79,6 @@ a:hover {
 	opacity: 1;
 	transform: translateY(-5px);
 }
-
 .nav_content {
 	margin-top: 1rem;
 	display: flex;
@@ -112,54 +86,20 @@ a:hover {
 	margin-bottom: 0rem;
 }
 
-.formarea {
-	width: 900px;
-	margin: 0 auto;
-	overflow: hidden;
-	display: flex;
-	justify-content: center;
-	border: none;
-	background: lightgrey;
-	padding: 3rem;
-	border: 1px;
-}
+</style>
+<body>
+<br>
 
-.select_area {
-	width: 100%;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-}
-
-.category {
-	width: 100%;
-	padding-left: 0.5;
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
-	padding-right: 3rem;
-	border-radius: 5px;
-}
-
-.textarea1 {
-	width: 100%;
-	height: 3rem;
-	margin-bottom: 0.5rem;
-	resize: none;
-	border-radius: 5px;
-	margin-bottom: 0.5rem;
-	padding-right: -3rem;
-}
-
-.textarea2 {
-	width: 100%;
-	margin-bottom: 3rem;
-	border-radius: 5px;
-	resize: none;
-}
-
-.submit_area {
-	margin-bottom: 3rem;
-}
-
-#writer {
-	visibility: hidden;
-}
+	<div class="nav_content">
+		<ul class="nav">
+			<li class="nav-item"><a class="nav-link link3"
+				href="customercenter.cu">문의하기</a></li>
+			<li class="nav-item"><a class="nav-link link3"
+				href="customersaylist.cu">문의확인</a></li>
+			<li class="nav-item"><a class="nav-link link3"
+				href="customernotice.cu">공지사항</a></li>
+		</ul>
+	</div>
+	<hr />
+</body>
+</html>
