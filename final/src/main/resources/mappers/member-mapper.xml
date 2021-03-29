@@ -21,8 +21,7 @@
 		INSERT INTO MEMBER
 		VALUES(SEQ_MEMBER.NEXTVAL, #{memberId}, #{email}, #{memberPwd},
 		#{memberName}, #{phone}, #{address},
-		#{gender}, DEFAULT, SYSDATE,
-		DEFAULT)
+		#{gender}, DEFAULT, SYSDATE, DEFAULT)
 	</insert>
 
 
