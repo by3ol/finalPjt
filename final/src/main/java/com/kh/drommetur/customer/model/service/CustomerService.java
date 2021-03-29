@@ -1,5 +1,6 @@
 package com.kh.drommetur.customer.model.service;
 
+
 import java.util.ArrayList;
 
 import com.kh.drommetur.customer.model.vo.Notice;
@@ -42,12 +43,5 @@ public interface CustomerService {
 
 
 
-
-
-
-	
-
-
-	
 
 }
