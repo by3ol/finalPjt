@@ -225,7 +225,7 @@ h2 {
 		$(function() {
 			$("#noticeList tbody tr").click(
 					function() {
-						location.href = "detail.cu?bno="
+						location.href = "detailNotice.cu?noticeNo="
 								+ $(this).children().eq(0).text();
 					});
 		});

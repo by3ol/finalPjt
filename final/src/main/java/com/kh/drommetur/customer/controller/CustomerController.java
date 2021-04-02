@@ -1,5 +1,14 @@
 package com.kh.drommetur.customer.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kh.drommetur.customer.model.service.CustomerService;
+import com.kh.drommetur.customer.model.vo.Question;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +37,6 @@ import com.kh.drommetur.customer.model.vo.Question;
 import com.kh.drommetur.member.model.vo.Member;
 import com.kh.drommetur.taste.Pagination;
 import com.kh.drommetur.taste.model.vo.PageInfo;
-import com.kh.drommetur.travel.model.vo.Travel;
-
-
-
 
 @Controller
 public class CustomerController {
@@ -44,90 +49,92 @@ public class CustomerController {
 		return "customer/customercenter";
 	}
 
-
 	@RequestMapping("customersaylist.cu")
 	public String customersaylist() {
-		return "customer/customersaylist";
+		return "redirect:questionlist.cu";
 	}
-	
+
 	@RequestMapping("customernotice.cu")
 	public String customernotice() {
 		return "customer/customernotice";
 	}
-	
+
 	@RequestMapping("customernoticedetail.cu")
 	public String customernoticedetail() {
 		return "customer/customernoticedetail";
 	}
-	
+
 	@RequestMapping("customernoticeenroll.cu")
 	public String customernoticeenroll() {
 		return "customer/customernoticeenroll";
 	}
+
 	@RequestMapping("course")
 	public String course() {
 		return "course/course";
 	}
 
-	@RequestMapping(value="insert.cu", method=RequestMethod.POST, consumes="application/json")
-	@ResponseBody
-	public ResponseEntity<String> insertQuestion(@RequestBody Question question, HttpSession session) throws Exception {
+	@RequestMapping("insertquestion.cu")
 
-		System.out.println(question);
-		Member loginUser = (Member) session.getAttribute("loginUser");
-		int result = customerservice.insertQuestion(question, loginUser.getMemberNo());
-		
-		return result>0 ? new ResponseEntity<>(HttpStatus.OK):new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		
-	}
-	
-	@RequestMapping("questionlist.cu")
-	public String selectquestionList(Model model) {
+	public String insertQuestion(Question question, HttpSession session) throws Exception {
 
-		
-		
-	
-		ArrayList<Question> list = customerservice.selectquestionList();
+		int result = customerservice.insertQuestion(question);
 
-		model.addAttribute("list", list);
-	
-		return "customer/cusotmersaylist";
-	}
-	
-
-	@RequestMapping("detail.cu")
-	public ModelAndView selectQuestion(int questionNo, ModelAndView mv) throws Exception {
-
-		int q = customerservice.selectQuestion(questionNo);
-
-		if (q > 0) {
-			
-			mv.addObject("q", q).setViewName("customer/customersaydetail");
+		if (result > 0) {
+			return "redirect:questionlist.cu";
 		} else {
-			throw new Exception("게시물 상세조회에 실패 하였습니다.");
+			throw new Exception("문의글 등록에 실패하였습니다.");
 		}
-		return mv;
 	}
-		
-		
-	
-	
-	///////////////////////////////공지
 
-	@RequestMapping("noticelist.cu")
-	public String selectList(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
-			Model model) {
+	@RequestMapping("questionlist.cu")
+	public String selectQuestionList(
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage, Model model)
+			throws Exception {
 
-		int listCount = customerservice.selectListCount();
+		int listCount = customerservice.selectQuestionListCount();
 
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 5);
 
-		ArrayList<Notice> list = customerservice.selectList(pi);
+		ArrayList<Question> list = customerservice.selectQuestionList(pi);
 
-		model.addAttribute("list", list);
 		model.addAttribute("pi", pi);
-		return "customer/customernotice";
+		if (list != null) {
+			model.addAttribute("list", list);
+
+		} else {
+			throw new Exception("불러오기 실패");
+		}
+
+		return "customer/customersaylist";
+
 	}
+
+	@RequestMapping("detailquestion.cu")
+	public ModelAndView selectQuestion(int questionNo, ModelAndView mv) throws Exception {
+
+		Question q = customerservice.selectQuestion(questionNo);
+
+		mv.addObject("q", q).setViewName("customer/customersaydatail");
+
+		return mv;
+	}
+
+	@RequestMapping("deletequestion.cu")
+	public String deleteBoard(int questionNo) throws Exception {
+
+		int result = customerservice.deleteQuestion(questionNo);
+
+		if (result > 0) {
+
+			return "redirect:questionlist.cu";
+		} else {
+			throw new Exception("게시물 삭제에 실패 하였습니다.");
+
+		}
+	}
+
+	/////////////////////////////// 공지
 
 	@RequestMapping("noticeEnroll.cu")
 	public String enrollForm() {
@@ -135,29 +142,39 @@ public class CustomerController {
 	}
 
 	@RequestMapping("insertNotice.cu")
-	public String insertNotice(Notice n, Model model) throws Exception {
+	public String insertNotice(Notice notice, Model model) throws Exception {
 
-		int result = customerservice.insertNotice(n);
-		model.addAttribute("n", n);
+		int result = customerservice.insertNotice(notice);
+		model.addAttribute("n", notice);
 		if (result > 0) {
-			return "customer/customernoticelist";
+			return "redirect:noticelist.cu";
 		} else {
 			throw new Exception("공지글 작성에 실패했습니다.");
 		}
 
 	}
 
+	@RequestMapping("noticelist.cu")
+	public String selectNoticeList(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+			Model model) {
+
+		int listCount = customerservice.selectNoticeListCount();
+
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 5);
+
+		ArrayList<Notice> list = customerservice.selectNoticeList(pi);
+
+		model.addAttribute("list", list);
+		model.addAttribute("pi", pi);
+		return "customer/customernotice";
+	}
+
 	@RequestMapping("detailNotice.cu")
 	public ModelAndView selectNotice(int noticeNo, ModelAndView mv) throws Exception {
 
-		int result = customerservice.updateIncreaseCount(noticeNo);
+		Notice n = customerservice.selectNotice(noticeNo);
+		mv.addObject("n", n).setViewName("customer/customerNoticeDetail");
 
-		if (result > 0) {
-			Notice n = customerservice.selectNotice(noticeNo);
-			mv.addObject("n", n).setViewName("customer/customerNoticeDetail");
-		} else {
-			throw new Exception("공지글 조회에 실패했습니다.");
-		}
 		return mv;
 	}
 
@@ -181,12 +198,12 @@ public class CustomerController {
 	}
 
 	@RequestMapping("updateNotice.cu")
-	public ModelAndView updateNotice(Notice n, ModelAndView mv, HttpServletRequest request) throws Exception {
+	public ModelAndView updateNotice(Notice notice, ModelAndView mv, HttpServletRequest request) throws Exception {
 
-		int result = customerservice.updateNotice(n);
+		int result = customerservice.updateNotice(notice);
 
 		if (result > 0) {
-			mv.addObject("noticeNo", n.getNoticeNo()).setViewName("redirect:noticeDetail.cu");
+			mv.addObject("noticeNo", notice.getNoticeNo()).setViewName("redirect:noticeDetail.cu");
 
 		} else {
 			throw new Exception("게시물 상세조회에 실패 하였습니다.");
@@ -194,5 +211,6 @@ public class CustomerController {
 		}
 
 		return mv;
+
 	}
 }

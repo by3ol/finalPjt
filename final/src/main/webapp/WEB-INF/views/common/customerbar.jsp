@@ -18,22 +18,25 @@ a {
 
 a:link {
 	text-decoration: none;
-	color: #3f464d;
+	color: black;
 }
 
 a:visited {
 	text-decoration: none;
-	color: #3f464d;
+	color: black;
 }
 
 a:active {
 	text-decoration: none;
-	color: #3f464d;
+	color: black;
 }
 
 a:hover {
 	text-decoration: none;
-	color: #3f464d;
+	color: black;
+}
+ul{
+cursor:pointer;
 }
 
 .inner {

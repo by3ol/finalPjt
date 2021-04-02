@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kh.drommetur.customer.mapper.CustomerMapper">
+<mapper namespace="customerMapper">
 
 	<resultMap type="Question" id="QuestionResultSet">
 		<result property="questionNo" column="QUESTION_NO" />
@@ -15,7 +15,6 @@
 		<result property="noticeNo" column="NOTICE_NO" />
 		<result property="noticeTitle" column="NOTICE_TITLE" />
 		<result property="noticeContent" column="NOTICE_CONTENT" />
-		<result property="visit" column="VISIT" />
 		<result property="datetime" column="DATETIME" />
 		<result property="status" column="STATUS" />
 	</resultMap>
@@ -23,9 +22,9 @@
 
 	
 	<!-- 문의 내역 -->
-	<insert id="insertQuestion">
+	<insert id="insertQuestion" parameterType="Question">
 		INSERT INTO QUESTION
-		VALUES(SEQ_QUESTION.NEXTVAL,#{question.category},#{question.questionTitle},#{question.questionContent},SYSDATE,DEFAULT,#{memberNo})
+		VALUES(SEQ_QUESTION.NEXTVAL, #{category}, #{questionTitle},#{questionContent},SYSDATE,DEFAULT)
 	</insert> 
 	
 	<select id="selectquestionList" resultMap="QuestionResultSet">
@@ -33,23 +32,30 @@
 	FROM QUESTION
 	WHERE
 	STATUS='Y'
-	OREDER BY QUESTION_NO DESC
+	ORDER BY QUESTION_NO DESC
+	</select>
+	
+	<select id="selectQuestionListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM
+		QUESTION
+		WHERE STATUS='Y'
+	</select>
+	
+	<select id="selectQuestion" resultMap="QuestionResultSet">
+		SELECT *
+		FROM QUESTION
+		WHERE
+		STATUS='Y'
+		AND QUESTION_NO = #{questionNo}
 	</select>
 	
 	
-	<select id="selectquestion" resultMap="QuestionResultSet">
-	select questionNo, questionTitle, datetime
-	from question
-	where
-	status='Y'
-	and question_no=#{questionNo}
-	</select>
-	
-	
-	
-	
-	
-	
+	<update id="deleteQuestion" parameterType="_int">
+		UPDATE QUESTION
+		SET STATUS = 'N'
+		WHERE QUESTION_NO = #{questionNo}
+	</update>
 	<!-- 답변내역 -->
 
 	<!-- 공지 내역 -->
@@ -72,7 +78,7 @@
 		INSERT INTO NOTICE
 		VALUES(SEQ_NOTICE.NEXTVAL, #{noticeTitle},
 		#{noticeContent},
-		#{visit}, SYSDATE,
+		SYSDATE,
 		DEFAULT)
 	</insert>
 	

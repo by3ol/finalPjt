@@ -1,5 +1,6 @@
 package com.kh.drommetur.customer.model.service;
 
+
 import java.util.ArrayList;
 
 import com.kh.drommetur.customer.model.vo.Notice;
@@ -9,45 +10,40 @@ import com.kh.drommetur.taste.model.vo.PageInfo;
 public interface CustomerService {
 	
 	//질문
-	int insertQuestion(Question question, int memberNo);
+	int insertQuestion(Question question);
 
-	ArrayList<Question> selectquestionList();
+	ArrayList<Question> selectQuestionList(PageInfo pi);
 	
-	/*
-	 * Question selectQuestion(int questionNo);
-	 * 
-	 * int updateQuestion(int questionNo);
-	 */
+	Question selectQuestion(int questionNo);
+
+	int deleteQuestion(int questionNo);
 	
-	
+
+	int selectQuestionListCount();
+
 	
 	
 	
 	//공지
-	int selectListCount();
+	int selectNoticeListCount();
 
-	ArrayList<Notice> selectList(PageInfo pi);
+	ArrayList<Notice> selectNoticeList(PageInfo pi);
 
-	int insertNotice(Notice n);
+	int insertNotice(Notice notice);
 
-	int updateIncreaseCount(int noticeNo);
 
 	Notice selectNotice(int noticeNo);
 
 	int deleteNotice(int noticeNo);
 
-	int updateNotice(Notice n);
-
-	int selectQuestion(int questionNo);
-
-
-
-
-
+	int updateNotice(Notice notice);
 
 	
 
 
 	
+
+
+
 
 }

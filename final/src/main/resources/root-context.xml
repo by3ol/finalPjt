@@ -18,7 +18,7 @@
 
 		<context:property-placeholder location="classpath:/jdbc.properties"/>
 		<mybatis-spring:scan base-package="com.kh.drommetur.travel.mapper"/>
-		<mybatis-spring:scan base-package="com.kh.drommetur.customer.mapper"/>
+	
 
 			<!-- IOC 컨테이너로 어플리케이션 전역에 대한 설정  -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
