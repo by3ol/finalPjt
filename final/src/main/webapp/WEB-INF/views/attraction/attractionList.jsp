@@ -96,9 +96,8 @@
                                 <form  class="ct_de_menu">
                                       
                                         
-                                        <a href="#" id="ct_de_menu_num">추천맛집  </a>
-                                        <a href="#" id="ct_de_menu_num">테마  </a>
-                                        <a href="#" id="ct_de_menu_num">리뷰  </a>
+                                        <a href="#" id="ct_de_menu_num"> " "  </a>
+                                       
                                                                                                                                         
                                    
                                        
@@ -152,6 +151,8 @@
                               		 <div class="attraction_menu">
                               		 <input type="hidden" value="${list.placeNo }"> 
                               		 <input type="hidden" value="${list.placeCategory }"> 
+                              		 <input type="hidden" value="${list.placeLat }" id="placeLat" >
+               						 <input type="hidden" value="${list.placeLon }" id="placeLon">
                               		 
       
                                		
@@ -160,6 +161,19 @@
                                         <strong>${list.placeScore }</strong> <br>
                                         <label>${list.placeName }</label> <br>  
                                         <label>${list.placePhone } </label>      
+                                        
+                                        <script>
+                                        
+                                        var container = document.getElementById('map');
+                                        var placeLat = document.getElementById('placeLat').value;
+                        				var placeLon = document.getElementById('placeLon').value;
+                                		var options = {
+                                			center: new kakao.maps.LatLng(placeLat,placeLon),
+                                			level: 2
+                                		};
+
+                                		var map = new kakao.maps.Map(container, options);
+                                        </script>
                                         
                                         
                                         
