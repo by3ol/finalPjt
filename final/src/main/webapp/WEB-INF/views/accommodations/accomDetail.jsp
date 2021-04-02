@@ -294,42 +294,42 @@
 		
 
 
-  function sendLink() {
-    Kakao.Link.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: '${ac.placeName}',
-        description: '${ac.placeGroup}',
-        imageUrl:
-          '${ac.placeUrl}',
-        link: {
-          mobileWebUrl: 'https://developers.kakao.com',
-          webUrl: 'https://developers.kakao.com',
-        },
-      },
-      social: {
-        likeCount: 286,
-        commentCount: 45,
-        sharedCount: 845,
-      },
-      buttons: [
-        {
-          title: '웹으로 보기',
-          link: {
-            mobileWebUrl: 'https://developers.kakao.com',
-            webUrl: 'https://developers.kakao.com',
-          },
-        },
-        {
-          title: '앱으로 보기',
-          link: {
-            mobileWebUrl: 'https://developers.kakao.com',
-            webUrl: 'https://developers.kakao.com',
-          },
-        },
-      ],
-    })
-  }
+		function sendLink() {
+		    Kakao.Link.sendDefault({
+		      objectType: 'feed',
+		      content: {
+		        title: '${t.placeName}',
+		        description: '${t.placeGroup}',
+		        imageUrl:
+		          '${t.placeUrl}',
+		        link: {
+		          mobileWebUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
+		          webUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
+		        },
+		      },
+		      social: {
+		        likeCount: 286,
+		        commentCount: 45,
+		        sharedCount: 845,
+		      },
+		      buttons: [
+		        {
+		          title: '웹으로 보기',
+		          link: {
+		            mobileWebUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
+		            webUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
+		          },
+		        },
+		        {
+		          title: '앱으로 보기',
+		          link: {
+		            mobileWebUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
+		            webUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
+		          },
+		        },
+		      ],
+		    })
+		  }
 </script>
     <br><br><br>
       <jsp:include page="../common/footer.jsp" />
