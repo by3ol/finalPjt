@@ -40,6 +40,7 @@
 		var $placePhone=$("#placePhone");
 		var $placeAddBtn=$(".placeAddBtn"); //장소모달과 여행추가모달 버튼에 공통으로 있는 클래스 속성 
 		var $placeModalBtn=$("#placeModalBtn");
+		var $placeNameInPlaceModal=$("#placeModal").find(".placeName");
 		
 		//여행추가모달 관련 요소 
 		var $travelAddModal=$("#travelAddModal");
@@ -94,6 +95,12 @@
 		});
 		
 		$searchBtn.on("click",function(){ //검색버튼을 누르면 
+			
+			if(!$keyword.val()){
+				alert("키워드를 입력해주세요. ");
+				return;
+			}
+			
 			
 			$.ajax({ //요청
 					
@@ -268,7 +275,11 @@
 			}
 		
 			$placeName.text(place.placeName);
-			$placeCategory.text(place.placeCategory+'  '+place.placeScore)
+			$placeCategory.text(place.placeCategory+'  '+place.placeScore);
+			
+			$placeNameInPlaceModal.removeData("group");
+			$placeNameInPlaceModal.attr("data-group",place.placeGroup); //상세페이지조회에 필요한 그룹 설정
+			
 			
 			$placeAddBtn.removeData("pno");
 			$placeAddBtn.attr("data-pno",place.placeNo); //장소모달, 여행추가모달의 버튼의 data-pno값을 현재 장소의 번호로 바꿈 
@@ -533,7 +544,7 @@
 	
 		$travelRegisterBtn.on("click",function(){ //여행등록버튼을 클릭 했을 때
 			
-			if($travelName.val()==""){
+			if($travelName.val().trim().length==0){
 				alert("여행 이름을 입력해주세요.");
 				return;
 			}
@@ -622,7 +633,29 @@
 				
 		});
 		
-		
+		$placeNameInPlaceModal.on("click",function(){
+			
+			var url="detail.";
+			var pno=$placeModal.find("#placeModalBtn").data("pno");
+			var group=$(this).data("group");
+			
+			if(group=="음식점"){
+				
+				url+="ta";
+			}else if(group=="숙박"){
+				url+="ac";
+				
+			}else{
+				url+="at";
+				
+			}
+			
+			url+="?placeNo="+pno;
+			
+			window.open(url,'_blank');
+			
+			
+		});
 		
 		
 		

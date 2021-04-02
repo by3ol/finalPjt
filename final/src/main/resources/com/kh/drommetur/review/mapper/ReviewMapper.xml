@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kh.drommetur.review.mapper.ReviewMapper">
+  
+  
+  <resultMap type="Member" id="Member" >
+  	<id property="memberNo" column="MEM_NO" />
+  	<result property="memberName" column="MEM_NAME" />
+  
+  </resultMap>
+  
+   <resultMap type="Place" id="Place" >
+  	<id property="placeNo" column="PLACE_NO" />
+  	<result property="placeName" column="PLACE_NAME" />
+  	<result property="placeGroup" column="PLACE_GROUP" />
+  	
+  </resultMap>
+  
+    <resultMap type="Region" id="Region" >
+  	<id property="regionNo" column="REGION_NO" />
+  	<result property="regionName" column="REGION_NAME" />
+  	
+  </resultMap>
+  
+  <resultMap type="Review" id="ReviewResultSet">
+  	<id property="reviewNo" column="REVIEW_NO" />
+  	<result property="memNo" column="MEM_NO" />
+  	 <result property="placeNo" column="PLACE_NO" />
+  	 <result property="reviewTitle" column="REVIEW_TITLE" />
+  	 <result property="reviewContent" column="REVIEW_CONTENT" />
+  	<result property="reviewRegDate" column="REVIEW_REGDATE" />  	   	  	
+   	<result property="visitCount" column="VISIT_COUNT" /> 
+   	<result property="attachCount" column="ATTACH_COUNT" />
+   	<collection property="member" resultMap="Member" />
+   	<collection property="place" resultMap="Place" />
+   	<collection property="regionObj" resultMap="Region" />
+   	
+  </resultMap>
+  
+  
+  <resultMap type="Attach" id="AttachResultSet">
+  	
+  	<id property="attachNo" column="ATTACH_NO" />
+  	<result property="attachPath" column="ATTACH_PATH" />
+  	<result property="attachOrigin" column="ATTACH_ORIGIN" />
+ 	<result property="attachChange" column="ATTACH_CHANGE" /> 
+ 	<result property="reviewNo" column="REVIEW_NO" />	
+  </resultMap>
+  
+  
+  <sql id="criteria">
+  		<!-- 일반 검색조건  -->
+	  <trim prefix="and (" suffix=")" prefixOverrides="or">
+  		<foreach item="type" collection="typeArr">
+  			<trim prefix="or">
+  				
+  				<choose>
+  					<when test="type=='T'.toString() ">
+  						review_title like '%'||#{keyword}||'%'
+  					</when>
+  					<when test="type=='C'.toString() ">
+  						review_content like '%'||#{keyword}||'%'
+  					</when>
+  					<when test="type=='W'.toString() ">
+  						m.mem_name like '%'||#{keyword}||'%'
+  					</when>
+  					
+  				
+  				</choose>
+  			
+  			
+  			</trim>
+  		
+  		</foreach>
+	  </trim>	
+	
+	<!--그룹 검색조건  -->
+	
+	<if test='group != null and !group.equals("") ' >
+		
+		and place_group like #{group}
+	</if>	
+	
+	<!--지역 검색조건  -->	  	
+	
+	<if test="region != 0" >
+	
+		and p.region_no=#{region}
+	</if>
+  
+  </sql>
+  
+  <select id="selectReviewList" resultMap="ReviewResultSet">
+  
+  
+  		<![CDATA[
+  	select review_no,mem_no,place_no ,review_title,review_content,review_regdate, visit_count,attach_count
+		  	,mem_name,place_name,place_group, region_name
+  	from(
+	  	select review_no,mem_no,place_no ,review_title,review_content,review_regdate, visit_count,attach_count
+		  	,mem_name,place_name,place_group, region_name ,rownum rn
+	  	from
+	  		(
+		  	select 
+		  	
+		  	r.review_no,r.mem_no,r.place_no ,review_title,review_content,review_regdate, visit_count,attach_count
+		  	,mem_name,place_name,place_group, region_name 
+		  	
+		  	from review r join member m on r.mem_no=m.mem_no 
+		  			join place p on r.place_no =p.place_no 
+		  			join region re on p.region_no = re.region_no
+		  	where 
+		  	
+		  	review_status ='Y' 
+		  	
+	 	]]>
+	  	
+	  		<include refid="criteria"></include>
+		
+		<![CDATA[		  	  
+				 order by review_no desc 
+			)
+  		)
+  	where rn > (#{pageNo}-1) * #{amount} and rn <= #{pageNo} * #{amount}
+  		]]>	
+  
+  </select>
+  <select id="selectReviewListCount" resultType="_int">
+  
+  	select count(*)
+  	from review r join member m on r.mem_no=m.mem_no 
+	  			join place p on r.place_no =p.place_no 
+	  			join region re on p.region_no = re.region_no
+  	where 
+  	
+  	review_status ='Y' 
+  	
+  
+  		
+		<include refid="criteria"></include>
+  
+  </select>
+  
+  <insert id="insertReview">
+  	INSERT INTO REVIEW
+	VALUES(SEQ_REVIEW.NEXTVAL,#{memNo},#{placeNo},#{reviewTitle},#{reviewContent},default,default,#{attachCount},default)
+  
+  </insert>
+  
+   <insert id="insertAttach">
+  	INSERT INTO ATTACH
+	VALUES(SEQ_ATTACH.NEXTVAL,#{attachPath},#{attachOrigin},#{attachChange},SEQ_REVIEW.CURRVAL)
+  
+  </insert>
+  
+  <select id="selectReview" resultMap="ReviewResultSet">
+  
+ 		select 
+	  	
+	  	r.review_no,r.mem_no,r.place_no ,review_title,review_content,review_regdate, visit_count,attach_count
+	  	,mem_name,place_name,place_group, region_name 
+	  	
+	  	from review r join member m on r.mem_no=m.mem_no 
+	  			join place p on r.place_no =p.place_no 
+	  			join region re on p.region_no = re.region_no
+	  	
+	  	where review_no=#{reviewNo}
+	  	
+	  	 
+  
+  </select>
+  
+  <select id="selectReviewAttachList" resultMap="AttachResultSet">
+  
+  	select /*+ INDEX IDX_ATTACH */
+  	attach_no,attach_path,attach_origin,attach_change
+  	from attach
+  	where review_no =#{reviewNo}
+  
+  
+  </select>
+  
+</mapper>

@@ -23,3 +23,24 @@
 	
 	overflow-y:auto;
 }
+#searchForm label{
+	
+	margin-left:5px;
+	margin-right:5px;
+}
+
+#reviewCard label {
+	margin-left:5px;
+	margin-right:15px;
+}
+
+#reviewCard span {
+	color:#61a134;
+}
+.myContainer{
+	min-height:calc(100vh - 180px);
+	
+	font-family: 'Sunflower', sans-serif;
+}
+
+

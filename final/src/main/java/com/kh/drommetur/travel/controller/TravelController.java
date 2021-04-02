@@ -112,7 +112,7 @@ public class TravelController {
 			model.addAttribute("travel", travel);
 			model.addAttribute("cri", cri);
 			
-			return "member/selectTravel";
+			return "member/travelDetail";
 			
 		}else {
 			

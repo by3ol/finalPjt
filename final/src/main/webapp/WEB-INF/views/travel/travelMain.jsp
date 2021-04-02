@@ -8,7 +8,7 @@
 	
 	
 	
- 	<div class="container-fluid" id="travelContainer" style="margin-top:70px">
+ 	<div class="container-fluid myContainer" id="travelContainer" style="margin-top:70px">
 	
 		<div class="row">
 			<div class="col-xl-6"  >
@@ -57,7 +57,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> <!-- 상단 검색부분 끝 -->
+		<!-- 맵과 여행등록부분 -->
 		<div class="row" >
 			<div class="col-xl-6" id="map" style="width:100% ;height:750px"  >
 				
