@@ -66,7 +66,7 @@ justify-content:space-around;
 			<form action="insertNotice.cu" method="post">
 				<div class="form-group">
 					<label for="title">제목</label> <input type="text"
-						class="form-control" id="title" name="noticeTtile"
+						class="form-control" id="title" name="noticeTitle"
 						>
 				</div>
 
@@ -75,6 +75,11 @@ justify-content:space-around;
 					<textarea class="form-control" id="content" name="noticeContent"
 						rows="15" ></textarea>
 				</div>
+				<div class="buttonarea" align="center">
+
+			<input type="submit" class="btn btn-primary" value="등록하기">
+			<button type="reset" class="btn btn-danger">취소하기</button>
+		</div>
 			</form>
 		</div>
 
@@ -82,11 +87,7 @@ justify-content:space-around;
 		
 
 	</div>
-<div class="buttonarea" align="center">
 
-			<input type="submit" class="btn btn-primary" value="등록하기">
-			<button type="reset" class="btn btn-danger">취소하기</button>
-		</div>
 
 </body>
 </html>
