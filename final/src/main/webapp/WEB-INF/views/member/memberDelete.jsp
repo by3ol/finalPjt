@@ -1,12 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
-</body>
-</html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<jsp:include page="../common/menubar1.jsp" />
+
+<jsp:include page="../member/myPageAside.jsp" />
+
+<div class="my_content">
+
+                <div class="warp" style="font-family: 'Sunflower', sans-serif;">
+                    <div class="signup-form" id="signUp_Form">
+                        <form id="enrollForm" action="/examples/actions/confirmation.php" method="post"
+                            class="form-horizontal">
+                            <div class="text-center col-xs-8 col-xs-offset-4" id="text-signUp">
+                                <h2>회원탈퇴</h2>
+                            </div>
+
+                            <div class="form-group" id="insert-info">
+                                <label class="control-label col-xs-4" id="info-label">아이디</label>
+                                <input type="text" class="form-control" id="info-text" name="userId" value="${ loginUser.memberId }" readonly>                    
+                            </div>
+                            <div id="checkResult"></div>
+
+                            <div class="form-group" id="insert-info">
+                                <label class="control-label col-xs-4" id="info-label">비밀번호</label>
+                                <input type="password" class="form-control" id="info-text" name="newPwd" required="required">
+                            </div>
+                            <div id="checkPwdResult"></div>
+
+                            <div class="form-group" id="insert-info-profileUp">
+                                <div class="text-center col-xs-8 col-xs-offset-4" id="bottom-insert-info">
+                                    <button type="submit" class="btn btn-primary btn-lg" id="join-btn">탈퇴하기</button>
+                                    <button type="submit" class="btn btn-danger btn-lg" id="cancel-btn">취소</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>                
+
+<jsp:include page="../common/footer.jsp" />
