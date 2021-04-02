@@ -10,7 +10,7 @@
                 <h1>여행</h1><br>
                 	
 				<div>
-					<table class="table table-striped">
+					<table class="table table-striped noDecorationTable">
 						<thead>
 							<tr>
 								<th>번호</th>

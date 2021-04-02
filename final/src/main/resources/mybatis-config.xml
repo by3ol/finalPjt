@@ -21,7 +21,10 @@
 		<typeAlias type="com.kh.drommetur.customer.model.vo.Notice" alias="Notice"></typeAlias>
 		<typeAlias type="com.kh.drommetur.customer.model.vo.PageInfo" alias="customerPageInfo"></typeAlias>
 		
-
+		
+		<typeAlias type="com.kh.drommetur.review.model.vo.Attach" alias="Attach"></typeAlias>
+		<typeAlias type="com.kh.drommetur.review.model.vo.Review" alias="Review"></typeAlias>
+		<typeAlias type="com.kh.drommetur.review.model.vo.Region" alias="Region"></typeAlias>
 		<typeAlias type="com.kh.drommetur.travel.model.vo.Travel" alias="Travel"></typeAlias>
 		<typeAlias type="com.kh.drommetur.travel.model.vo.TravelDetail" alias="TravelDetail"></typeAlias>
 		<typeAlias type="com.kh.drommetur.travel.model.vo.SimplePlace" alias="SimplePlace"></typeAlias>
