@@ -14,7 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Answer {
-	private int answero;
+	private int answerNo;
 	private String answerTitle;
 	private String answerContent;
 	private Date datetime;

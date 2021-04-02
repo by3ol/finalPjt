@@ -24,7 +24,7 @@
 
 	<div class="formarea">
 
-		<form id="questionForm" method="post" action="insert.cu">
+		<form id="questionForm" method="post" action="insertquestion.cu">
 			<div class="select_area">
 				<select class="select1" name="category" id="category">
 					<option selected>질문 유형</option>
@@ -40,33 +40,14 @@
 			<textarea class="textarea2" name="questionContent"
 				id="questionContent" cols="50" rows="15"
 				placeholder="문의 사항을 입력해주세요."></textarea>
-			<div class="submit_area">
-				<button class="btn btn-primary" id="questionRegisterBtn">문의하기</button>
+				<div class="submit_area">
+				<button type="submit" class="btn btn-primary" >문의하기</button>
 				<button type="reset" class="btn btn-danger">취소하기</button>
 
 			</div>
 		</form>
-
-
-
-
+		
 	</div>
-
-
 	<jsp:include page="../common/footer.jsp" />
-	<c:if test="${ !empty question }">
-		<script>
-			$(function() {
-				questionNo = <c:out value="${question.questionNo}"/>;
-				$category.val("<c:out value="${question.category}"/>");
-				$questionTitle
-						.val("<c:out value="${question.questionTitle}"/>");
-				$questionContent
-						.val("<c:out value="${question.questionContent}"/>");
-
-			});
-		</script>
-	</c:if>
-	<script type="text/javascript" src="resources/customer.js"></script>
 </body>
 </html>

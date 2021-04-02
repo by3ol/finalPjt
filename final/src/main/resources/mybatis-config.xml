@@ -45,6 +45,7 @@
 	
 	<mappers>
 		<mapper resource="mappers/place-mapper.xml"></mapper>
+		<mapper resource="mappers/customer-mapper.xml"></mapper>
 		<mapper resource="mappers/taste-mapper.xml"></mapper>
 		<mapper resource="mappers/accom-mapper.xml"></mapper>
 		<mapper resource="mappers/attraction-mapper.xml"></mapper>

@@ -303,8 +303,8 @@
         imageUrl:
           '${t.placeUrl}',
         link: {
-          mobileWebUrl: 'https://developers.kakao.com',
-          webUrl: 'https://developers.kakao.com',
+          mobileWebUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
+          webUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
         },
       },
       social: {
@@ -316,15 +316,15 @@
         {
           title: '웹으로 보기',
           link: {
-            mobileWebUrl: 'https://developers.kakao.com',
-            webUrl: 'https://developers.kakao.com',
+            mobileWebUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
+            webUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
           },
         },
         {
           title: '앱으로 보기',
           link: {
-            mobileWebUrl: 'https://developers.kakao.com',
-            webUrl: 'https://developers.kakao.com',
+            mobileWebUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
+            webUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
           },
         },
       ],

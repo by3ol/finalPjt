@@ -45,4 +45,11 @@
 		MEM_EMAIL=#{email}, MEM_PHONE=#{phone}, MEM_ADDRESS=#{address}
 		WHERE MEM_ID=#{memberId}
 	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		UPDATE MEMBER SET
+		STATUS='N'
+		WHERE MEM_ID=#{memberId}
+	</delete>
+	
 </mapper>

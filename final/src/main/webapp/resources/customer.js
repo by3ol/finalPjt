@@ -3,7 +3,7 @@
 		var category=$("#category");
 		var questionTitle=$("#questionTitle");
 		var questionContent=$("#questionContent");
-		var $questionRegisterBtn=$("#$questionRegisterBtn");
+		var $questionRegisterBtn=$("#questionRegisterBtn");
 		
 		
 		
@@ -40,7 +40,7 @@
 					type:"post",
 					url:"insert.cu",
 					data : question,
-					contentType: 'application/json',
+					contentType:'application/json',
 					success : function(msg){
 						
 								

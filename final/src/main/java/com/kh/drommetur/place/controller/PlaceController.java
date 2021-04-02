@@ -1,7 +1,6 @@
 package com.kh.drommetur.place.controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +23,7 @@ public class PlaceController {
 	
 	@GetMapping(value="placeList/{group}/{region}", produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public ResponseEntity<List<Place>> selectPlaceList(@PathVariable("group")String group, @PathVariable("region")int region) {
+	public ResponseEntity<ArrayList<Place>> selectPlaceList(@PathVariable("group")String group, @PathVariable("region")int region) {
 		
 		
 		Place place=new Place();
@@ -42,7 +41,7 @@ public class PlaceController {
 	
 	@GetMapping(value="placeList", produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public ResponseEntity<List<Place>> searchPlaceList(String keyword) {
+	public ResponseEntity<ArrayList<Place>> searchPlaceList(String keyword) {
 		
 		
 
