@@ -37,7 +37,7 @@
                         </li>
                     </ul>
                     <div class="nav_title" id="aside_title_3">
-                        <a href="delete.mem">회원탈퇴</a>
+                        <a href="deleteForm.mem">회원탈퇴</a>
                     </div>
 
                     <c:if test="${ sessionScope.loginUser.memberId eq 'admin' }">

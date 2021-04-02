@@ -49,7 +49,7 @@ public class MemberController {
 		return "member/pwdUpdate";
 	}
 	
-	@RequestMapping("delete.mem")
+	@RequestMapping("deleteForm.mem")
 	public String memberDelete() {
 		return "member/memberDelete";
 	}
