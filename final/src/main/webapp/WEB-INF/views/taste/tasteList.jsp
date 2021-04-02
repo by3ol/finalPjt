@@ -157,9 +157,9 @@
                             	 <c:forEach items="${list }" var="list">
                             
                               		 <div class="taste_menu">
+                              		 <input type="hidden" value="${list.placeNo }">
                               		 <input type="hidden" value="${list.placeLat }" id="placeLat" >
-               						 <input type="hidden" value="${list.placeLon }" id="placeLon">
-                              		 <input type="hidden" value="${list.placeNo }"> 
+               						 <input type="hidden" value="${list.placeLon }" id="placeLon"> 
                               		 <input type="hidden" value="${list.placeCategory }"> 
                               		 
       
