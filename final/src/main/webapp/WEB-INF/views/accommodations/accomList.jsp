@@ -77,6 +77,10 @@
        .pagination li{
        float:left;
        }
+       #score{
+       	color:orange;
+       	font-size:30px;
+       }
     </style>
 </head>
 <body>
@@ -155,7 +159,7 @@
                                		
                                    <!--  <a href="#"> -->
                                         <img src=${ list.placeUrl } width="200px" height="200px"> <br>
-                                        <strong>${list.placeScore }</strong> <br>
+                                        <strong><label id=score>${list.placeScore }</label></strong> <br>
                                         <label>${list.placeName }</label> <br>  
                                         <label>${list.placePhone } </label>      
                                         
