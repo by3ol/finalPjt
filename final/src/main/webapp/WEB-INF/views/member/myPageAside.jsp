@@ -14,15 +14,6 @@
                         <a href="selectList.tr">여행</a>
                     </div>
                     <div class="nav_title" id="aside_title_1">
-                        <a href="taste.mem">맛집</a>
-                    </div>
-                    <div class="nav_title" id="aside_title_1">
-                        <a href="accommodation.mem">숙박</a>
-                    </div>
-                    <div class="nav_title" id="aside_title_1">
-                        <a href="activity.mem">엑티비티</a>
-                    </div>
-                    <div class="nav_title" id="aside_title_1">
                         <a href="mylist.re">리뷰</a>
                     </div>
                     <div class="nav_title" id="aside_title_2">
@@ -47,9 +38,6 @@
                         <ul class="nav_sub g_list" id="aside_sub_2">
                             <li class>
                                 <a href="member.ad">회원관리</a>
-                            </li>
-                            <li class>
-                                <a href="report.bo">신고게시판 관리</a>
                             </li>
                         </ul>
                     </c:if>             

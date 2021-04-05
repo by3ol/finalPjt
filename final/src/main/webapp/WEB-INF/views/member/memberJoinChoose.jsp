@@ -15,10 +15,6 @@
             </div>
 
             <div class="or-seperator" id="or-line"></div>
-            <div class="text-center social-btn">
-                <a href="#" class="btn btn-primary btn-lg" id="facebook_btn"><i class="fab fa-facebook-f" id="social-fab"></i>facebook</a>
-                <a href="#" class="btn btn-danger btn-lg" id="google_btn"><i class="fab fa-google" id="social-fab"></i>google</a>
-            </div>
             <br>
             <div class="hint-text small" id="check-loginId">이미 아이디가 있으신가요? <a href="loginFrom.mem" class="text-success">로그인</a></div>
         </form>

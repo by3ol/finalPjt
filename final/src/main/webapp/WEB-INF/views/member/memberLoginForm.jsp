@@ -25,10 +25,6 @@
             </div>
             <br>
             <div class="or-seperator" id="or-line"></div>
-            <div class="text-center social-btn" id="social-btn">
-                <a href="#" class="btn btn-primary btn-lg" id="btnFace"><i class="fab fa-facebook-f" id="faceText"></i>facebook</a>
-                <a href="#" class="btn btn-danger btn-lg" id="btnGoogle"><i class="fab fa-google" id="googleText"></i>google</a>
-            </div>
             <br>
             <div class="hint-text small" id="hint-text">아직 회원이 아니신가요? <a href="joinChoose.mem" class="text-success" id="text-success">회원가입!</a></div>
         </form>

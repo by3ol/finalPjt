@@ -46,7 +46,7 @@ public class MemberController {
 	
 	@RequestMapping("pwdUpdate.mem")
 	public String pwdChange() {
-		return "member/pwdUpdate";
+		return "member/memberPwdChange";
 	}
 	
 	@RequestMapping("deleteForm.mem")
