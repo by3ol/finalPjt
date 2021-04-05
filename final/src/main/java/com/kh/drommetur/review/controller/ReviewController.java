@@ -36,7 +36,7 @@ public class ReviewController {
 	@GetMapping("list.re")
 	public String selectReviewList(Criteria cri,Model model) {
 		
-		System.out.println(cri);
+		cri.setFrom(1);
 		
 		int listCount=reviewService.selectReviewListCount(cri);
 		
@@ -56,8 +56,18 @@ public class ReviewController {
 	}
 	
 	@GetMapping("mylist.re")
-	public String selectMyReviewList(Criteria cri) {
+	public String selectMyReviewList(Criteria cri,HttpSession session,Model model) {
 		
+		cri.setFrom(2);
+		
+		Member loginUser=(Member)session.getAttribute("loginUser");
+		
+		int listCount=reviewService.selectMyReviewListCount(cri,loginUser.getMemberNo());
+		
+		ArrayList<Review> list=reviewService.selectMyReviewList(cri,loginUser.getMemberNo());
+		
+		model.addAttribute("list", list);
+		model.addAttribute("page",new PageDTO(listCount,cri));
 		
 		
 		return "member/myPageReview";
@@ -66,8 +76,40 @@ public class ReviewController {
 	
 	@GetMapping("enrollForm.re")
 	public String showEnrollForm(@ModelAttribute("cri") Criteria cri) {
-		System.out.println(cri);
+	
 		return "review/reviewEnrollForm";
+		
+	}
+	
+	@GetMapping("enrollFormWithPlace.re")
+	public String showEnrollFormWithPlace(@ModelAttribute("placeNo") int placeNo, @ModelAttribute("placeName")String placeName) {
+	
+		return "review/reviewEnrollFormWithPlace";
+		
+	}
+	
+	@GetMapping("modifyForm.re")
+	public String showModifyForm(@ModelAttribute("cri") Criteria cri,int reviewNo,Model model) throws CommonException {
+	
+		
+		Review review=reviewService.selectReview(reviewNo);
+		List<Attach> attachList=reviewService.selectReviewAttachList(reviewNo);
+		
+		
+		if(review!=null && attachList!=null) {
+			
+			model.addAttribute("review", review);
+			model.addAttribute("attachList", attachList);
+			
+			return "review/reviewModifyForm";
+			
+			
+		}else {
+			
+			throw new CommonException("리뷰 조회에 실패하였습니다.");
+		}
+		
+		
 		
 	}
 	
@@ -76,8 +118,7 @@ public class ReviewController {
 		
 		Review review=reviewService.selectReview(reviewNo);
 		List<Attach> attachList=reviewService.selectReviewAttachList(reviewNo);
-		System.out.println(review);
-		System.out.println(attachList);
+		
 		
 		if(review!=null && attachList!=null) {
 			
@@ -105,7 +146,7 @@ public class ReviewController {
 		File uploadPath=new File(path,folder);
 		int count=0;
 		
-		System.out.println(uploadPath.getPath());
+		
 		
 		if(!uploadPath.exists()) {
 			
@@ -113,7 +154,7 @@ public class ReviewController {
 		}
 		
 		
-		System.out.println(uploadFiles.length);
+		
 		
 		for(MultipartFile uploadFile : uploadFiles) {
 			
@@ -122,12 +163,14 @@ public class ReviewController {
 				UUID uuid=UUID.randomUUID();
 				
 				String origin=uploadFile.getOriginalFilename();
-				String change=uuid+"_"+uploadFile.getOriginalFilename();
+				String end=uploadFile.getOriginalFilename().substring(uploadFile.getOriginalFilename().lastIndexOf("."));
+				
+				String change=uuid+end;
 				File saveFile=new File(uploadPath,change);
 				
 				attach.setAttachOrigin(origin);
 				attach.setAttachChange(change);
-				attach.setAttachPath("resources/uploadFiles/"+folder);
+				attach.setAttachPath(folder+"/");
 				
 				System.out.println(attach);
 				list.add(attach);
@@ -165,6 +208,234 @@ public class ReviewController {
 			
 		}
 	}
+	
+	@PostMapping("insertwithPlace.re")
+	public String insertReviewWithPlace(  Review review,@RequestParam(name="uploadFiles",required=false ) MultipartFile[] uploadFiles, HttpSession session,HttpServletRequest request) throws CommonException, IllegalStateException, IOException {
+		
+		List<Attach> list=new ArrayList<Attach>();
+		
+		String path=session.getServletContext().getRealPath("resources/uploadFiles/");
+		String folder=getFolder();
+		
+		File uploadPath=new File(path,folder);
+		int count=0;
+		
+		
+		
+		if(!uploadPath.exists()) {
+			
+			uploadPath.mkdirs();
+		}
+		
+		
+		
+		
+		for(MultipartFile uploadFile : uploadFiles) {
+			
+			if(!uploadFile.getOriginalFilename().equals("")) {
+				Attach attach =new Attach();
+				UUID uuid=UUID.randomUUID();
+				
+				String origin=uploadFile.getOriginalFilename();
+				String end=uploadFile.getOriginalFilename().substring(uploadFile.getOriginalFilename().lastIndexOf("."));
+				
+				String change=uuid+end;
+				File saveFile=new File(uploadPath,change);
+				
+				attach.setAttachOrigin(origin);
+				attach.setAttachChange(change);
+				attach.setAttachPath(folder+"/");
+				
+				System.out.println(attach);
+				list.add(attach);
+				
+				uploadFile.transferTo(saveFile);
+				count++;
+			}
+			
+			
+		}
+		
+		
+		
+		Member loginUser=(Member)session.getAttribute("loginUser");
+		
+		review.setMemNo(loginUser.getMemberNo());
+		
+		review.setAttachCount(count);
+		
+		
+		int result=reviewService.insertReview(review,list);
+		
+		if(result>0) {	
+			
+			session.setAttribute("msg", "리뷰가 등록되었습니다.");
+			
+			
+			
+			
+			return "redirect:/list.re";
+			
+		}else {
+			
+			throw new CommonException("리뷰 등록에 실패하였습니다.");
+			
+		}
+	}
+	
+	
+	
+	
+	@PostMapping("update.re")
+	public String updateReview(Criteria cri, Review review,@RequestParam(name="uploadFiles",required=false ) MultipartFile[] uploadFiles,@RequestParam(name="deleteFiles",required=false ) int[] deleteFiles,HttpSession session) throws IllegalStateException, IOException, CommonException {
+		
+
+		List<Attach> list=new ArrayList<Attach>();
+		
+		String path=session.getServletContext().getRealPath("resources/uploadFiles/");
+		String folder=getFolder();
+		
+		File uploadPath=new File(path,folder);
+		int count=0;
+		
+		
+		
+		if(!uploadPath.exists()) {
+			
+			uploadPath.mkdirs();
+		}
+		
+		for(MultipartFile uploadFile : uploadFiles) {
+			
+			if(!uploadFile.getOriginalFilename().equals("")) {
+				Attach attach =new Attach();
+				UUID uuid=UUID.randomUUID();
+				
+				String origin=uploadFile.getOriginalFilename();
+				String end=uploadFile.getOriginalFilename().substring(uploadFile.getOriginalFilename().lastIndexOf("."));
+
+				String change=uuid+end;
+				File saveFile=new File(uploadPath,change);
+				
+				attach.setAttachOrigin(origin);
+				attach.setAttachChange(change);
+				attach.setAttachPath(folder+"/");
+				
+				System.out.println(attach);
+				list.add(attach);
+				
+				uploadFile.transferTo(saveFile);
+				count++;
+			}
+			
+			
+		}
+		
+		int modifyAttachCount=(deleteFiles == null )?(review.getAttachCount()+count) : (review.getAttachCount()+count-deleteFiles.length);
+		
+		review.setAttachCount(modifyAttachCount);
+		
+		System.out.println(review);
+		
+		if(deleteFiles!=null) {
+			List<Attach> attachDeleteList=reviewService.selectDeleteAttach(deleteFiles);
+			
+			int result=reviewService.updateReview(review,list,deleteFiles);
+			
+			if(result>0) {
+				
+				for(Attach attach : attachDeleteList) {
+					File deleteFile=new File(path,attach.getAttachPath()+attach.getAttachChange());
+					
+					deleteFile.delete();
+				
+				
+				
+				}
+				
+				session.setAttribute("msg", "리뷰가 수정되었습니다.");
+				
+				if(cri.getFrom()==1) {
+					return "redirect:/list.re"+cri.getListLink();
+				}
+					
+					return "redirect:/mylist.re"+cri.getListLink();
+				
+				
+				
+				
+			}else {
+				
+				throw new CommonException("리뷰 수정에 실패하였습니다.");
+				
+			}
+			
+			
+			
+			
+		}
+		
+		int result=reviewService.updateReview(review,list,deleteFiles);
+		
+		if(result>0) {
+			session.setAttribute("msg", "리뷰가 수정되었습니다.");
+			
+			if(cri.getFrom()==1) {
+				return "redirect:/list.re"+cri.getListLink();
+			}
+				
+				return "redirect:/mylist.re"+cri.getListLink();
+			
+		}else {
+			throw new CommonException("리뷰 수정에 실패하였습니다.");
+			
+		}
+		
+		
+	}
+	
+	@PostMapping("delete.re")
+	public String deleteReview(int reviewNo, Criteria cri,HttpSession session) throws CommonException {
+		
+		
+		String path=session.getServletContext().getRealPath("resources/uploadFiles/");
+
+		List<Attach> attachList=reviewService.selectReviewAttachList(reviewNo);
+		
+		int result=reviewService.deleteReview(reviewNo);
+		
+		if(result>0) {
+			
+			for(Attach attach : attachList) {
+				
+				File deleteFile=new File(path,attach.getAttachPath()+attach.getAttachChange());
+				
+				deleteFile.delete();
+			
+			
+			 
+			}
+			
+			session.setAttribute("msg", "리뷰가 삭제되었습니다.");
+			
+			if(cri.getFrom()==1) {
+				
+				return "redirect:/list.re"+cri.getListLink();
+			}
+				
+				return "redirect:/mylist.re"+cri.getListLink();
+		
+			
+		}else {
+			throw new CommonException("리뷰 삭제에 실패하였습니다.");
+			
+		}
+		
+		
+		
+		
+	}
+	
 	
 	public String getFolder() {
 		

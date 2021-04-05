@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.drommetur.common.Criteria;
+import com.kh.drommetur.place.model.vo.Place;
 import com.kh.drommetur.travel.mapper.TravelMapper;
 import com.kh.drommetur.travel.model.vo.SimplePlace;
 import com.kh.drommetur.travel.model.vo.Travel;
@@ -30,11 +31,12 @@ public class TravelServiceImpl implements TravelService {
 		int result2=1;
 		
 		for(TravelDetail travelDetail : travel.getTravelDetailList()) {
+			
 			result2*=travelMapper.insertTravelDetail(travelDetail);
 			
-			for(SimplePlace simplePlace : travelDetail.getTravelPlaces()) {
+			for(Place place : travelDetail.getTravelPlaces()) {
 				
-				result2*=travelMapper.insertTravelPlace(simplePlace);
+				result2*=travelMapper.insertTravelPlace(place);
 			}
 			
 			
@@ -56,37 +58,37 @@ public class TravelServiceImpl implements TravelService {
 		return travelMapper.selectListCount(memberNo);
 	}
 
-	@Override
-	public Travel selectTravel(int travelNo) {
-		// TODO Auto-generated method stub
-		
-		Travel travel=travelMapper.selectTravel(travelNo);
-		
-		List<TravelDetail> travelDetailList=travelMapper.selectTravelDetailList(travelNo); 
-		
-		for(TravelDetail travelDetail : travelDetailList) {
-			
-			List<Integer> placeNoList=travelMapper.selectPlaceNoList(travelDetail.getDetailNo());
-			
-			List<SimplePlace> travelPlaces=new LinkedList<SimplePlace>();
-			
-			for(int placeNo : placeNoList) {
-				
-				String placeName=travelMapper.selectPlaceName(placeNo);
-				
-				travelPlaces.add(new SimplePlace(placeNo,placeName));
-				
-			}
-			
-			travelDetail.setTravelPlaces(travelPlaces);
-			
-		}
-		
-		travel.setTravelDetailList(travelDetailList);
-		
-		
-		return travel ;
-	}
+//	@Override
+//	public Travel selectTravel(int travelNo) {
+//		// TODO Auto-generated method stub
+//		
+//		Travel travel=travelMapper.selectTravel(travelNo);
+//		
+//		List<TravelDetail> travelDetailList=travelMapper.selectTravelDetailList(travelNo); 
+//		
+//		for(TravelDetail travelDetail : travelDetailList) {
+//			
+//			List<Integer> placeNoList=travelMapper.selectPlaceNoList(travelDetail.getDetailNo());
+//			
+//			List<SimplePlace> travelPlaces=new LinkedList<SimplePlace>();
+//			
+//			for(int placeNo : placeNoList) {
+//				
+//				String placeName=travelMapper.selectPlaceName(placeNo);
+//				
+//				travelPlaces.add(new SimplePlace(placeNo,placeName));
+//				
+//			}
+//			
+//			travelDetail.setTravelPlaces(travelPlaces);
+//			
+//		}
+//		
+//		travel.setTravelDetailList(travelDetailList);
+//		
+//		
+//		return travel ;
+//	}
 
 	@Override
 	public int deleteTravel(int travelNo) {
@@ -102,19 +104,29 @@ public class TravelServiceImpl implements TravelService {
 		
 		result*=travelMapper.modifyInsertTravel(travel,memberNo);
 		
+		int travelNo=travel.getTravelNo();
+		
 		for(TravelDetail travelDetail : travel.getTravelDetailList()) {
 			
-			result*=travelMapper.modifyInsertTravelDetail(travelDetail,travel.getTravelNo());
+			result*=travelMapper.modifyInsertTravelDetail(travelDetail,travelNo);
 			
-			for(SimplePlace simplePlace:travelDetail.getTravelPlaces()) {
+			for(Place place:travelDetail.getTravelPlaces()) {
 				
-				result*=travelMapper.insertTravelPlace(simplePlace);
+				result*=travelMapper.insertTravelPlace(place);
 			}
 			
 		
 		}
 		
 		return result;
+	}
+
+	@Override
+	public Travel selectTravel(int travelNo) {
+		
+		Travel travel=travelMapper.selectTravel(travelNo);
+		
+		return travel;
 	}
 
 }

@@ -48,6 +48,9 @@ public class TravelController {
 		
 		System.out.println(travel);
 		Member loginUser=(Member) session.getAttribute("loginUser");
+		
+		
+		
 		int result=travelService.insertTravel(travel,loginUser.getMemberNo());
 			
 		return result>0 ? new ResponseEntity<>(HttpStatus.OK):new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
