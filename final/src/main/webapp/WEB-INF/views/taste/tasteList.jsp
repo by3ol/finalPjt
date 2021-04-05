@@ -78,9 +78,9 @@
        float:left;
        }
        #score{
-       font-color:orenge;
        font-size:30px;
-       }
+       color:orenge;  
+        }
     </style>
 </head>
 <body>
@@ -166,7 +166,7 @@
                                		
                                    <!--  <a href="#"> -->
                                         <img src=${ list.placeUrl } width="200px" height="200px"> <br>
-                                        <strong id=scroe>${list.placeScore }</strong> <br>
+                                        <strong><label id=score>${list.placeScore }</label></strong> <br>
                                         <label>${list.placeName }</label> <br>  
                                         <label>${list.placePhone } </label>     
                                         
