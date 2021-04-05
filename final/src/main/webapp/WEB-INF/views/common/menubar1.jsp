@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Drommetur</title>
 
 
 <script
@@ -37,7 +37,7 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
 
-
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300;700&display=swap" rel="stylesheet">
 
 
 </head>
@@ -66,8 +66,7 @@
 		<!-- Navbar links -->
 		<div class="collapse navbar-collapse " id="collapsibleNavbar">
 			<ul class="navbar-nav navbar-right">
-				<li class="nav-item"><a class="nav-link"
-					href="${ pageContext.servletContext.contextPath }/enrollForm.tr">여행</a></li>
+				<li class="nav-item"><a class="nav-link" href="enrollForm.tr">여행</a></li>
 				<li class="nav-item"><a class="nav-link" href="list.ta">맛집</a></li>
 				<li class="nav-item"><a class="nav-link" href="list.ac">숙박</a></li>
 
@@ -105,3 +104,5 @@
 			</ul>
 		</div>
 	</nav>
+	
+	

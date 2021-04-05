@@ -23,6 +23,7 @@
 		
 		
 		//모달외 요소 
+		var isLogin;
 		var $placeGroupBtn=$(".place-group");
 		var $travelUl=$("#travelUl");
 		var $travelName=$("#travelName");
@@ -543,6 +544,13 @@
 		});
 	
 		$travelRegisterBtn.on("click",function(){ //여행등록버튼을 클릭 했을 때
+			
+			if(isLogin=="false"){
+				
+				alert("로그인을 해주세요.");
+				
+				return;
+			}
 			
 			if($travelName.val().trim().length==0){
 				alert("여행 이름을 입력해주세요.");

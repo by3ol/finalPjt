@@ -15,9 +15,7 @@
 	color:#61a134;
 }
 
-#travelContainer{
-	font-family: 'Sunflower', sans-serif;
-}
+
 
 #displayResultDiv{
 	
@@ -32,15 +30,24 @@
 #reviewCard label {
 	margin-left:5px;
 	margin-right:15px;
+	font-weight:700;
 }
 
-#reviewCard span {
-	color:#61a134;
-}
+
 .myContainer{
 	min-height:calc(100vh - 180px);
 	
 	font-family: 'Sunflower', sans-serif;
+}
+
+.myPageContainer{
+	font-family: 'Sunflower', sans-serif;
+	
+}
+.mainPhoto{
+	
+	width:100%;
+	height:120vh;
 }
 
 

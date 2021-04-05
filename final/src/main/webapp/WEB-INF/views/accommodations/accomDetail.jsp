@@ -27,7 +27,6 @@
         
       }
     
-
     
       /*상세페이지*/
       .accomDetailViewDiv{
@@ -38,7 +37,6 @@
         
       }
       .accomDetailViewTitle{
-
         margin: 0 auto;
         width: 922px;
         position: relative;
@@ -85,7 +83,6 @@
         margin:3px;
         margin-left: auto;
         padding: 0;
-
       }
       .accomInfoDiv .accomInfo div p{
         margin-top: 2px;
@@ -239,11 +236,8 @@
 				center: new kakao.maps.LatLng(placeLat,placeLon),
 				level: 3
 				};
-
 				var map = new kakao.maps.Map(container, options);
 			
-
-
 			// 마커가 표시될 위치입니다 
 		
 		
@@ -260,10 +254,8 @@
 		   	 	position: markerPosition,
 		    	image: markerImage 
 				});
-
 			// 마커가 지도 위에 표시되도록 설정합니다
 			marker.setMap(map);
-
 			// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 			// marker.setMap(null);    
 				</script>
@@ -276,7 +268,7 @@
                     <!-- <li><a id="kakao-link-btn" href="javascript:sendLink()">공유하기</a></li> -->
                     <li><a id="kakao-link-btn" class="share" href="javascript:sendLink()">공유하기</a></li>
                   </ul>
-                  <a href="" class="reviewWrite_btn">리뷰쓰기</a>
+                  <a  class="reviewWrite_btn" id="reviewEnrollBtn">리뷰쓰기</a>
                 </div>
                   <h4>매장 연관 태그</h4>
                   <a href="">태그</a>
@@ -288,12 +280,39 @@
             </div>
             </div>
       </div>
+      
+      <form id="reviewEnrollForm" action="enrollFormWithPlace.re" method="get">
+      	<input type="hidden" name="placeNo" value=<c:out value="${ac.placeNo}" /> />
+      	<input type="hidden" name="placeName" value="<c:out value="${ac.placeName}" />" />
+      
+      </form>
+      
+      <script>
+		$("#reviewEnrollBtn").on("click",function(e){
+			
+			
+			e.preventDefault();
+			
+			if(${empty sessionScope.loginUser}){
+				
+				alert("로그인을 해주세요");
+				return;
+			}
+			
+			
+			$("#reviewEnrollForm").submit();
+			
+		});
+      
+      </script>
 		<script type="text/javascript">
+		
+
+		
+		
 		
 		Kakao.init('7cdc8b55964d8909243d354220777e13');
 		
-
-
 		function sendLink() {
 		    Kakao.Link.sendDefault({
 		      objectType: 'feed',
@@ -330,6 +349,9 @@
 		      ],
 		    })
 		  }
+		
+		
+		
 </script>
     <br><br><br>
       <jsp:include page="../common/footer.jsp" />

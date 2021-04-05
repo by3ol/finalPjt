@@ -6,11 +6,11 @@
 
 <jsp:include page="../member/myPageAside.jsp" />
 
-            <div class="my_content">
+            <div class="my_content myPageContainer">
                 <h1>여행</h1><br>
                 	
 				<div>
-					<table class="table table-striped noDecorationTable">
+					<table class="table table-striped ">
 						<thead>
 							<tr>
 								<th>번호</th>
@@ -23,7 +23,7 @@
 							<c:forEach items="${travelList}" var="travel" >
 								<tr>
 									<td><c:out value="${travel.travelNo }"/></td>
-									<td  ><a href="<c:out value="${travel.travelNo }"/>" class="getTravel"><c:out value="${travel.travelName}" /></a></td>
+									<td  ><a href="<c:out value="${travel.travelNo }"/>" class="getTravel"  style="color:#2d7fc7"><c:out value="${travel.travelName}" /></a></td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${travel.travelRegDate }" /></td>
 									
 								</tr>

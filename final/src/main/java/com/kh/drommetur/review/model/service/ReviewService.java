@@ -19,4 +19,16 @@ public interface ReviewService {
 
 	List<Attach> selectReviewAttachList(int reviewNo);
 
+	int updateReview(Review review, List<Attach> list, int[] deleteFiles);
+
+	List<Attach> selectDeleteAttach(int[] deleteFiles);
+
+	int deleteReview(int reviewNo);
+
+	int selectMyReviewListCount(Criteria cri, int memberNo);
+
+	ArrayList<Review> selectMyReviewList(Criteria cri, int memberNo);
+
+
+
 }

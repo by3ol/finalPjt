@@ -49,8 +49,13 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public Review selectReview(int reviewNo) {
 		
+		int result=reviewMapper.updateReviewVisitCount(reviewNo);
 		
-		return reviewMapper.selectReview(reviewNo);
+		if(result>0) {
+			return reviewMapper.selectReview(reviewNo);
+		}
+		
+		return null;
 	}
 
 	@Override
@@ -58,5 +63,65 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return reviewMapper.selectReviewAttachList(reviewNo);
 	}
+
+	@Override
+	public int updateReview(Review review, List<Attach> list, int[] deleteFiles) {
+		
+		int result=0;
+		
+		if(deleteFiles!=null) {
+			
+			
+			 result=reviewMapper.deleteAttach(deleteFiles);
+			 
+			 result*=reviewMapper.updateReview(review);
+			 
+			 for(Attach attach : list) {
+				 
+				 result*=reviewMapper.insertAttachWithReviewNo(attach,review.getReviewNo());
+			 }
+			 
+			 return result;
+	
+		}
+		
+		result=reviewMapper.updateReview(review);
+		
+		 for(Attach attach : list) {
+			 
+			 result*=reviewMapper.insertAttachWithReviewNo(attach,review.getReviewNo());
+		 }
+		
+		
+		return result;
+	}
+
+	@Override
+	public List<Attach> selectDeleteAttach(int[] deleteFiles) {
+		
+		return reviewMapper.selectDeleteAttach(deleteFiles);
+	}
+
+	@Override
+	public int deleteReview(int reviewNo) {
+		
+		return reviewMapper.deleteReview(reviewNo);
+	}
+
+	@Override
+	public int selectMyReviewListCount(Criteria cri, int memberNo) {
+		
+		
+		
+		return reviewMapper.selectMyReviewListCount(cri,memberNo);
+	}
+
+	@Override
+	public ArrayList<Review> selectMyReviewList(Criteria cri, int memberNo) {
+		
+		return reviewMapper.selectMyReviewList(cri,memberNo);
+	}
+
+
 
 }

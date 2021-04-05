@@ -264,6 +264,11 @@
 				
  			</form>
  	
+ 	<script>
+ 	$(function(){
+ 		 isLogin="${!empty sessionScope.loginUser}";
+ 	});
+ 	</script>
  	
  	<c:if test="${ !empty travel }">
 		<script>

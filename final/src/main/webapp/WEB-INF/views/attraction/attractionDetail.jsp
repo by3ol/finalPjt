@@ -276,7 +276,7 @@
                     <!-- <li><a id="kakao-link-btn" href="javascript:sendLink()">공유하기</a></li> -->
                     <li><a id="kakao-link-btn" class="share" href="javascript:sendLink()">공유하기</a></li>
                   </ul>
-                  <a href="" class="reviewWrite_btn">리뷰쓰기</a>
+                  <a href="" class="reviewWrite_btn" id="reviewEnrollBtn">리뷰쓰기</a>
                 </div>
                   <h4>매장 연관 태그</h4>
                   <a href="">태그</a>
@@ -288,6 +288,33 @@
             </div>
             </div>
       </div>
+      
+      <form id="reviewEnrollForm" action="enrollFormWithPlace.re" method="get">
+      	<input type="hidden" name="placeNo" value=<c:out value="${at.placeNo}" /> />
+      	<input type="hidden" name="placeName" value="<c:out value="${at.placeName}" />" />
+      
+      </form>
+      
+       <script>
+		$("#reviewEnrollBtn").on("click",function(e){
+			
+			
+			e.preventDefault();
+			
+			if(${empty sessionScope.loginUser}){
+				
+				alert("로그인을 해주세요");
+				return;
+			}
+			
+			
+			
+			$("#reviewEnrollForm").submit();
+			
+		});
+      
+      </script>
+      
 		<script type="text/javascript">
 		
 		Kakao.init('7cdc8b55964d8909243d354220777e13');

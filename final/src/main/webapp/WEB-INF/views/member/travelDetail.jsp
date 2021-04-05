@@ -13,7 +13,7 @@
 	<div>
 		
 		<div >
-			<div class="card-body">
+			<div class="card-body  myPageContainer">
 				<h4 class="card-title"><c:out value="${travel.travelName}"/></h4>
 				<br><br>
 				
@@ -26,7 +26,7 @@
 					<ul style="color:#2d7fc7">
 					<c:forEach items="${travelDetail.travelPlaces }" var="place">
 						
-						<li><c:out value="${place.placeName }"/> </li>
+						<li class="getPlaceDetail" data-pno="<c:out value="${place.placeNo }"/>"  data-group="<c:out value="${place.placeGroup }"/>"><c:out value="${place.placeName }"/> </li>
 					</c:forEach>
 					</ul>
 				</c:forEach>
@@ -89,6 +89,29 @@
 		
 		$moveForm.attr("action","modifyForm.tr");
 		$moveForm.submit();
+		
+	});
+	
+	$(".getPlaceDetail").on("click",function(){
+		
+		var group=$(this).data("group");
+		var pno=$(this).data("pno");
+		var url="detail.";
+		
+		if(group=="음식점"){
+			
+			url+="ta";
+		}else if(group=="숙박"){
+			url+="ac";
+			
+		}else{
+			url+="at";
+			
+		}
+		
+		url+="?placeNo="+pno;
+		
+		window.open(url,'_blank');
 		
 	});
 

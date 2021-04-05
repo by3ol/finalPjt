@@ -125,6 +125,37 @@
   		]]>	
   
   </select>
+  
+    <select id="selectMyReviewList" resultMap="ReviewResultSet">
+  
+  
+  		<![CDATA[
+  	select review_no,mem_no,place_no ,review_title,review_content,review_regdate, visit_count,attach_count
+		  	,mem_name,place_name,place_group, region_name
+  	from(
+	  	select review_no,mem_no,place_no ,review_title,review_content,review_regdate, visit_count,attach_count
+		  	,mem_name,place_name,place_group, region_name ,rownum rn
+	  	from
+	  		(
+		  	select 
+		  	
+		  	r.review_no,r.mem_no,r.place_no ,review_title,review_content,review_regdate, visit_count,attach_count
+		  	,mem_name,place_name,place_group, region_name 
+		  	
+		  	from review r join member m on r.mem_no=m.mem_no 
+		  			join place p on r.place_no =p.place_no 
+		  			join region re on p.region_no = re.region_no
+		  	where 
+		  	
+		  	review_status ='Y' and r.mem_no=#{memberNo}
+		  	 order by review_no desc 
+		  	 
+			)
+  		)
+  	where rn > (#{cri.pageNo}-1) * #{cri.amount} and rn <= #{cri.pageNo} * #{cri.amount}
+  		]]>	
+  
+  </select>
   <select id="selectReviewListCount" resultType="_int">
   
   	select count(*)
@@ -141,6 +172,17 @@
   
   </select>
   
+  <select id="selectMyReviewListCount" resultType="_int">
+  	 select count(*)
+  	from review r join member m on r.mem_no=m.mem_no 
+	  			join place p on r.place_no =p.place_no 
+	  			join region re on p.region_no = re.region_no
+  	where 
+  	
+  	review_status ='Y' and r.mem_no=#{memberNo}
+  
+  </select>
+  
   <insert id="insertReview">
   	INSERT INTO REVIEW
 	VALUES(SEQ_REVIEW.NEXTVAL,#{memNo},#{placeNo},#{reviewTitle},#{reviewContent},default,default,#{attachCount},default)
@@ -150,6 +192,12 @@
    <insert id="insertAttach">
   	INSERT INTO ATTACH
 	VALUES(SEQ_ATTACH.NEXTVAL,#{attachPath},#{attachOrigin},#{attachChange},SEQ_REVIEW.CURRVAL)
+  
+  </insert>
+  
+  <insert id="insertAttachWithReviewNo">
+  	INSERT INTO ATTACH
+	VALUES(SEQ_ATTACH.NEXTVAL,#{attach.attachPath},#{attach.attachOrigin},#{attach.attachChange},#{reviewNo})
   
   </insert>
   
@@ -179,5 +227,64 @@
   
   
   </select>
+  
+  <select id="selectDeleteAttach" resultMap="AttachResultSet">
+  
+  	select 
+  		attach_path,attach_change
+  	from attach
+  	where attach_no  in 
+  	
+  		<foreach item="attach_no" collection="array" open="(" separator="," close=")">
+  			
+  			#{attach_no}
+  			
+  		</foreach>
+  
+  
+  </select>
+  
+  <delete id="deleteAttach">
+  
+  	delete from attach
+   	where attach_no  in 
+  	
+  		<foreach item="attach_no" collection="array" open="(" separator="," close=")">
+  			
+  			#{attach_no}
+  			
+  		</foreach>
+  	
+  </delete>
+  
+  <update id="updateReview">
+  	update review
+  	
+  	set 
+  	review_title=#{reviewTitle},
+  	review_content=#{reviewContent},
+  	attach_count=#{attachCount}
+  	
+  	where review_no=#{reviewNo}
+  	
+  	
+  
+  </update>
+  
+  <update id="deleteReview">
+  	update review
+  	set review_status='N'
+  	where review_no=#{reviewNo}
+  
+  
+  </update>
+  
+  <update id="updateReviewVisitCount">
+  		update review
+  		set visit_count=visit_count+1
+  		where review_no=#{reviewNo}
+  </update>
+  
+  
   
 </mapper>

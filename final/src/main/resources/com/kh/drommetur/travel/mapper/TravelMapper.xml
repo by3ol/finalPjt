@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kh.drommetur.travel.mapper.TravelMapper">
   
- 	<resultMap id="TravelResultSet" type="Travel">
+	<resultMap id="TravelResultSet" type="Travel">
  		<id property="travelNo" column="TRAVEL_NO" />
  		<result property="travelName" column="TRAVEL_NAME" />
  		 <result property="travelMemo" column="TRAVEL_MEMO" />
@@ -11,16 +11,39 @@
  		
  	</resultMap> 
  	
- 	<resultMap id="TravelDetailResultSet" type="TravelDetail">
+ <!-- 	<resultMap id="TravelDetailResultSet" type="TravelDetail">
  		<id property="detailNo" column="DETAIL_NO" />
  		<result property="travelDate" column="TRAVEL_DATE" />
  			
  		
  		
+ 	</resultMap>  -->
+ 	
+ 	<resultMap id="Travel" type="Travel">
+ 		<id property="travelNo" column="TRAVEL_NO" />
+ 		<result property="travelName" column="TRAVEL_NAME" />
+ 		 <result property="travelMemo" column="TRAVEL_MEMO" />
+ 		<result property="travelRegDate" column="TRAVEL_REGDATE" />	 		
+ 		
+ 		<collection property="travelDetailList" resultMap="TravelDetail" />
+ 		
+ 	</resultMap> 
+ 	
+ 	<resultMap id="TravelDetail" type="TravelDetail">
+ 		<id property="detailNo" column="DETAIL_NO" />
+ 		<result property="travelDate" column="TRAVEL_DATE" />
+ 			
+ 		<collection property="travelPlaces" resultMap="Place" />
+ 		
  	</resultMap>
  	
  
- 	
+ 	<resultMap type="Place" id="Place" >
+	  	<id property="placeNo" column="PLACE_NO" />
+	  	<result property="placeName" column="PLACE_NAME" />
+	  	<result property="placeGroup" column="PLACE_GROUP" />
+  	
+ 	 </resultMap>
  
  
   <insert id="insertTravel">
@@ -67,15 +90,31 @@
   	 ]]>	
   </select>
   
-  <select id="selectTravel" resultMap="TravelResultSet">
+ <!--  <select id="selectTravel" resultMap="TravelResultSet">
   	
   	select travel_no,travel_name,travel_regdate,travel_memo
   	from travel
   	where travel_no=#{travelNo}
   
+  </select> -->
+  
+   <select id="selectTravel" resultMap="Travel">
+  	
+  	select t.travel_no,travel_name,travel_regdate,travel_memo,td.detail_no, td.travel_date,p.place_no,p.place_name,p.place_group
+  	
+  	
+  	from travel t join travel_detail td on t.travel_no=td.travel_no
+  				join travel_place tp on td.detail_no=tp.detail_no
+  				join place p on tp.place_no=p.place_no
+  				
+  	
+  	
+  	
+  	where t.travel_no=#{travelNo}
+  
   </select>
   
-   <select id="selectTravelDetailList" resultMap="TravelDetailResultSet">
+ <!--   <select id="selectTravelDetailList" resultMap="TravelDetailResultSet">
   	
   	select detail_no,travel_date
   	from travel_detail
@@ -96,7 +135,7 @@
   	select place_name
   	from place
   	where place_no=#{placeNo}
-  </select>
+  </select> -->
   
   <update id="deleteTravel">
   	update travel

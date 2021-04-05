@@ -160,6 +160,13 @@
 			
 			$registerBtn.on("click",function(){
 				
+				if(${ empty sessionScope.loginUser}){
+					
+					alert("로그인을 해주세요");
+					return;
+					
+				}
+				
 				
 				
 				$moveForm.attr("action","enrollForm.re");
@@ -171,12 +178,7 @@
 			
 			$("#searchBtn").on("click",function(){
 				
-		/* 		if($("select[name=region] option:selected").val()==0 && $("select[name=group] option:selected").val()==""
-					&& $("select[name=type] option:selected").val()=="" && $("input[name=keyword]").val().trim().length==0){
-					
-					alert("검색조건을 확인해주세요");
-					return false;
-				} */
+	
 		
 
 				if($("select[name=type] option:selected").val()!=""){
