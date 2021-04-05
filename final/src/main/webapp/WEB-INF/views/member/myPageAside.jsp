@@ -48,9 +48,6 @@
                             <li class>
                                 <a href="member.ad">회원관리</a>
                             </li>
-                            <li class>
-                                <a href="report.bo">신고게시판 관리</a>
-                            </li>
                         </ul>
                     </c:if>             
                 </div>
