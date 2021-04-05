@@ -56,7 +56,7 @@ public class CustomerController {
 
 	@RequestMapping("customernotice.cu")
 	public String customernotice() {
-		return "customer/customernotice";
+		return "redirect:noticelist.cu";
 	}
 
 	@RequestMapping("customernoticedetail.cu")
@@ -92,6 +92,8 @@ public class CustomerController {
 			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage, Model model)
 			throws Exception {
 
+		
+		
 		int listCount = customerservice.selectQuestionListCount();
 
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 5);
@@ -108,7 +110,7 @@ public class CustomerController {
 
 		return "customer/customersaylist";
 
-	}
+	}                  
 
 	@RequestMapping("detailquestion.cu")
 	public ModelAndView selectQuestion(int questionNo, ModelAndView mv) throws Exception {
@@ -173,7 +175,7 @@ public class CustomerController {
 	public ModelAndView selectNotice(int noticeNo, ModelAndView mv) throws Exception {
 
 		Notice n = customerservice.selectNotice(noticeNo);
-		mv.addObject("n", n).setViewName("customer/customerNoticeDetail");
+		mv.addObject("n", n).setViewName("customer/customernoticedetail");
 
 		return mv;
 	}
@@ -203,7 +205,7 @@ public class CustomerController {
 		int result = customerservice.updateNotice(notice);
 
 		if (result > 0) {
-			mv.addObject("noticeNo", notice.getNoticeNo()).setViewName("redirect:noticeDetail.cu");
+			mv.addObject("noticeNo", notice.getNoticeNo()).setViewName("redirect:detailNotice.cu");
 
 		} else {
 			throw new Exception("게시물 상세조회에 실패 하였습니다.");

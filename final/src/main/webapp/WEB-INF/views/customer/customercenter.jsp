@@ -33,6 +33,7 @@
 					<option>개선사항</option>
 				</select>
 			</div>
+			<input class="inputwriter" type="text" id="writer" value="${loginUser.memberId }" name="writer"/>
 			<div class="textarea1">
 				<textarea class="textarea1" name="questionTitle" id="questionTitle"
 					cols="50" rows="1" placeholder="제목을 입력해주세요"></textarea>

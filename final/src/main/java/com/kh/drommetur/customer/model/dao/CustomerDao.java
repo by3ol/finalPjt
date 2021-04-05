@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.drommetur.customer.model.vo.Notice;
 import com.kh.drommetur.customer.model.vo.Question;
+import com.kh.drommetur.member.model.vo.Member;
 import com.kh.drommetur.taste.model.vo.PageInfo;
 
 @Repository("customerDao")
@@ -63,21 +64,21 @@ public class CustomerDao {
 
 	public Notice selectNotice(SqlSessionTemplate sqlSession, int noticeNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("customerMapper.selectNotice", noticeNo);
 	}
 
 	public int deleteNotice(SqlSessionTemplate sqlSession, int noticeNo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("customerMapper.deleteNotice", noticeNo);
 	}
 
 	public int updateNotice(SqlSessionTemplate sqlSession, Notice notice) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("customerMapper.updateNotice", notice);
 	}
 
 	public int selectNoticeListCount(SqlSessionTemplate sqlSession) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectOne("customerMapper.selectNoticeListCount");
 	}
 }

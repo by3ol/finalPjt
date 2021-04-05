@@ -22,7 +22,8 @@ public class Question {
 	private String questionContent;
 	private Date datetime;
 	private String status;
-	
+	private String writer;
+
 	
 	
 }

@@ -162,6 +162,6 @@ a:hover {
 	margin-bottom: 3rem;
 }
 
-#writer {
-	visibility: hidden;
+.inputwriter {
+	display:none;
 }

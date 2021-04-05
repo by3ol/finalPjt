@@ -45,6 +45,7 @@ cursor:pointer;
 	margin: 0 auto; /* 가운데 정렬: 동일 요소에 width 가 설정되어 있을 때에만 적용 */
 	padding: 0rem 2rem; /* 좌우 padding 을 살짝 주어서, 좌우에 딱 붙지 않도록 함 */
 	overflow: hidden; /* 넘치는 영역에 대해서는 표시안되도록 작성해야 함 */
+	min-height:calc(100vh - 180px);
 }
 
 .banner {
@@ -71,7 +72,7 @@ cursor:pointer;
 	display: block;
 	content: '';
 	width: 100%;
-	border-bottom: 4px solid purple;
+	border-bottom: 4px solid black;
 	height: 1px;
 	transform: translateY(-30px);
 	opacity: 0;
