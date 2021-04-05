@@ -14,15 +14,6 @@
                         <a href="selectList.tr">여행</a>
                     </div>
                     <div class="nav_title" id="aside_title_1">
-                        <a href="taste.mem">맛집</a>
-                    </div>
-                    <div class="nav_title" id="aside_title_1">
-                        <a href="accommodation.mem">숙박</a>
-                    </div>
-                    <div class="nav_title" id="aside_title_1">
-                        <a href="activity.mem">엑티비티</a>
-                    </div>
-                    <div class="nav_title" id="aside_title_1">
                         <a href="mylist.re">리뷰</a>
                     </div>
                     <div class="nav_title" id="aside_title_2">
