@@ -14,22 +14,22 @@ prefix="c" %>
       #updateForm > table * {
         margin: 5px;
       }
+      h2{
+      text-align:center;}
     </style>
   </head>
   <body>
-    <jsp:include page="../common/menubar.jsp" />
-
+    <jsp:include page="../common/menubar1.jsp" /><br><br><br><br>
+    
+<h2>게시글 수정</h2>
     <br /><br />
+    <jsp:include page="../common/customerbar.jsp" />
     <div class="innerOuter">
-      <h2>게시글 수정</h2>
+      
       <br />
 
       <form
-        id="noticeupdate"
-        method="post"
-        action=""
-        enctype="multipart/form-data"
-      >
+        id="noticeupdate"   method="post"   action="updateNotice.cu"      >
         <input type="hidden" name="noticeNo" value="${ n.noticeNo }" />
         <table align="center">
           <tr>
@@ -39,10 +39,8 @@ prefix="c" %>
             <td>
               <input
                 type="text"
-                id="title"
                 class="form-control"
-                name="boardTitle"
-                value="${ n.noticeTitle }"
+                name="noticeTitle"
                 required
               />
             </td>
@@ -56,11 +54,10 @@ prefix="c" %>
               <textarea
                 class="form-control"
                 required
-                name="boardContent"
-                id="content"
+                name="noticeContent"
                 rows="10"
-                style="resize: none"
-              > ${ n.noticeContent }
+                style="resize: none"          
+              > 
               </textarea>
             </th>
           </tr>

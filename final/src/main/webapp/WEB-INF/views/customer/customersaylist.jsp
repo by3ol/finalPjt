@@ -13,7 +13,7 @@
        width: 1200px;
        margin: 0 auto;
        overflow: hidden; /* 넘치는 영역에 대해서는 표시안되도록 작성해야 함 */
-
+min-height:calc(100vh - 480px);
     }
     tr{
         text-align: center;
@@ -33,8 +33,13 @@
 <div class="banner">문의확인</div>
 <jsp:include page="../common/customerbar.jsp" />
 
-<div class="inner">
-      <table id="questionList"class="table">
+<div class="inner" style="margin-top:70px">
+<c:choose>
+<c:when test="${empty sessionScope.loginUser }">
+<div align="center"><h4>로그인 후 확인하실 수 있습니다 ~ ^^</h4></div>
+</c:when>
+<c:otherwise>
+      <table id="questionList"class="table table-hover">
         <thead>
           <tr>
             <th>번호</th>
@@ -44,15 +49,17 @@
         </thead>
         <tbody>
   	<c:forEach items="${ list }" var="list">
+  	<c:if test="${list.writer eq sessionScope.loginUser.memberId}">
 	<tr>
 	<td>${list.questionNo }</td>
 	<td>${list.questionTitle }</td>
 	<td>${list.datetime }</td>
 	</tr>
+	</c:if>
 	</c:forEach>
         </tbody>
       </table>
- <div id="pagingArea">
+      <div id="pagingArea">
                 <ul class="pagination">
                 	<c:choose>
                 		<c:when test="${ pi.currentPage ne 1 }">
@@ -85,6 +92,9 @@
                 	</c:choose>
                 </ul>
             </div>
+      </c:otherwise>
+      </c:choose>
+ 
 </div>
        <script>
     	$(function(){

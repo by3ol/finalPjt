@@ -17,21 +17,14 @@
 	crossorigin="anonymous">
 </head>
 <style>
-.container {
-	width: 75%;
-	height: 700px;
-	margin: 50px 0 0 15%;
-    
-}
+.inner{
+       width: 1200px;
+       margin: 0 auto;
+       overflow: hidden; /* 넘치는 영역에 대해서는 표시안되도록 작성해야 함 */
 
-/*container inside CSS*/
-#container>h2 {
-	padding-left: 25px;
-}
-
+    }
 table {
-	border-spacing: 1;
-	border-collapse: collapse;
+	
 	background: white;
 	border-radius: 10px;
 	overflow: hidden;
@@ -39,9 +32,6 @@ table {
 	margin: 0 auto;
 }
 
-table td, table th {
-	padding-left: 8px;
-}
 
 table thead tr {
 	height: 40px;
@@ -52,26 +42,6 @@ table thead tr {
 
 table tbody tr {
 	height: 40px;
-}
-
-table tbody tr:last-child {
-	border: 0;
-}
-
-table td, table th {
-	text-align: left;
-}
-
-table td.l, table th.l {
-	text-align: right;
-}
-
-table td.c, table th.c {
-	text-align: center;
-}
-
-table td.r, table th.r {
-	text-align: center;
 }
 
 .table100-head th {
@@ -135,48 +105,44 @@ h2 {
 <body>
 	<jsp:include page="../common/menubar1.jsp" />
 	<div class="container">
-		<br> <br> 
+		<br> <br> <br>
 
 		<div class="banner">공지사항</div>
 <jsp:include page="../common/customerbar.jsp" />
-		<div class="row">
-			<table id="noticeList" class="tabl table-hover" align="center">
+		<div class="inner">
+			<table id="noticeList" class="table table100-head table-hover">
 				<thead>
-					<tr class="table100-head" align="center">
-						<th class="column1">글번호</th>
-						<th class="column2">제목</th>
-						<th class="column3">작성자</th>
-						<th class="column4">작성일</th>
-						<th class="column4">조회수</th>
-
-
+					<tr>
+						<th>글번호</th>
+						<th>제목</th>
+						<th>작성일</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					
 						<c:choose>
 							<c:when test="${ empty list}">
+							<tr>
 								<td colspan="5">존재하는 공지사항이 없습니다.</td>
+								</tr>
 							</c:when>
 
 							<c:when test="${!empty list}">
 								<c:forEach items="${list}" var="n">
+								<tr>
 									<td>${n.noticeNo}</td>
 									<td>${n.noticeTitle}</td>
-									<td>${n.noticeContent}</td>
 									<td>${n.datetime}</td>
-									<td>${n.visit}</td>
-
+								</tr>
 								</c:forEach>
 							</c:when>
 						</c:choose>
-					</tr>
-
+					
 				</tbody>
 			</table>
 			<div class="bottomarea">
 			<div>
-			<c:if test="${sessionScope.loginUser.memberId==admin }">
+			<c:if test="${ sessionScope.loginUser.memberId=='admin' }">
 				<button type="button" onclick="location.href='customernoticeenroll.cu'">공지사항
 					등록</button>
 					</c:if>
@@ -221,6 +187,8 @@ h2 {
             </div>
 		</div>
 	</div>
+	    <jsp:include page="../common/footer.jsp" />
+	
 	<script>
 		$(function() {
 			$("#noticeList tbody tr").click(

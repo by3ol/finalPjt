@@ -57,6 +57,7 @@ justify-content:space-around;
 	<br>
 	<br>
 	<br>
+	<jsp:include page="../common/customerbar.jsp" />
 	<div class="inner">
 		<h2>게시글 작성</h2>
 		<hr>
@@ -66,13 +67,13 @@ justify-content:space-around;
 			<form action="insertNotice.cu" method="post">
 				<div class="form-group">
 					<label for="title">제목</label> <input type="text"
-						class="form-control" id="title" name="noticeTitle"
+						class="form-control" id="noticeTitle" name="noticeTitle"
 						>
 				</div>
 
 				<div class="form-group">
 					<label for="content">내용</label>
-					<textarea class="form-control" id="content" name="noticeContent"
+					<textarea class="form-control" id="noticeContent" name="noticeContent"
 						rows="15" ></textarea>
 				</div>
 				<div class="buttonarea" align="center">
