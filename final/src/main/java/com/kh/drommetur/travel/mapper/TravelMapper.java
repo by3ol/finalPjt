@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 import com.kh.drommetur.common.Criteria;
 import com.kh.drommetur.place.model.vo.Place;
-import com.kh.drommetur.travel.model.vo.SimplePlace;
 import com.kh.drommetur.travel.model.vo.Travel;
 import com.kh.drommetur.travel.model.vo.TravelDetail;
 
