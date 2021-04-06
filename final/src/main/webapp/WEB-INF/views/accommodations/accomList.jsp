@@ -100,7 +100,7 @@
                                 <form  class="ct_de_menu">
                                       
                                         
-                                        <a href="#" id="ct_de_menu_num"> " "  </a>                                                 
+                                        <a href="#" id="ct_de_menu_num"><pre> </pre> </a>                                                 
                                    
                                        
                                     
@@ -130,9 +130,11 @@
                         <div class="recom_tag">
                             <form class="recom_tag_list">
 
-                                <input type="button" class="recom_tag_list_button" id="a"value="전체보기">
-                                <input type="button" class="recom_tag_list_button" id="o"value="백년가게">
-                                <input type="button" class="recom_tag_list_button" id="k"value="착한가게">
+                                <input type="button" class="recom_tag_list_button" id="a"value="리조트">
+                                <input type="button" class="recom_tag_list_button" id="o"value=" 관광  ">
+                                <input type="button" class="recom_tag_list_button" id="k"value="하우스 ">
+                                
+                                
                              
 
                                 
@@ -142,7 +144,7 @@
                         
 
 						<br><br>
-                        <h3>추천 맛집</h3>
+                        <h3>추천 숙박</h3>
                     
                              
                          
@@ -196,19 +198,7 @@
             </div>
 
         </div>
-        	 <script>
-											        $(function(){
-											        	$("#a").on("click",function()  {
-											    			
-											        		
-											    			$(".cont_size").css("display","none");
-											        		
-											    			
-											    		});
-											    	});
-											    	
-											       </script>
-                                                  
+        	
        											
         
        
