@@ -11,7 +11,11 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <style>
-
+.inner{
+ 
+ min-height:calc(100vh - 600px);
+ 
+}
 </style>
 <body>
 	<jsp:include page="../common/menubar1.jsp" />
@@ -22,7 +26,7 @@
 
 	<div class="inner">
 		
-<h3 class="bbsTitle" >공지사항 제목</h3>
+<h3 class="bbsTitle" >${n.noticeTitle}</h3>
 <table class="bbsView" style="width: 936.02px;">
 
 <tbody>
@@ -35,7 +39,7 @@
 	<tr>
 		<td class="conts" colspan="4">
 			<div class="conts">
-			${n.noticeTitle}
+			${n.noticeContent}
 			</div>
 		</td>
 	</tr>
@@ -48,11 +52,12 @@
 			<button class="btn btn-danger" onclick="postFormSubmit(2);">
 				삭제하기</button>
 		</div>
-	</div>
+	
 	</c:if>
 	<form id="postForm" action="" method="post">
 	<input type="hidden" name="noticeNo" value="${n.noticeNo }">
 	</form>
+	
 	<script>
 		function postFormSubmit(num) {
 			var postForm = $('#postForm');
@@ -65,6 +70,7 @@
 			postForm.submit();
 		}
 	</script>
+	</div>
 	    <jsp:include page="../common/footer.jsp" />
 	
 </body>

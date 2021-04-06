@@ -21,8 +21,8 @@
        width: 1200px;
        margin: 0 auto;
        overflow: hidden; /* 넘치는 영역에 대해서는 표시안되도록 작성해야 함 */
-
     }
+
 table {
 	
 	background: white;

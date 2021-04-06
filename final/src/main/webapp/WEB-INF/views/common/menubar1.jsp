@@ -74,8 +74,7 @@
 
 					<li class="nav-item"><a class="nav-link" href="traffic.t">이동수단</a></li>
 				<li class="nav-item"><a class="nav-link" href="list.re">리뷰</a></li>
-			<li class="nav-item"><a class="nav-link" href="course">여행코스 추천</a></li>
-
+			
 
 				<li class="nav-item"><a class="nav-link" href="customercenter.cu">고객센터</a></li>
 			</ul>

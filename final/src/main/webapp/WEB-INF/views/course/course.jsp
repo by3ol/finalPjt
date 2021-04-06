@@ -9,9 +9,14 @@
     <link rel="stylesheet" type="text/css" href="resources/slick-theme.css" />
 
     <style type="text/css">
+    img{
+    width:30px;
+    height:250px;
+    }
       .inner {
         max-width: 1200px;
         margin: 0 auto;
+        min-height:calc(100vh - 230px);
       }
       .lb-wrap {
         width: 50px;
@@ -33,7 +38,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 10;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.4);
         color: white;
         font-size: xx-large;
       }
@@ -84,68 +89,49 @@
 
       <section class="regular slider">
         <div class="lb-wrap">
-          <div class="lb-text">이미지 위의 타이틀</div>
+          <div class="lb-text">한우 맛집은?</div>
           <div class="lb-image">
             <img src="resources/한우.png" />
           </div>
         </div>
         <div class="lb-wrap">
-          <div class="lb-text">이미지 위의 타이틀</div>
+          <div class="lb-text">속초에서는 닭강정을</div>
           <div class="lb-image">
-            <img src="img/한우.png" />
+            <img src="resources/닭강정.png" />
           </div>
         </div>
         <div class="lb-wrap">
-          <div class="lb-text">이미지 위의 타이틀</div>
+          <div class="lb-text">남산돈까스를 먹어보자</div>
           <div class="lb-image">
-            <img src="img/한우.png" />
+            <img src="resources/돈까스.png" />
           </div>
         </div>
         <div class="lb-wrap">
-          <div class="lb-text">이미지 위의 타이틀</div>
+          <div class="lb-text">가로수길 스파게티</div>
           <div class="lb-image">
-            <img src="img/한우.png" />
+            <img src="resources/스파게티.png" />
           </div>
         </div>
         <div class="lb-wrap">
-          <div class="lb-text">이미지 위의 타이틀</div>
+          <div class="lb-text">벨기에 와플</div>
           <div class="lb-image">
-            <img src="img/한우.png" />
+            <img src="resources/와플.png" />
           </div>
         </div>
         <div class="lb-wrap">
-          <div class="lb-text">이미지 위의 타이틀</div>
+          <div class="lb-text">족발을 먹어보자</div>
           <div class="lb-image">
-            <img src="img/한우.png" />
+            <img src="resources/족발.png" />
           </div>
         </div>
       </section>
       <br />
 
-      <div class="title">여행리스트</div>
-      <hr />
+    
+    
 
-      <section class="regular slider">
-        <div>
-          <img src="http://placehold.it/350x300?text=1" />
-        </div>
-        <div>
-          <img src="http://placehold.it/350x300?text=2" />
-        </div>
-        <div>
-          <img src="http://placehold.it/350x300?text=3" />
-        </div>
-        <div>
-          <img src="http://placehold.it/350x300?text=4" />
-        </div>
-        <div>
-          <img src="http://placehold.it/350x300?text=5" />
-        </div>
-        <div>
-          <img src="http://placehold.it/350x300?text=6" />
-        </div>
-      </section>
-<jsp:include page="../common/footer.jsp" />
+    </div>
+    <jsp:include page="../common/footer.jsp" />
       <script
         src="https://code.jquery.com/jquery-2.2.0.min.js"
         type="text/javascript"
@@ -165,6 +151,5 @@
           });
         });
       </script>
-    </div>
   </body>
 </html>

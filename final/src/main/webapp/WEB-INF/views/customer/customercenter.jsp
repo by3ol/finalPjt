@@ -12,13 +12,18 @@
 <link rel="stylesheet" href="resources/customercenter.css">
 
 </head>
-
+<style>
+.content{
+ min-height:calc(100vh - 210px);
+}
+</style>
 <body>
 	<jsp:include page="../common/menubar1.jsp" />
 	<br>
 	<br>
 	<br>
 	<br>
+	<div class="content">
 		<div class="banner">문의하기</div>
 	<jsp:include page="../common/customerbar.jsp" />
 
@@ -48,6 +53,7 @@
 			</div>
 		</form>
 		
+	</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" />
 </body>

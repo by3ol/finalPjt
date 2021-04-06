@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.drommetur.customer.model.vo.Answer;
 import com.kh.drommetur.customer.model.vo.Notice;
 import com.kh.drommetur.customer.model.vo.Question;
 import com.kh.drommetur.member.model.vo.Member;
@@ -80,5 +81,10 @@ public class CustomerDao {
 	public int selectNoticeListCount(SqlSessionTemplate sqlSession) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("customerMapper.selectNoticeListCount");
+	}
+
+	public int insertAnswer(SqlSessionTemplate sqlSession, Answer answer) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("cusbomerMapper.insertAnswer", answer);
 	}
 }
