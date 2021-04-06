@@ -11,6 +11,14 @@
 		<result property="status" column="STATUS" />
 		<result property="writer" column="WRITER" />
 	</resultMap>
+	
+	<resultMap type="Answer" id="AnswerResultSet">
+		<result property="answerNo" column="ANSWER_NO" />
+		<result property="answerTitle" column="ANSWER_TITLE" />
+		<result property="answerContent" column="ANSWER_CONTENT" />
+		<result property="datetime" column="DATETIME" />
+		<result property="status" column="STATUS" />
+	</resultMap>
 
 	<resultMap type="Notice" id="NoticeResultSet">
 		<result property="noticeNo" column="NOTICE_NO" />
@@ -60,7 +68,7 @@
 		STATUS = 'N'
 		WHERE QUESTION_NO = #{questionNo}
 	</update>
-	<!-- 답변내역 -->
+
 
 
 	<!-- 공지 내역 -->

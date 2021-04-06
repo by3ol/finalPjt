@@ -10,6 +10,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.kh.drommetur.customer.model.dao.CustomerDao;
+import com.kh.drommetur.customer.model.vo.Answer;
 import com.kh.drommetur.customer.model.vo.Notice;
 import com.kh.drommetur.customer.model.vo.Question;
 import com.kh.drommetur.taste.model.vo.PageInfo;
@@ -53,6 +54,7 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerDao.deleteQuestion(sqlSession, questionNo);
 	}
 
+
 	///////////////////// 공지글
 	@Override
 	public int insertNotice(Notice notice) {
@@ -90,5 +92,7 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		return customerDao.selectNoticeListCount(sqlSession);
 	}
+
+	
 
 }

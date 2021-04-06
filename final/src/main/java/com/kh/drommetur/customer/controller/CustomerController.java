@@ -1,40 +1,25 @@
 package com.kh.drommetur.customer.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.kh.drommetur.customer.model.service.CustomerService;
-import com.kh.drommetur.customer.model.vo.Question;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.drommetur.common.CommonException;
-import com.kh.drommetur.common.Criteria;
-import com.kh.drommetur.common.PageDTO;
 import com.kh.drommetur.customer.model.service.CustomerService;
 import com.kh.drommetur.customer.model.vo.Notice;
 import com.kh.drommetur.customer.model.vo.Question;
-import com.kh.drommetur.member.model.vo.Member;
 import com.kh.drommetur.taste.Pagination;
 import com.kh.drommetur.taste.model.vo.PageInfo;
 
@@ -131,10 +116,12 @@ public class CustomerController {
 
 			return "redirect:questionlist.cu";
 		} else {
-			throw new Exception("게시물 삭제에 실패 하였습니다.");
+			throw new Exception("문의글 삭제에 실패 하였습니다.");
 
 		}
 	}
+	
+
 
 	/////////////////////////////// 공지
 
@@ -208,11 +195,14 @@ public class CustomerController {
 			mv.addObject("noticeNo", notice.getNoticeNo()).setViewName("redirect:detailNotice.cu");
 
 		} else {
-			throw new Exception("게시물 상세조회에 실패 하였습니다.");
+			throw new Exception("공지글 상세조회에 실패 하였습니다.");
 
 		}
 
 		return mv;
 
 	}
+	
+	//여행추천 ------------------------------------------------------------------
+	
 }
