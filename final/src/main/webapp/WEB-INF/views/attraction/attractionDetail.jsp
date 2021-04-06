@@ -136,20 +136,35 @@
        width: 50%;
       
      }
-     .reviewWrite_btn{
+    .reviewWrite_btn{
       display: block;
       width: 222px;
       font-size: 32px;
       font-weight: 700;
       height: 54px;
       background: #ff7400;
+      
      
       
     }
+    
+    
+    #kakao-link-btn{
+    	display: block;
+      width: 222px;
+      font-size: 32px;
+      font-weight: 700;
+      height: 54px;
+      color : black;
+    }
     .btn3 a{
       text-decoration: none;
-      color: white;
+     
       
+    }
+    .reviewWrite_btn{
+    	color : white;
+    
     }
     .btn3{
       padding-bottom: 20px;
@@ -165,6 +180,8 @@
             
             visibility: hidden;
         }
+        strong{
+    color : orange;}
 </style>
 <body>
 <jsp:include page="../common/menubar1.jsp"/>
@@ -269,16 +286,13 @@
 				</script>
               </div>
               <div class="attractionReview">
-                <div class="btn">
+                  <div class="btn">
                   <div class="btn3">
-                  <ul>
-                    <li>좋아요</li>
-                    <!-- <li><a id="kakao-link-btn" href="javascript:sendLink()">공유하기</a></li> -->
-                    <li><a id="kakao-link-btn" class="share" href="javascript:sendLink()">공유하기</a></li>
-                  </ul>
-                  <a href="" class="reviewWrite_btn" id="reviewEnrollBtn">리뷰쓰기</a>
+                  <a id="kakao-link-btn" class="share" href="javascript:sendLink()">공유하기</a></li>
+               
+                  <a  class="reviewWrite_btn" id="reviewEnrollBtn">리뷰쓰기</a>
                 </div>
-                 
+                  
                 </div>
               </div>
             </div>
