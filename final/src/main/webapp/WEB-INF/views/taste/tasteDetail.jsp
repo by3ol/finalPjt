@@ -102,7 +102,7 @@
         
         float: right;
         background-color: rgb(240, 240, 233);
-        height: 250px;
+       
         
       }
    
@@ -192,8 +192,8 @@
             </script>
             <p>${t.placeCategory }</p>
             <ul class="score">
-              <li><span><img src="" width="25px" height="25px">좋아요</span></li>
-              <li><span><img src="" width="25px" height="25px">${t.placeCount }</span></li>
+             
+              <li><span><img src="<%=request.getContextPath() %>/resources/images/placeCount.png" width="40px" height="25px">${t.placeCount }</span></li>
             </ul>
            
           </div>
@@ -278,8 +278,7 @@
                   </ul>
                   <a href="" class="reviewWrite_btn" id="reviewEnrollBtn">리뷰쓰기</a>
                 </div>
-                  <h4>매장 연관 태그</h4>
-                  <a href="">태그</a>
+                  
                 </div>
               </div>
             </div>
