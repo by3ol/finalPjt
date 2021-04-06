@@ -19,19 +19,19 @@
 		  <!-- The slideshow -->
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img src="resources/mainPhotos/1.jpg" class="mainPhoto" >
+		      <img src="resources/mainPhotos/3.jpg" class="mainPhoto" width="3855" height="2168">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="resources/mainPhotos/2.JPG"  class="mainPhoto">
+		      <img src="resources/mainPhotos/2.JPG"  class="mainPhoto" width="6000" height="4000">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="resources/mainPhotos/3.jpg" class="mainPhoto" >
+		      <img src="resources/mainPhotos/1.jpg" class="mainPhoto" width="1990" height="1119">
 		    </div>
 		   	<div class="carousel-item">
-		      <img src="resources/mainPhotos/4.jpg" class="mainPhoto" >
+		      <img src="resources/mainPhotos/4.jpg" class="mainPhoto" width="2728" height="1534">
 		    </div>
 		   	<div class="carousel-item">
-		      <img src="resources/mainPhotos/5.jpg"  class="mainPhoto">
+		      <img src="resources/mainPhotos/5.jpg"  class="mainPhoto" width="4096" height="2304">
 		    </div>
 		  </div>
 		  

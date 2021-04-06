@@ -557,6 +557,18 @@
 				return;
 			}
 			
+			if($travelName.val().length>29){
+				alert("여행 이름은 30자 미만으로 입력해주세요.");
+				return;
+				
+			}
+			
+			if($travelMemo.val().length>299){
+				alert("여행 메모는 300자 미만으로 입력해주세요.");
+				return;
+				
+			}
+			
 			if(travelDetailList.length==0){
 				
 				alert("여행일정을 추가해주세요. ");

@@ -54,7 +54,7 @@
 
 		<!-- Brand -->
 		<a class="navbar-brand"
-			href="${ pageContext.servletContext.contextPath }">drommetur</a>
+			href="${ pageContext.servletContext.contextPath }">Drommetur</a>
 
 		<!-- Toggler/collapsibe Button -->
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
