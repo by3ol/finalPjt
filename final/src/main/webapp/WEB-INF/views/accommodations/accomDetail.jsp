@@ -102,7 +102,7 @@
         
         float: right;
         background-color: rgb(240, 240, 233);
-        height: 250px;
+       
         
       }
    
@@ -177,7 +177,7 @@
       <div class="accomDetailViewDiv">
         <div class="accomDetailViewForm">
           <div class="accomDetailViewTitle">
-            <h3>${t.placeName }<strong>          ${t.placeScore }</strong></h3><form action="score.ac" onsubmit="return userChk();"><input type="number" name="placeTotalScore" id="placeTotalScore" class="placeTotalScore" min="0" max="5" value="0" step="0.5"><input type="hidden" name="placeNo" value="${t.placeNo }"readonly><button type="submit">평점주기</button></form>
+            <h3>${ac.placeName }<strong>          ${ac.placeScore }</strong></h3><form action="score.ac" onsubmit="return userChk();"><input type="number" name="placeTotalScore" id="placeTotalScore" class="placeTotalScore" min="0" max="5" value="0" step="0.5"><input type="hidden" name="placeNo" value="${ac.placeNo }"readonly><button type="submit">평점주기</button></form>
             <script>
             
             function userChk(){
@@ -192,8 +192,8 @@
             </script>
             <p>${ac.placeCategory }</p>
             <ul class="score">
-              <li><span><img src="" width="25px" height="25px">좋아요</span></li>
-              <li><span><img src="" width="25px" height="25px">${ac.placeCount }</span></li>
+              
+              <li><span><img src="<%=request.getContextPath() %>/resources/images/placeCount.png" width="40px" height="25px">${ac.placeCount }</span></li>
             </ul>
            
           </div>
@@ -278,8 +278,7 @@
                   </ul>
                   <a href="" class="reviewWrite_btn">리뷰쓰기</a>
                 </div>
-                  <h4>매장 연관 태그</h4>
-                  <a href="">태그</a>
+                  
                 </div>
               </div>
             </div>
