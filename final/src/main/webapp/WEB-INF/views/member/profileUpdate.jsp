@@ -78,7 +78,7 @@
                             <div class="form-group" id="insert-info-profileUp">
                                 <div class="text-center col-xs-8 col-xs-offset-4" id="bottom-insert-info">
                                     <button type="submit" class="btn btn-primary btn-lg" id="update-btn">수정하기</button>
-                                    <button type="button" onclick="$('#postForm').submit();" class="btn btn-danger btn-lg" id="delete-btn">탈퇴하기</button>
+                                    <button type="button" class="btn btn-danger btn-lg" id="delete-btn">탈퇴하기</button>
                                     <button type="submit" class="btn btn-danger btn-lg" id="cancel-btn_1">취소</button>
                                 </div>
                             </div>                            
@@ -87,7 +87,20 @@
                         	<form action="delete.mem" method="post" id="postForm" style="display: none;">
 								<input type="hidden" name="memberId" value="${ loginUser.memberId }">
 							</form>
+                        <script type="text/javascript">
                         
+							$(function(){
+								
+							  $("#delete-btn").click(function(e){
+								  e.preventDefault();
+								  if(confirm("정말 삭제하시겠습니까 ?")){
+									 	$("#postForm").submit();
+								  } 
+								  
+								});
+							});
+							
+						</script>
                     </div>
                 </div>
 
