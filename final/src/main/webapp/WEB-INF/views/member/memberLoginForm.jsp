@@ -20,9 +20,6 @@
             <div class="form-group" id="form-group">
                 <button type="submit" class="btn btn-success btn-block login-btn" id="loginBtn">로그인</button>
             </div>
-            <div class="clearfix" id="textFix">
-                <a href="#" class="hint-text small" id="hint-text">아아디/비밀번호 찾기</a>
-            </div>
             <br>
             <div class="or-seperator" id="or-line"></div>
             <br>

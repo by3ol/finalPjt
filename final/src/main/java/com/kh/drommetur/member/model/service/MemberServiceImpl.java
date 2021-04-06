@@ -62,6 +62,18 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return memberDao.updateMember(sqlSession, m);
 	}
+
+	@Override
+	public int deleteMember(String memberId) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDao.deleteMember(sqlSession, memberId);
+	}
+
+	@Override
+	public int memberChangePwd(Member loginUser) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDao.memberChangePwd(sqlSession, loginUser);
+	}
 	
 	
 }

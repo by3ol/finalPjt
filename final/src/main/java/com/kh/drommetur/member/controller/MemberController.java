@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.drommetur.common.CommonException;
 import com.kh.drommetur.member.model.service.MemberService;
@@ -48,12 +49,7 @@ public class MemberController {
 	public String pwdChange() {
 		return "member/memberPwdChange";
 	}
-	
-	@RequestMapping("deleteForm.mem")
-	public String memberDelete() {
-		return "member/memberDelete";
-	}
-	
+		
 	@ResponseBody
 	@RequestMapping("idCheck.me")
 	public String idCheck(String memberId) throws Exception {
@@ -157,13 +153,53 @@ public class MemberController {
 
 		m.setAddress(post + "/" + address1 + "/" + address2);
 		int result = memberService.updateMember(m);
-
+		
 		if (result > 0) {
 			model.addAttribute("loginUser", m);
-			return "member/myPageHome";
+			return "member/profileUpdate";
 		} else {
 			throw new CommonException("회원정보 수정에 실패하였습니다.");
 		}
 	}
 	
+	@RequestMapping("delete.mem")
+	public String deleteMember(String memberId) throws Exception {
+		int result = memberService.deleteMember(memberId);
+
+		if (result > 0) {			
+			return "redirect:logout.mem";
+		} else {
+			throw new CommonException("회원탈퇴에 실패하였습니다.");
+		}
+	}
+	
+	@RequestMapping("changePwd.me")
+	public String changeMemberPwd(@RequestParam("memberId") String memberId,
+			@RequestParam("oldPwd") String oldPwd,
+									@RequestParam("newPwd") String newPwd,
+									HttpSession session, Model model) throws Exception{
+		
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		if(!bCryptPasswordEncoder.matches(oldPwd, loginUser.getMemberPwd())) {
+			
+			session.setAttribute("msg", "암호가 다릅니다.");
+			return "redirect:myPage";
+		}else {
+			String encPwd = bCryptPasswordEncoder.encode(newPwd);
+			loginUser.setMemberPwd(encPwd);
+			
+			int result = memberService.memberChangePwd(loginUser);
+			
+			if(result > 0) {
+				model.addAttribute("loginUser", loginUser);
+				model.addAttribute("msg", "비밀번호가 변경되었습니다");
+				return "redirect:/";
+			}else {
+				model.addAttribute("msg", "실패 !!!");
+				return "common/errorPage";
+			}
+		}
+		
+	}
 }

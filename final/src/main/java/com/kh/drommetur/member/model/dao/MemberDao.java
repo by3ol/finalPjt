@@ -30,4 +30,14 @@ public class MemberDao {
 		return sqlSession.update("memberMapper.updateMember", m);
 	}
 
+	public int deleteMember(SqlSessionTemplate sqlSession, String memberId) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("memberMapper.deleteMember", memberId);
+	}
+
+	public int memberChangePwd(SqlSessionTemplate sqlSession, Member loginUser) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("memberMapper.memberChangePwd", loginUser);
+	}
+
 }

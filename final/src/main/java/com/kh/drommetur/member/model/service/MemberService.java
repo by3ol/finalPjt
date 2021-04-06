@@ -16,4 +16,8 @@ public interface MemberService {
 
 	int updateMember(Member m) throws Exception;
 
+	int deleteMember(String memberId) throws Exception;
+
+	int memberChangePwd(Member loginUser) throws Exception;
+
 }

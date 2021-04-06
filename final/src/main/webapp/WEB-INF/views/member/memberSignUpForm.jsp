@@ -4,7 +4,7 @@
 	<jsp:include page="../common/menubar1.jsp" />
 	<div class="warp">
         <div class="signup-form" id="signUp_Form">
-            <form id="enrollForm" action="insert.mem" method="post" class="form-horizontal">
+            <form id="enrollForm" action="insert.mem" method="post" class="form-horizontal" style="margin-top: 15%;">
                 <div class="text-center col-xs-8 col-xs-offset-4" id="text-signUp">
                     <h2>회원가입</h2>
                 </div>
@@ -15,14 +15,14 @@
                 </div>
 
                 <div id="checkResult"></div>
-                <br>
+
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">비밀번호</label>
                     <input type="password" class="form-control" id="info-text" name="memberPwd" required="required">
                 </div>
                 
                 <div id="checkPwdResult"></div>
-                <br>
+
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">비밀번호 확인</label>
                     <input type="password" class="form-control" id="info-text" name="confirm_password"
@@ -30,19 +30,19 @@
                 </div>
                 
                 <div id="checkPwdResult"></div>
-                <br>
+
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">이름</label>
                     <input type="text" class="form-control" id="info-text" name="memberName" required="required">
                 </div>
                 
                 <div id="checkNameResult"></div>
-                <br>
+
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">이메일</label>
                     <input type="email" class="form-control" id="info-text" name="email" required="required">
                 </div>
-                <br>
+
                 <div id="checkEmailResult"></div>
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">성별</label>
@@ -51,7 +51,7 @@
                         알수없음 </label>
                     <label id="info-gender">
                         <input name="gender" type="radio" value="M" checked>
-                        남자 </label>    
+                        남자 </label>    
                     <label id="info-gender">
                         <input name="gender" type="radio" value="F" checked>
                         여자 </label>
@@ -68,7 +68,7 @@
                     <input type="text" class="form-control mr-2 postcodify_postcode5" id="info-text-address" name="post" value="${ post }">
                     <button type="button" class="btn btn-primary" id="postcodify_search_btn">검색</button>
                 </div>
-				<br>
+
                 <div class="form-group" id="insert-info">
                     <label class="control-label col-xs-4" id="info-label">주소</label>
                     <input type="text" class="form-control postcodify_address" id="info-text" name="address1" value="${ address1 }">
@@ -93,6 +93,7 @@
                     </div>
                 </div>
             </form>
+            
         </div>
     </div>
    
