@@ -71,10 +71,22 @@
 			return false;
 		}
 		
+		if($reviewEnrollForm.find("input[name=reviewTitle]").val().length>66){
+			
+			alert("리뷰 제목은 67자 미만으로 입력하세요.");
+			return false;
+		}
+		
 
 		if($reviewEnrollForm.find("textarea").val().trim().length==0){
 			
 			alert("리뷰 내용을 입력하세요.");
+			return false;
+		}
+		
+		if($reviewEnrollForm.find("textarea").val().length>999){
+			
+			alert("리뷰 내용은 1000자 미만으로 입력하세요.");
 			return false;
 		}
 		
