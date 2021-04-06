@@ -11,11 +11,18 @@
 
                 <div class="warp" style="font-family: 'Sunflower', sans-serif;">
                     <div class="signup-form" id="signUp_Form">
-                        <form id="enrollForm" action="/examples/actions/confirmation.php" method="post"
+                        <form id="enrollForm" action="changePwd.me" method="post"
                             class="form-horizontal">
                             <div class="text-center col-xs-8 col-xs-offset-4" id="text-signUp">
                                 <h2>비밀번호 변경</h2>
                             </div>
+
+			                <div class="form-group" id="insert-info">
+			                    <label class="control-label col-xs-4" id="info-label">아이디</label>
+			                    <input type="text" class="form-control" id="info-text" name="memberId" required="required">
+			                </div>
+			
+			                <div id="checkResult"></div>
 
                             <div class="form-group" id="insert-info">
                                 <label class="control-label col-xs-4" id="info-label">현재 비밀번호</label>

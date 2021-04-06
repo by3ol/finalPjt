@@ -52,7 +52,7 @@
     min-height: 41px;
     box-shadow: none !important;
     width: 20%;
-    margin-left: 19.5%;
+    margin-left: 19.7%;
 }
 
 #info-text:focus {
@@ -70,11 +70,11 @@
     background-color: rgba(120, 185, 250, 0.5);
 }
 
-#cancel-btn{
+#cancel-btn {
     background-color: #f95858;
 }
 
-#join-btn,  #cancel-btn {
+#join-btn,  #cancel-btn{
     font-size: 16px;
     font-weight: bold;
     border: none;
@@ -168,4 +168,10 @@
 
 #insert-info-profileUp {
     margin-top: 15%;
+}
+
+.warp {
+	min-height:calc(100vh - 180px);
+	
+	font-family: 'Sunflower', sans-serif;
 }

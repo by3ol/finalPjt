@@ -113,5 +113,5 @@
 	SET PLACE_SCORE = ROUND(PLACE_TOTALSCORE/PLACE_SCORECOUNT, 2)
 	WHERE PLACE_NO = #{placeNo}
 	</update>
-	
+   
 </mapper>

@@ -21,15 +21,12 @@
                     </div>
                     <ul class="nav_sub g_list" id="aside_sub_1">
                         <li class>
-                            <a href="infoUpdate.mem">개인정보 수정</a>
+                            <a href="infoUpdate.mem">개인정보 변경</a>
                         </li>
                         <li class>
                             <a href="pwdUpdate.mem">비밀번호 변경</a>
                         </li>
                     </ul>
-                    <div class="nav_title" id="aside_title_3">
-                        <a href="deleteForm.mem">회원탈퇴</a>
-                    </div>
 
                     <c:if test="${ sessionScope.loginUser.memberId eq 'admin' }">
                         <div class="nav_title" id="aside_title_4">
