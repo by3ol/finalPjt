@@ -2,7 +2,7 @@
 .join-choose-from_1 {
     width: 340px;
     margin: 150px auto;
-    min-height:calc(100vh - 180px);
+    height:calc(100vh - 413px);
 	
 	font-family: 'Sunflower', sans-serif;
 }

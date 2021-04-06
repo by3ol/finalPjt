@@ -2,6 +2,8 @@
     width: 340px;
     margin: 30px auto;
     margin-top: 8%;
+    
+    height:calc(100vh - 293px);
 }
 
 #login-form form {
@@ -98,7 +100,7 @@
 }
 
 #login-form {
-	min-height:calc(100vh - 180px);
+	
 	
 	font-family: 'Sunflower', sans-serif;
 }
