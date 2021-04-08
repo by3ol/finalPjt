@@ -39,13 +39,17 @@
 	  .navbar1 li label{
 	  cursor: pointer;
 	  }
-	  .searchForm{
-	  align: center
-	  }
+	 
 	  .searchDiv{
 	  text-align : center;}
 	  .form{
 	  margin:0 auto;}
+	 
+	  
+	 
+
+	  
+	  
 </style>
 </head>
 <body>
@@ -80,14 +84,14 @@
             </select>
             </li>
             <li class="all"><label>전체</label></li>
-            <li class="h"><label>호텔</label></li>
-            <li class="m"><label>모텔</label></li>
-            <li class="p"><label>펜션</label></li>
-            <li class="g"><label>게스트하우스</label></li>
-            <li class="n"><label>이색호텔</label></li>
-            <li class="c"><label>저가숙박</label></li>
-            <li class="e"><label>교육시설</label></li>
-            <li class="s"><label>주거</label></li>
+            <li class="h"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/호텔.png" width=15px height=15px>호텔</label></li>
+            <li class="m"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/모텔.png" width=15px height=15px>모텔</label></li>
+            <li class="p"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/펜션.png" width=15px height=15px>펜션</label></li>
+            <li class="g"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/캠핑글램핑.png" width=15px height=15px>게스트하우스</label></li>
+            <li class="n"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/풀빌라.png" width=15px height=15px>이색호텔</label></li>
+            <li class="c"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/모텔.png" width=15px height=15px>저가숙박</label></li>
+            <li class="e"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/호텔.png" width=15px height=15px>교육시설</label></li>
+            <li class="s"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/모텔.png" width=15px height=15px>주거</label></li>
         </ul>
         <!-- 
 홈스테이 유스호스텔         		교육시설

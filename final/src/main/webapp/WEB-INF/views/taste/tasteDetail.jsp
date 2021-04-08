@@ -27,7 +27,6 @@
         
       }
     
-
     
       /*상세페이지*/
       .foodDetailViewDiv{
@@ -38,7 +37,6 @@
         
       }
       .foodDetailViewTitle{
-
         margin: 0 auto;
         width: 922px;
         position: relative;
@@ -77,15 +75,15 @@
         margin: 0 auto;
         width: 922px;
         position: relative;
-        padding-top: 100px;
+        padding-top:30px;
         padding-bottom: 5px;
         overflow: hidden;
+            border-top: 3px solid #f1f1f1;
       }
       .foodInfoDiv .foodInfo div h4{
         margin:3px;
         margin-left: auto;
         padding: 0;
-
       }
       .foodInfoDiv .foodInfo div p{
         margin-top: 2px;
@@ -98,24 +96,16 @@
         float: left;
       }
       .foodReview{
+      	width:800px;
+        
+        margin:0 auto;
         
         
-        float: right;
-        background-color: rgb(240, 240, 233);
        
         
       }
    
-     
-     .foodReview{
-       width: 222px;
-       
-     }
-     .foodReview .btn{
-       width: 222px;
-       margin: 0;
-       padding: 0;
-     }
+ 
      .foodReview h4{
       margin-left: 3px;
      }
@@ -136,13 +126,14 @@
        width: 50%;
       
      }
- .reviewWrite_btn{
+     .reviewWrite_btn{
       display: block;
       width: 222px;
       font-size: 32px;
       font-weight: 700;
       height: 54px;
-      background: #ff7400;
+      color:black;
+     
       
      
       
@@ -156,19 +147,11 @@
       font-weight: 700;
       height: 54px;
       color : black;
-    }
-    .btn3 a{
-      text-decoration: none;
-     
-      
-    }
-    .reviewWrite_btn{
-    	color : white;
     
     }
-    .btn3{
-      padding-bottom: 20px;
-    }
+   
+    
+ 
     
     .navbar1 li button{
     border:none;
@@ -180,21 +163,57 @@
             
             visibility: hidden;
         }
-    strong{
+        strong{
     color : orange;}
+  
+    #map{
+    width:800px;
+    height:400px;
+    margin:0 auto;
+    
+    }
+    .btn3 ul{
+        border-top: 1px solid #f1f1f1;
+    margin : 0 auto;
+    width:800px;
+     display: flex;
+    align-items: center;
+    height: 74px;
+    }
+    .btn3 ul li{
+    width:500px;
+    height:54px;
+    margin-left:30px;
+    text-align: center;
+    }
+     .btn3 ul li a{
+
+    text-align: center;
+    text-decoration: none;
+    }
+    #naverSearch{
+    display: block;
+    width: 222px;
+    font-size: 32px;
+    font-weight: 700;
+    height: 54px;
+    color: black;}
+    #scoreBtn{
+    padding:4px 15px;}
+ 	
 </style>
 <body>
 <jsp:include page="../common/menubar1.jsp"/>
 <div class="container-fluid" style="margin-top:70px">
 
 <div class="wrab">
-     <jsp:include page="../taste/tasteMenubar.jsp"/>
+      <jsp:include page="../taste/tasteMenubar.jsp"/>
         <div class="body">
       <!--상세페이지-->
       <div class="foodDetailViewDiv">
         <div class="foodDetailViewForm">
           <div class="foodDetailViewTitle">
-            <h3>${t.placeName }<strong>          ${t.placeScore }</strong></h3><form action="score.ta" onsubmit="return userChk();"><input type="number" name="placeTotalScore" id="placeTotalScore" class="placeTotalScore" min="0" max="5" value="0" step="0.5"><input type="hidden" name="placeNo" value="${t.placeNo }"readonly><button type="submit">평점주기</button></form>
+            <h3>${t.placeName }<strong>          ${t.placeScore }</strong></h3><form action="score.t" onsubmit="return userChk();"><input type="number" name="placeTotalScore" id="placeTotalScore" class="placeTotalScore" min="0" max="5" value="0" step="0.5"><input type="hidden" name="placeNo" value="${t.placeNo }"readonly><button type="submit" class="btn btn-warning" id="scoreBtn">평점주기</button></form>
             <script>
             
             function userChk(){
@@ -209,41 +228,55 @@
             </script>
             <p>${t.placeCategory }</p>
             <ul class="score">
-             
+              
               <li><span><img src="<%=request.getContextPath() %>/resources/images/placeCount.png" width="40px" height="25px">${t.placeCount }</span></li>
             </ul>
            
           </div>
           <div class="foodImgList">
             <div class="img" align ="center">
-              <img width="500px" height="300px" src="${t.placeUrl }" alt="사진" >
+              <img width="800px" height="400px" src="${t.placeUrl }" alt="사진" >
              
             </div>
             </div>
+           
+            <div class="foodReview">
+                <div class="btn">
+                  <div class="btn3">
+                  <ul>
+                  <li><a style="color:black;" id="naverSearch" class="naverSearch" target="_blank" href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=${t.placeName }">블로그</a></li>
+                  <li><a id="kakao-link-btn" class="share" href="javascript:sendLink()">공유하기</a></li>
+                  
+                  <li><a class="reviewWrite_btn" id="reviewEnrollBtn">리뷰쓰기</a></li>
+                  
+                  </ul>
+                        
+		
+                </div>
+                  
+                </div>
+              </div>
+                
             <div class="foodInfoDiv">
               <div class="foodInfo">
                 <div>
-                  <h4>업체설명</h4>
-                  <p>${t.placeGroup }</p>
+                  <h4>업체설명</h4><p>${t.placeGroup }</p>
                 </div>
-                <br>
-                <br>
                 <div>
-                  <h4>전화번호</h4>
-                  <p>${t.placePhone}</p>
+                  <h4>전화번호</h4><p><a href="tel:${t.placePhone}">${t.placePhone}</a></p>
                 </div>
-                <br>
-                <br>
                 <div>
-                  <h4>주소</h4>
-                  <p>${t.placeAddr }</p>
+                  <h4>주소</h4><p>${t.placeAddr }</p>
                 </div>
                 <br>
                 
                 
                 <input type="hidden" value="${t.placeLat }" id="placeLat" >
                 <input type="hidden" value="${t.placeLon }" id="placeLon">
-                <div id="map" style="width:650px;height:400px;"></div>
+                <div class="mapForm">
+                <div id="map" style="width:800px;height:400px;margin-left:65px"></div>
+                </div>
+              
               	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7cdc8b55964d8909243d354220777e13"></script>
               	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
               	
@@ -256,11 +289,8 @@
 				center: new kakao.maps.LatLng(placeLat,placeLon),
 				level: 3
 				};
-
 				var map = new kakao.maps.Map(container, options);
 			
-
-
 			// 마커가 표시될 위치입니다 
 		
 		
@@ -277,24 +307,24 @@
 		   	 	position: markerPosition,
 		    	image: markerImage 
 				});
-
 			// 마커가 지도 위에 표시되도록 설정합니다
 			marker.setMap(map);
+			var iwContent = '<div style="padding:30px;","overflow:hidden;">${t.placeAddr}<br><a href="https://map.kakao.com/link/map/${t.placeAddr},${t.placeLat },${t.placeLon }" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${t.placeAddr},${t.placeLat},${t.placeLon}" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		    iwPosition = new kakao.maps.LatLng(${t.placeLat }, ${t.placeLon }); //인포윈도우 표시 위치입니다
 
+			// 인포윈도우를 생성합니다
+			var infowindow = new kakao.maps.InfoWindow({
+		    position : iwPosition, 
+		    content : iwContent 
+			});
+		  
+		// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+		infowindow.open(map, marker); 
 			// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 			// marker.setMap(null);    
 				</script>
               </div>
-              <div class="foodReview">
-                   <div class="btn">
-                  <div class="btn3">
-                  <a id="kakao-link-btn" class="share" href="javascript:sendLink()">공유하기</a></li>
-               
-                  <a  class="reviewWrite_btn" id="reviewEnrollBtn">리뷰쓰기</a>
-                </div>
-                  
-                </div>
-              </div>
+              
             </div>
             
             
@@ -302,7 +332,7 @@
             </div>
       </div>
       
-       <form id="reviewEnrollForm" action="enrollFormWithPlace.re" method="get">
+      <form id="reviewEnrollForm" action="enrollFormWithPlace.re" method="get">
       	<input type="hidden" name="placeNo" value=<c:out value="${t.placeNo}" /> />
       	<input type="hidden" name="placeName" value="<c:out value="${t.placeName}" />" />
       
@@ -321,21 +351,17 @@
 			}
 			
 			
-			
 			$("#reviewEnrollForm").submit();
 			
 		});
       
       </script>
-      
-      
-		<script type="text/javascript">
+		      
 		
-		Kakao.init('7cdc8b55964d8909243d354220777e13');
+<script type="text/javascript">
 		
-
-
-  function sendLink() {
+	Kakao.init('7cdc8b55964d8909243d354220777e13');
+	function sendLink() {
     Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
@@ -347,11 +373,6 @@
           mobileWebUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
           webUrl: 'http://localhost:9090/drommetur/detail.ta?placeNo='+${t.placeNo},
         },
-      },
-      social: {
-        likeCount: 286,
-        commentCount: 45,
-        sharedCount: 845,
       },
       buttons: [
         {
@@ -371,7 +392,8 @@
       ],
     })
   }
-</script><br><br><br>
+</script>
+    <br><br><br>
       <jsp:include page="../common/footer.jsp" />
   </div>  
   </div>

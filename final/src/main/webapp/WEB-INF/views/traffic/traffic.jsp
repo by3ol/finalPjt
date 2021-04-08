@@ -94,15 +94,15 @@
             });
         $("#train").click(function(){      
         	$(".trafficImg").attr({"width":"100px","height":"100px"});
-			$("#iframe").attr("src","https://txbus.t-money.co.kr/main.do");
+			$("#iframe").attr("src","https://www.letskorail.com/ebizprd/EbizPrdTicketpr21100W_pr21110.do");
         });
         $("#air").click(function(){
-            $("#iframe").attr("src","https://www.letskorail.com/ebizprd/EbizPrdTicketpr21100W_pr21110.do");
+            $("#iframe").attr("src","https://flight.naver.com/flights/");
             $(".trafficImg").attr({"width":"100px","height":"100px"});
         });
         $("#bus").click(function(){
             $(".trafficImg").attr({"width":"100px","height":"100px"});
-            $("#iframe").attr("src","https://flight.naver.com/flights/");
+            $("#iframe").attr("src","https://txbus.t-money.co.kr/main.do");
         });
     </script>
    <iframe id="iframe" src="" width="100%" height="1000px"></iframe>

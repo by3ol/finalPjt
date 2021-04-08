@@ -80,15 +80,15 @@
             </select>
             </li>
             <li class="all"><label>전체</label></li>
-            <li class="a"><label>액티비티</label></li>
-            <li class="hl"><label>힐링</label></li>
-            <li class="j"><label>직업체험</label></li>
-            <li class="hi"><label>역사</label></li>
-            <li class="p"><label>공공시설</label></li>
-            <li class="r"><label>종교</label></li>
-            <li class="e"><label>환경</label></li>
-            <li class="n"><label>이색체험</label></li>
-            <li class="etc"><label>기타</label></li>
+            <li class="a"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/익사이팅.png" width=15px height=15px>액티비티</label></li>
+            <li class="hl"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/힐링.png" width=15px height=15px>힐링</label></li>
+            <li class="j"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/체험.png" width=15px height=15px>직업체험</label></li>
+            <li class="hi"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/힐링.png" width=15px height=15px>역사</label></li>
+            <li class="p"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/명소.png" width=15px height=15px>공공시설</label></li>
+            <li class="r"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/명소.png" width=15px height=15px>종교</label></li>
+            <li class="e"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/힐링.png" width=15px height=15px>환경</label></li>
+            <li class="n"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/익사이팅.png" width=15px height=15px>이색체험</label></li>
+            <li class="etc"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/기타.png" width=15px height=15px>기타</label></li>
         </ul>
         <!-- 
 홈스테이 유스호스텔         		교육시설
