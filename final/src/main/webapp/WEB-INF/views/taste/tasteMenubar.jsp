@@ -80,15 +80,15 @@
             </select>
             </li>
             <li class="all"><label>전체</label></li>
-            <li class="k"><label>한식</label></li>
-            <li class="w"><label>양식</label></li>
-            <li class="a"><label>아시아식</label></li>
-            <li class="c"><label>중식</label></li>
-            <li class="j"><label>일식</label></li>
-            <li class="v"><label>채식전문점</label></li>
-            <li class="n"><label>이색음식점</label></li>
-            <li class="f"><label>패밀리레스토랑</label></li>
-            <li class="cafe"><label>카페</label></li>
+            <li class="k"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/한식 2.png" width=15px height=15px>한식</label></li>
+            <li class="w"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/양식.png" width=15px height=15px>양식</label></li>
+            <li class="a"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/한식.png" width=15px height=15px>아시아식</label></li>
+            <li class="c"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/중식.png" width=15px height=15px>중식</label></li>
+            <li class="j"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/일식.png" width=15px height=15px>일식</label></li>
+            <li class="v"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/힐링.png" width=15px height=15px>채식전문점</label></li>
+            <li class="n"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/세계음식.png" width=15px height=15px>이색음식점</label></li>
+            <li class="f"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/한식 (2).png" width=15px height=15px>레스토랑</label></li>
+            <li class="cafe"><label><img src="<%=request.getContextPath() %>/resources/menubarImg/카페디저트.png" width=15px height=15px>카페</label></li>
         </ul>
         <script>
        
