@@ -20,4 +20,4 @@
 |Server|Apache Tomcat 9.0|
 |Language|Java, HTML5, CSS3, JavaScript|
 |Framework|Spring, Mybatis, Bootstrap|
-|skill| JSP|
+|Skill| JSP|
