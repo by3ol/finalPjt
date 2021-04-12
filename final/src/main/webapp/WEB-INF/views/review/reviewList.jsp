@@ -39,7 +39,7 @@
 						    <option value="36" <c:out value="${page.cri.region eq 36 ? 'selected' : '' }" />>경남</option>
 						    <option value="39" <c:out value="${page.cri.region eq 39 ? 'selected' : '' }" />>제주</option>
 						  </select>
-						<label>그룹</label>
+						<label>카테고리</label>
 						<select class="form-control" name="group">
 							<option value="" <c:out value="${empty page.cri.group  ? 'selected' : '' }" />>전체</option>
 							<option value="음식점" <c:out value="${page.cri.group eq '음식점' ? 'selected' : '' }" />>음식점</option>

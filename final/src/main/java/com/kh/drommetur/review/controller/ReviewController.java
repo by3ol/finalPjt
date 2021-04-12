@@ -154,8 +154,6 @@ public class ReviewController {
 		}
 		
 		
-		
-		
 		for(MultipartFile uploadFile : uploadFiles) {
 			
 			if(!uploadFile.getOriginalFilename().equals("")) {
